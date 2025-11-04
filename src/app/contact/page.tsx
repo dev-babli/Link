@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { PremiumMegamenu } from "@/components/PremiumMegamenu";
+import { Header } from "@/components/header-3";
 import { Footer } from "@/components/Footer";
 import { PerformanceOptimizer } from "@/components/PerformanceOptimizer";
 import { motion } from "motion/react";
@@ -34,7 +34,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white">
       <PerformanceOptimizer />
-      <PremiumMegamenu theme="default" />
+      <Header />
 
       {/* Hero Section - Positivus Style */}
       <PositivusSection background="white" padding="xl">

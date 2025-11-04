@@ -8,35 +8,40 @@ const PROCESS_PHASES = [
     title: "Research and Analysis",
     description:
       "With your vision in mind, we enter the Research and Analysis phase. Here, we examine your competitors, industry trends, and user preferences. This informed approach ensures your website stands out and provides an excellent user experience.",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+    gradient: "from-blue-500 to-cyan-500",
   },
   {
     id: "process-2",
     title: "Wireframing and Prototyping",
     description:
       "We move on to Wireframing and Prototyping, where we create skeletal representations of your website's pages. These visual indigoprints allow us to test and refine the user experience before diving into design.",
-    image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
+    gradient: "from-purple-500 to-pink-500",
   },
   {
     id: "process-3",
     title: "Design Creation",
     description:
       "Now, it's time for the Design Creation phase. Our talented designers bring your vision to life. We focus on aesthetics, ensuring your website not only looks stunning but also aligns perfectly with your brand identity.",
-    image: "https://images.unsplash.com/photo-1561070791-2526def94a69?q=80&w=2056&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop",
+    gradient: "from-emerald-500 to-teal-500",
   },
   {
     id: "process-4",
     title: "Development and Testing",
     description:
       "In the Development and Testing phase, our skilled developers turn designs into a fully functional website. Rigorous testing ensures everything works seamlessly, providing an exceptional user experience.",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop",
+    gradient: "from-orange-500 to-amber-500",
   },
   {
     id: "process-5",
     title: "Launch and Support",
     description:
       "Our commitment continues beyond launch. We offer post-launch support to address questions, provide assistance, and ensure your website remains updated and optimized. The Website Design Process isn't just about creating a website; it's about crafting a digital experience that resonates, engages, and converts.",
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop",
+    gradient: "from-indigo-500 to-blue-500",
   },
 ]
 
@@ -120,26 +125,40 @@ export const Process = () => {
               <CardSticky
                 key={phase.id}
                 index={index + 2}
-                className="group overflow-hidden rounded-2xl border border-gray-200 bg-white p-0 shadow-lg transition-shadow hover:shadow-xl"
+                className="group overflow-hidden rounded-2xl border border-gray-200/50 bg-white shadow-sm transition-all duration-300 hover:shadow-md hover:border-gray-300/50"
               >
-                <div className="relative h-48 w-full overflow-hidden sm:h-56 md:h-64">
+                {/* Image Section - Clean and minimal */}
+                <div className="relative h-64 w-full overflow-hidden sm:h-72 md:h-80">
                   <img
                     src={phase.image}
                     alt={phase.title}
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                  <div className="absolute bottom-4 right-4">
-                    <span className="text-3xl font-bold text-white sm:text-4xl">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
+                  
+                  {/* Minimal Step Number */}
+                  <div className="absolute top-6 left-6">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/95 backdrop-blur-sm border border-gray-200/50 shadow-sm">
+                      <span className="text-sm font-semibold text-gray-700">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                    </div>
                   </div>
                 </div>
-                <div className="p-6 sm:p-8">
-                  <h2 className="mb-4 text-xl font-bold tracking-tighter text-gray-900 sm:text-2xl">
+                
+                {/* Content Section - Minimal and elegant */}
+                <div className="p-8 sm:p-10">
+                  {/* Step Number Badge - Minimal */}
+                  <div className="mb-4">
+                    <span className="text-xs font-semibold tracking-wider uppercase text-gray-500">
+                      Step {index + 1}
+                    </span>
+                  </div>
+                  
+                  <h2 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
                     {phase.title}
                   </h2>
-                  <p className="text-sm leading-relaxed text-gray-600 sm:text-base">
+                  
+                  <p className="text-base leading-relaxed text-gray-600 sm:text-lg font-light">
                     {phase.description}
                   </p>
                 </div>

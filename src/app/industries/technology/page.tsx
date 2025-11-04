@@ -1,6 +1,6 @@
 "use client";
 
-import { EnhancedEnhancedIndustryPageTemplate } from "@/components/EnhancedEnhancedIndustryPageTemplate";
+import { EnhancedIndustryPageTemplate } from "@/components/EnhancedIndustryPageTemplate";
 
 export default function TechnologyPage() {
   return (

@@ -19,7 +19,7 @@ export default function CenterModeProductivitySlider() {
 
     const isMobile = () => matchMedia("(max-width:767px)").matches;
 
-    cards.forEach((_, i) => {
+      cards.forEach((_, i) => {
       const dot = document.createElement("span");
       dot.className = "dot";
       dot.onclick = () => activate(i, true);
@@ -388,34 +388,12 @@ export default function CenterModeProductivitySlider() {
         <div className="productivity-slider">
           <div className="productivity-track" id="track">
             <article className="productivity-project-card" active>
-              <img className="productivity-project-card__bg" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" alt="Web Development" />
+              <img className="productivity-project-card__bg" src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2070&auto=format&fit=crop" alt="AI Services" />
               <div className="productivity-project-card__content">
-                <img className="productivity-project-card__thumb" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop" alt="Web Development" />
+                <img className="productivity-project-card__thumb" src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop" alt="AI Services" />
                 <div>
-                  <h3 className="productivity-project-card__title">Web Development</h3>
-                  <p className="productivity-project-card__desc">Modern, responsive websites built with cutting-edge technologies that drive results.</p>
-                  <button className="productivity-project-card__btn">Learn More</button>
-                </div>
-              </div>
-            </article>
-            <article className="productivity-project-card">
-              <img className="productivity-project-card__bg" src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=2070&auto=format&fit=crop" alt="Mobile Applications" />
-              <div className="productivity-project-card__content">
-                <img className="productivity-project-card__thumb" src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop" alt="Mobile Applications" />
-                <div>
-                  <h3 className="productivity-project-card__title">Mobile Applications</h3>
-                  <p className="productivity-project-card__desc">Native and cross-platform apps that deliver exceptional user experiences.</p>
-                  <button className="productivity-project-card__btn">Learn More</button>
-                </div>
-              </div>
-            </article>
-            <article className="productivity-project-card">
-              <img className="productivity-project-card__bg" src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2070&auto=format&fit=crop" alt="AI Solutions" />
-              <div className="productivity-project-card__content">
-                <img className="productivity-project-card__thumb" src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop" alt="AI Solutions" />
-                <div>
-                  <h3 className="productivity-project-card__title">AI Solutions</h3>
-                  <p className="productivity-project-card__desc">Intelligent automation and AI-powered solutions to streamline your operations.</p>
+                  <h3 className="productivity-project-card__title">AI Services</h3>
+                  <p className="productivity-project-card__desc">Intelligent automation, predictive analytics, and AI copilots tailored to your operations.</p>
                   <button className="productivity-project-card__btn">Learn More</button>
                 </div>
               </div>
@@ -426,7 +404,7 @@ export default function CenterModeProductivitySlider() {
                 <img className="productivity-project-card__thumb" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2070&auto=format&fit=crop" alt="Cloud Services" />
                 <div>
                   <h3 className="productivity-project-card__title">Cloud Services</h3>
-                  <p className="productivity-project-card__desc">Scalable cloud infrastructure that grows with your business needs.</p>
+                  <p className="productivity-project-card__desc">Secure, scalable architectures across Azure, AWS, and GCP with DevOps automation.</p>
                   <button className="productivity-project-card__btn">Learn More</button>
                 </div>
               </div>
@@ -437,7 +415,62 @@ export default function CenterModeProductivitySlider() {
                 <img className="productivity-project-card__thumb" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="Data Analytics" />
                 <div>
                   <h3 className="productivity-project-card__title">Data Analytics</h3>
-                  <p className="productivity-project-card__desc">Transform data into actionable insights that drive business decisions.</p>
+                  <p className="productivity-project-card__desc">Unified data platforms, BI dashboards, and real-time insights for decision makers.</p>
+                  <button className="productivity-project-card__btn">Learn More</button>
+                </div>
+              </div>
+            </article>
+            <article className="productivity-project-card">
+              <img className="productivity-project-card__bg" src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2070&auto=format&fit=crop" alt="Cyber Security" />
+              <div className="productivity-project-card__content">
+                <img className="productivity-project-card__thumb" src="https://images.unsplash.com/photo-1523475472560-d2df97ec485c?q=80&w=2070&auto=format&fit=crop" alt="Cyber Security" />
+                <div>
+                  <h3 className="productivity-project-card__title">Cyber Security</h3>
+                  <p className="productivity-project-card__desc">Threat detection, governance, and incident response with 24/7 monitoring.</p>
+                  <button className="productivity-project-card__btn">Learn More</button>
+                </div>
+              </div>
+            </article>
+            <article className="productivity-project-card">
+              <img className="productivity-project-card__bg" src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop" alt="Mobile App Development" />
+              <div className="productivity-project-card__content">
+                <img className="productivity-project-card__thumb" src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop" alt="Mobile App Development" />
+                <div>
+                  <h3 className="productivity-project-card__title">Mobile App Development</h3>
+                  <p className="productivity-project-card__desc">Native and cross-platform apps with secure APIs and world-class UX.</p>
+                  <button className="productivity-project-card__btn">Learn More</button>
+                </div>
+              </div>
+            </article>
+            <article className="productivity-project-card">
+              <img className="productivity-project-card__bg" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" alt="Web App Development" />
+              <div className="productivity-project-card__content">
+                <img className="productivity-project-card__thumb" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop" alt="Web App Development" />
+                <div>
+                  <h3 className="productivity-project-card__title">Web App Development</h3>
+                  <p className="productivity-project-card__desc">High-performance web platforms built with modern frameworks and composable architecture.</p>
+                  <button className="productivity-project-card__btn">Learn More</button>
+                </div>
+              </div>
+            </article>
+            <article className="productivity-project-card">
+              <img className="productivity-project-card__bg" src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" alt="Microsoft Managed Services" />
+              <div className="productivity-project-card__content">
+                <img className="productivity-project-card__thumb" src="https://images.unsplash.com/photo-1523473827534-86c5ad6bc9aa?q=80&w=2070&auto=format&fit=crop" alt="Microsoft Managed Services" />
+                <div>
+                  <h3 className="productivity-project-card__title">Microsoft Managed Services</h3>
+                  <p className="productivity-project-card__desc">Proactive administration of Microsoft 365, Azure tenants, and enterprise collaboration stacks.</p>
+                  <button className="productivity-project-card__btn">Learn More</button>
+                </div>
+              </div>
+            </article>
+            <article className="productivity-project-card">
+              <img className="productivity-project-card__bg" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop" alt="Automation Testing" />
+              <div className="productivity-project-card__content">
+                <img className="productivity-project-card__thumb" src="https://images.unsplash.com/photo-1505238680356-667803448bb6?q=80&w=2070&auto=format&fit=crop" alt="Automation Testing" />
+                <div>
+                  <h3 className="productivity-project-card__title">Automation Testing</h3>
+                  <p className="productivity-project-card__desc">CI/CD-ready test automation suites ensuring resilience and faster releases.</p>
                   <button className="productivity-project-card__btn">Learn More</button>
                 </div>
               </div>

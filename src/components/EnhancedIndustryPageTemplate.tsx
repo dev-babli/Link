@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { PremiumMegamenu } from "@/components/PremiumMegamenu";
+import { Header } from "@/components/header-3";
 import { Footer } from "@/components/Footer";
 import { PerformanceOptimizer } from "@/components/PerformanceOptimizer";
 import ShaderShowcase from "@/components/ui/hero";
@@ -95,7 +95,7 @@ export function EnhancedIndustryPageTemplate({
   return (
     <div className="min-h-screen bg-white">
       <PerformanceOptimizer />
-      <PremiumMegamenu theme="default" />
+      <Header />
 
       {/* Hero Section - ShaderShowcase */}
       <div className="relative min-h-screen">

@@ -133,10 +133,10 @@ h2 {
   letter-spacing: -0.015em;
 }
 
-h3 {
+/* h3 {
   font-size: 32px;
   letter-spacing: -0.01em;
-}
+} */
 
 p {
   font-family: "Inter", sans-serif;
@@ -2429,4 +2429,29 @@ nextjs-portal {
   opacity: 0;
   animation: float 4s ease-in-out infinite;
   animation-play-state: paused;
+}
+
+/* Professional spacing between homepage components */
+main > div > *:not(:first-child) {
+  margin-top: 3rem !important; /* 48px */
+}
+
+main > div > *:not(:last-child) {
+  margin-bottom: 3rem !important; /* 48px */
+}
+
+@media (min-width: 768px) {
+  main > div > *:not(:first-child) {
+    margin-top: 4rem !important; /* 64px */
+  }
+
+  main > div > *:not(:last-child) {
+    margin-bottom: 4rem !important; /* 64px */
+  }
+}
+
+/* Ensure sections don't have internal top/bottom padding that creates extra space */
+main > div > section {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }

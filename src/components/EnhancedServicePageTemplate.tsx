@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import Navigation from "@/components/ui/dropdown-v1-navbar";
+import { Header } from "@/components/header-3";
 import { Footer } from "@/components/Footer";
 import { PerformanceOptimizer } from "@/components/PerformanceOptimizer";
 import ShaderShowcase from "@/components/ui/hero";
@@ -185,7 +185,7 @@ export default function EnhancedServicePageTemplate({
     return (
         <div className="min-h-screen bg-white">
             <PerformanceOptimizer />
-            <Navigation />
+            <Header />
 
             {/* Hero Section - ShaderShowcase */}
             <div className="relative min-h-screen">
