@@ -1,0 +1,452 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
+
+export default function CenterModeProductivitySlider() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const track = containerRef.current.querySelector('#track') as HTMLElement;
+    const wrap = track?.parentElement as HTMLElement;
+    const cards = Array.from(track?.children || []) as HTMLElement[];
+    const prev = containerRef.current.querySelector('#prev') as HTMLButtonElement;
+    const next = containerRef.current.querySelector('#next') as HTMLButtonElement;
+    const dotsBox = containerRef.current.querySelector('#dots') as HTMLElement;
+
+    if (!track || !wrap || !prev || !next || !dotsBox) return;
+
+    const isMobile = () => matchMedia("(max-width:767px)").matches;
+
+    cards.forEach((_, i) => {
+      const dot = document.createElement("span");
+      dot.className = "dot";
+      dot.onclick = () => activate(i, true);
+      dotsBox.appendChild(dot);
+    });
+    const dots = Array.from(dotsBox.children);
+
+    let current = 0;
+
+    function center(i: number) {
+      const card = cards[i];
+      if (!card) return;
+      const axis = isMobile() ? "top" : "left";
+      const size = isMobile() ? "clientHeight" : "clientWidth";
+      const start = isMobile() ? (card as any).offsetTop : (card as any).offsetLeft;
+      wrap.scrollTo({
+        [axis]: start - (wrap[size as keyof typeof wrap] / 2 - card[size as keyof typeof card] / 2),
+        behavior: "smooth"
+      } as ScrollToOptions);
+    }
+
+    function toggleUI(i: number) {
+      cards.forEach((c, k) => c.toggleAttribute("active", k === i));
+      dots.forEach((d, k) => (d as HTMLElement).classList.toggle("active", k === i));
+      if (prev) prev.disabled = i === 0;
+      if (next) next.disabled = i === cards.length - 1;
+    }
+
+    function activate(i: number, scroll: boolean) {
+      if (i === current) return;
+      current = i;
+      toggleUI(i);
+      if (scroll) center(i);
+    }
+
+    function go(step: number) {
+      activate(Math.min(Math.max(current + step, 0), cards.length - 1), true);
+    }
+
+    prev.onclick = () => go(-1);
+    next.onclick = () => go(1);
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (["ArrowRight", "ArrowDown"].includes(e.key)) go(1);
+      if (["ArrowLeft", "ArrowUp"].includes(e.key)) go(-1);
+    };
+
+    addEventListener("keydown", handleKeyDown, { passive: true });
+
+    cards.forEach((card, i) => {
+      card.addEventListener(
+        "mouseenter",
+        () => matchMedia("(hover:hover)").matches && activate(i, true)
+      );
+      card.addEventListener("click", () => activate(i, true));
+    });
+
+    let sx = 0, sy = 0;
+    track.addEventListener(
+      "touchstart",
+      (e: TouchEvent) => {
+        sx = e.touches[0].clientX;
+        sy = e.touches[0].clientY;
+      },
+      { passive: true }
+    );
+
+    track.addEventListener(
+      "touchend",
+      (e: TouchEvent) => {
+        const dx = e.changedTouches[0].clientX - sx;
+        const dy = e.changedTouches[0].clientY - sy;
+        if (isMobile() ? Math.abs(dy) > 60 : Math.abs(dx) > 60)
+          go((isMobile() ? dy : dx) > 0 ? -1 : 1);
+      },
+      { passive: true }
+    );
+
+    if (window.matchMedia("(max-width:767px)").matches) dotsBox.hidden = true;
+
+    const handleResize = () => center(current);
+    addEventListener("resize", handleResize);
+
+    toggleUI(0);
+    center(0);
+
+    return () => {
+      removeEventListener("keydown", handleKeyDown);
+      removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  return (
+    <>
+      <style jsx>{`
+        :global(:root) {
+          --productivity-gap: 1.25rem;
+          --productivity-speed: 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          --productivity-closed: 5rem;
+          --productivity-open: 30rem;
+          --productivity-accent: #4f46e5;
+        }
+        :global(.productivity-head) {
+          max-width: 1400px;
+          margin: auto;
+          padding: 70px 20px 40px;
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          gap: 2rem;
+        }
+        :global(.productivity-head h2) {
+          font: 400 1.5rem/1.2 Inter, sans-serif;
+          color: #1a1a1a;
+        }
+        @media (min-width: 1024px) {
+          :global(.productivity-head h2) {
+            font-size: 2.25rem;
+          }
+        }
+        :global(.productivity-nav-btn) {
+          width: 2.5rem;
+          height: 2.5rem;
+          border: none;
+          border-radius: 50%;
+          background: #f3f4f6;
+          color: #1a1a1a;
+          font-size: 1.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+        :global(.productivity-nav-btn:hover) {
+          background: var(--productivity-accent);
+          color: #fff;
+        }
+        :global(.productivity-nav-btn:disabled) {
+          opacity: 0.3;
+          cursor: default;
+        }
+        :global(.productivity-slider) {
+          max-width: 1400px;
+          margin: auto;
+          overflow: hidden;
+        }
+        :global(.productivity-controls) {
+          display: flex;
+          flex-direction: row;
+          gap: 0.5rem;
+        }
+        :global(.productivity-track) {
+          display: flex;
+          gap: var(--productivity-gap);
+          align-items: flex-start;
+          justify-content: center;
+          scroll-behavior: smooth;
+          scroll-snap-type: x mandatory;
+          padding-bottom: 40px;
+        }
+        :global(.productivity-track::-webkit-scrollbar) {
+          display: none;
+        }
+        :global(.productivity-project-card) {
+          position: relative;
+          flex: 0 0 var(--productivity-closed);
+          height: 26rem;
+          border-radius: 1rem;
+          overflow: hidden;
+          cursor: pointer;
+          transition: flex-basis var(--productivity-speed), transform var(--productivity-speed);
+        }
+        :global(.productivity-project-card[active]) {
+          flex-basis: var(--productivity-open);
+          transform: translateY(-6px);
+          box-shadow: 0 18px 55px rgba(0, 0, 0, 0.45);
+        }
+        :global(.productivity-project-card__bg) {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: brightness(0.75) saturate(75%);
+          transition: filter 0.3s, transform var(--productivity-speed);
+        }
+        :global(.productivity-project-card:hover .productivity-project-card__bg) {
+          filter: brightness(0.9) saturate(100%);
+          transform: scale(1.06);
+        }
+        :global(.productivity-project-card__content) {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 0.7rem;
+          padding: 0;
+          background: linear-gradient(transparent 40%, rgba(0, 0, 0, 0.7) 100%);
+          z-index: 2;
+        }
+        :global(.productivity-project-card__title) {
+          color: #fff;
+          font-weight: 700;
+          font-size: 1.35rem;
+          writing-mode: vertical-rl;
+          transform: rotate(180deg);
+        }
+        :global(.productivity-project-card__thumb),
+        :global(.productivity-project-card__desc),
+        :global(.productivity-project-card__btn) {
+          display: none;
+        }
+        :global(.productivity-project-card[active] .productivity-project-card__content) {
+          flex-direction: row;
+          align-items: center;
+          padding: 1.2rem 2rem;
+          gap: 1.1rem;
+        }
+        :global(.productivity-project-card[active] .productivity-project-card__title) {
+          writing-mode: horizontal-tb;
+          transform: none;
+          font-size: 2.4rem;
+        }
+        :global(.productivity-project-card[active] .productivity-project-card__thumb),
+        :global(.productivity-project-card[active] .productivity-project-card__desc),
+        :global(.productivity-project-card[active] .productivity-project-card__btn) {
+          display: block;
+        }
+        :global(.productivity-project-card__thumb) {
+          width: 133px;
+          height: 269px;
+          border-radius: 0.45rem;
+          object-fit: cover;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+        :global(.productivity-project-card__desc) {
+          color: #ddd;
+          font-size: 1rem;
+          line-height: 1.4;
+          max-width: 16rem;
+        }
+        :global(.productivity-project-card__btn) {
+          padding: 0.55rem 1.3rem;
+          border: none;
+          border-radius: 9999px;
+          background: var(--productivity-accent);
+          color: #fff;
+          font-size: 0.9rem;
+          font-weight: 600;
+          cursor: pointer;
+        }
+        :global(.productivity-project-card__btn:hover) {
+          background: #6366f1;
+        }
+        :global(.productivity-dots) {
+          display: flex;
+          gap: 0.5rem;
+          justify-content: center;
+          padding: 20px 0;
+        }
+        :global(.productivity-dot) {
+          width: 13px;
+          height: 13px;
+          border-radius: 50%;
+          background: #d1d5db;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+        :global(.productivity-dot.active) {
+          background: var(--productivity-accent);
+          transform: scale(1.2);
+        }
+        @media (max-width: 767px) {
+          :global(:root) {
+            --productivity-closed: 100%;
+            --productivity-open: 100%;
+            --productivity-gap: 0.8rem;
+          }
+          :global(.productivity-head) {
+            padding: 30px 15px 20px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+          }
+          :global(.productivity-slider) {
+            padding: 0 15px;
+          }
+          :global(.productivity-track) {
+            flex-direction: column;
+            scroll-snap-type: y mandatory;
+            gap: 0.8rem;
+            padding-bottom: 20px;
+          }
+          :global(.productivity-project-card) {
+            height: auto;
+            min-height: 80px;
+            flex: 0 0 auto;
+            width: 100%;
+            scroll-snap-align: start;
+          }
+          :global(.productivity-project-card[active]) {
+            min-height: 300px;
+            transform: none;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+          }
+          :global(.productivity-project-card__content) {
+            flex-direction: row;
+            justify-content: flex-start;
+            padding: 1rem;
+            align-items: center;
+            gap: 1rem;
+          }
+          :global(.productivity-project-card__title) {
+            writing-mode: horizontal-tb;
+            transform: none;
+            font-size: 1.2rem;
+            margin-right: auto;
+          }
+          :global(.productivity-project-card__thumb),
+          :global(.productivity-project-card__desc),
+          :global(.productivity-project-card__btn) {
+            display: none;
+          }
+          :global(.productivity-project-card[active] .productivity-project-card__content) {
+            align-items: flex-start;
+            padding: 1.5rem;
+          }
+          :global(.productivity-project-card[active] .productivity-project-card__title) {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+          }
+          :global(.productivity-project-card[active] .productivity-project-card__thumb) {
+            width: 200px;
+            height: 267px;
+            border-radius: 0.35rem;
+            margin-bottom: 1rem;
+          }
+          :global(.productivity-project-card[active] .productivity-project-card__desc) {
+            font-size: 0.95rem;
+            max-width: 100%;
+            margin-bottom: 1rem;
+          }
+          :global(.productivity-project-card[active] .productivity-project-card__btn) {
+            align-self: center;
+            width: 100%;
+            text-align: center;
+            padding: 0.7rem;
+          }
+          :global(.productivity-dots) {
+            display: none;
+          }
+        }
+      `}</style>
+      <section ref={containerRef} className="w-full bg-white py-12 sm:py-16">
+        <div className="productivity-head">
+          <h2>Transform your business with innovative solutions</h2>
+          <div className="productivity-controls">
+            <button id="prev" className="productivity-nav-btn" aria-label="Prev">‹</button>
+            <button id="next" className="productivity-nav-btn" aria-label="Next">›</button>
+          </div>
+        </div>
+        <div className="productivity-slider">
+          <div className="productivity-track" id="track">
+            <article className="productivity-project-card" active>
+              <img className="productivity-project-card__bg" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" alt="Web Development" />
+              <div className="productivity-project-card__content">
+                <img className="productivity-project-card__thumb" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop" alt="Web Development" />
+                <div>
+                  <h3 className="productivity-project-card__title">Web Development</h3>
+                  <p className="productivity-project-card__desc">Modern, responsive websites built with cutting-edge technologies that drive results.</p>
+                  <button className="productivity-project-card__btn">Learn More</button>
+                </div>
+              </div>
+            </article>
+            <article className="productivity-project-card">
+              <img className="productivity-project-card__bg" src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=2070&auto=format&fit=crop" alt="Mobile Applications" />
+              <div className="productivity-project-card__content">
+                <img className="productivity-project-card__thumb" src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop" alt="Mobile Applications" />
+                <div>
+                  <h3 className="productivity-project-card__title">Mobile Applications</h3>
+                  <p className="productivity-project-card__desc">Native and cross-platform apps that deliver exceptional user experiences.</p>
+                  <button className="productivity-project-card__btn">Learn More</button>
+                </div>
+              </div>
+            </article>
+            <article className="productivity-project-card">
+              <img className="productivity-project-card__bg" src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2070&auto=format&fit=crop" alt="AI Solutions" />
+              <div className="productivity-project-card__content">
+                <img className="productivity-project-card__thumb" src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop" alt="AI Solutions" />
+                <div>
+                  <h3 className="productivity-project-card__title">AI Solutions</h3>
+                  <p className="productivity-project-card__desc">Intelligent automation and AI-powered solutions to streamline your operations.</p>
+                  <button className="productivity-project-card__btn">Learn More</button>
+                </div>
+              </div>
+            </article>
+            <article className="productivity-project-card">
+              <img className="productivity-project-card__bg" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop" alt="Cloud Services" />
+              <div className="productivity-project-card__content">
+                <img className="productivity-project-card__thumb" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2070&auto=format&fit=crop" alt="Cloud Services" />
+                <div>
+                  <h3 className="productivity-project-card__title">Cloud Services</h3>
+                  <p className="productivity-project-card__desc">Scalable cloud infrastructure that grows with your business needs.</p>
+                  <button className="productivity-project-card__btn">Learn More</button>
+                </div>
+              </div>
+            </article>
+            <article className="productivity-project-card">
+              <img className="productivity-project-card__bg" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="Data Analytics" />
+              <div className="productivity-project-card__content">
+                <img className="productivity-project-card__thumb" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="Data Analytics" />
+                <div>
+                  <h3 className="productivity-project-card__title">Data Analytics</h3>
+                  <p className="productivity-project-card__desc">Transform data into actionable insights that drive business decisions.</p>
+                  <button className="productivity-project-card__btn">Learn More</button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div className="productivity-dots" id="dots"></div>
+      </section>
+    </>
+  );
+}
+
