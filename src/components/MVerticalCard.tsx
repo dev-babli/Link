@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MeshGradient } from "@paper-design/shaders-react";
+import { ClientOnlyMeshGradient } from "@/components/ui/client-only-shaders";
 import {
   FaProjectDiagram,
   FaDatabase,

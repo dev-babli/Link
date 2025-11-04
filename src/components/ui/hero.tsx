@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 
-import { MeshGradient, PulsingBorder } from "@paper-design/shaders-react"
+import { ClientOnlyMeshGradient, ClientOnlyPulsingBorder } from "@/components/ui/client-only-shaders"
 
 import { motion } from "framer-motion"
 
@@ -109,13 +109,13 @@ export default function ShaderShowcase({
       </svg>
 
       {/* Mesh gradients with brand colors */}
-      <MeshGradient
+      <ClientOnlyMeshGradient
         className="absolute inset-0 w-full h-full"
         colors={[brandColors.black, brandColors.cyan, brandColors.blue, brandColors.purple, brandColors.primary]}
         speed={0.3}
         backgroundColor={brandColors.black}
       />
-      <MeshGradient
+      <ClientOnlyMeshGradient
         className="absolute inset-0 w-full h-full opacity-60"
         colors={[brandColors.black, brandColors.white, brandColors.cyan, brandColors.secondary]}
         speed={0.2}
@@ -315,7 +315,7 @@ export default function ShaderShowcase({
       {showPulsingBorder && (
         <div className="absolute bottom-8 right-8 z-30">
           <div className="relative w-20 h-20 flex items-center justify-center">
-            <PulsingBorder
+            <ClientOnlyPulsingBorder
               colors={[brandColors.cyan, brandColors.blue, brandColors.purple, brandColors.primary, brandColors.secondary, "#00FF88", brandColors.white]}
               colorBack="#00000000"
               speed={1.5}

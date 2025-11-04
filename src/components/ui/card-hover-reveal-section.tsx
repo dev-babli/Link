@@ -3,6 +3,7 @@
 import { CardHoverReveal, CardHoverRevealMain, CardHoverRevealContent } from "@/components/ui/reveal-on-hover"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
+import Image from "next/image"
 
 const industries = [
   {
@@ -107,7 +108,7 @@ export const CardHoverRevealSection = () => {
                 className="h-[520px] w-full rounded-2xl overflow-hidden border border-gray-100 bg-white shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.15)] transition-all duration-500 group"
               >
                 <CardHoverRevealMain>
-                  <img
+                  <Image
                     width={800}
                     height={600}
                     alt={`${industry.name} industry`}

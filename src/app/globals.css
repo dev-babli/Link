@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Mona+Sans:wght@400;600&display=swap");
 @import "tailwindcss";
 
 @theme inline {
@@ -145,45 +146,36 @@ p {
 }
 
 /* Exclude black background buttons from black text rule */
-a:not([style*='background-color: #000000']):not([style*='backgroundColor: #000000']):not([class*='bg-[#000000]']) {
+a:not([style*='background-color: #000000']):not([style*='backgroundColor: #000000']) {
   color: #000000;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-a:not([style*='background-color: #000000']):not([style*='backgroundColor: #000000']):not([class*='bg-[#000000]']):hover {
+a:not([style*='background-color: #000000']):not([style*='backgroundColor: #000000']):hover {
   color: #333333;
 }
 
 /* Force white text for black background buttons */
 a[style*='background-color: #000000'],
 a[style*='backgroundColor: #000000'],
-a[style*='#000000'],
-a[class*='bg-[#000000]'],
 a[href="#contact"][style*='#000000'],
-button.bg-\[#000000\],
-button[class*='bg-[#000000]'],
 button[style*='background-color: #000000'],
 button[style*='backgroundColor: #000000'] {
   color: #ffffff !important;
 }
 
-button.bg-\[#000000\] *,
-button[class*='bg-[#000000]'] *,
 button[style*='background-color: #000000'] *,
 button[style*='backgroundColor: #000000'] *,
-button.bg-\[#000000\] a,
-button[class*='bg-[#000000]'] a,
-button.bg-\[#000000\] span,
-button[class*='bg-[#000000]'] span {
+button[style*='background-color: #000000'] a,
+button[style*='backgroundColor: #000000'] a,
+button[style*='background-color: #000000'] span,
+button[style*='backgroundColor: #000000'] span {
   color: #ffffff !important;
 }
 
 a[style*='background-color: #000000'] *,
-a[style*='backgroundColor: #000000'] *,
-a[style*='#000000'] span,
-a[class*='bg-[#000000]'] *,
-a[class*='bg-[#000000]'] span {
+a[style*='backgroundColor: #000000'] * {
   color: #ffffff !important;
 }
 
@@ -202,7 +194,6 @@ a .get-started-btn span {
 button,
 a[class*="bg-"],
 a[class*="button"],
-a.bg-\[#1a1a1a\],
 a[href="#contact"],
 a[href*="#"] {
   color: inherit !important;
@@ -211,21 +202,18 @@ a[href*="#"] {
 button:hover,
 a[class*="bg-"]:hover,
 a[class*="button"]:hover,
-a.bg-\[#1a1a1a\]:hover,
 a[href="#contact"]:hover,
 a[href*="#"]:hover {
   color: inherit !important;
 }
 
 /* Force black text for all buttons unless explicitly white */
-a[class*="bg-\[#1a1a1a\]"],
 a[class*="bg-black"],
 a[class*="bg-gray-900"] {
   color: #f5f5f5 !important;
 }
 
-a[class*="bg-white"],
-a[class*="bg-\[#f5f5f5\]"] {
+a[class*="bg-white"] {
   color: #1a1a1a !important;
 }
 
@@ -2089,8 +2077,6 @@ nextjs-portal {
 /* ═══════════════════════════════════════════════════════════════
    GSAP NAVIGATION MENU STYLES
    ═══════════════════════════════════════════════════════════════ */
-
-@import url("https://fonts.googleapis.com/css2?family=Anton&family=Mona+Sans:wght@400;600&display=swap");
 
 /* GSAP Menu Overlay Styles */
 .gsap-menu-overlay {

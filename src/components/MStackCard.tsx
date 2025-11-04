@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { MeshGradient } from "@paper-design/shaders-react";
+import { ClientOnlyMeshGradient } from "@/components/ui/client-only-shaders";
 import {
   FaLightbulb,
   FaCode,
@@ -121,7 +121,7 @@ const OurAIServices: React.FC = () => {
                   {/* MeshGradient Background */}
                   {mounted && (
                     <div className="absolute inset-0 w-full h-full overflow-hidden rounded-[2.5rem]">
-                      <MeshGradient
+                      <ClientOnlyMeshGradient
                         width={1400}
                         height={700}
                         colors={["#72b9bb", "#b5d9d9", "#ffd1bd", "#ffebe0", "#8cc5b8", "#dbf4a4"]}
