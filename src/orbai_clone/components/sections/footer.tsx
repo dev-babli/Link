@@ -49,21 +49,11 @@ const bottomLinks = [
 
 const Footer = () => {
   return (
-    <footer className="relative flex w-full flex-col items-center justify-center overflow-hidden bg-[#f5f5f5] pt-[160px] pb-[50px] rounded-t-[48px] sm:rounded-t-[64px]">
-      {/* Hero Video Background */}
-      <video
-        src="https://framerusercontent.com/assets/aMPvRVYHFQxBoB0v2qyJln83jI.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute top-0 left-0 z-0 h-full w-full object-cover"
-      />
-      <div className="absolute inset-0 z-[1] bg-[radial-gradient(circle_at_center,_transparent_0%,#f5f5f5_70%)]" />
+    <footer className="relative flex w-full flex-col items-center justify-center overflow-hidden bg-[#f5f5f5] py-20 rounded-t-[48px] sm:rounded-t-[64px]">
 
       <div className="relative z-10 mx-auto w-full max-w-[1200px] px-6">
         {/* Main Footer Content - Exact Layout from Image */}
-        <div className="flex flex-col lg:flex-row items-start justify-between gap-12 mb-16">
+        <div className="flex flex-col lg:flex-row items-start justify-between gap-16 mb-16">
           
           {/* Left Section - Brand Identity */}
           <div className="flex flex-col items-start">
@@ -74,9 +64,9 @@ const Footer = () => {
                   <div className="w-3 h-3 bg-[#1a1a1a] rounded-sm"></div>
                 </div>
               </div>
-              <h2 className="text-2xl font-bold" style={{ color: '#000000' }}>LINK INNOVATIONS</h2>
+              <h2 className="text-2xl font-bold" style={{ color: '#1a1a1a' }}>LINK INNOVATIONS</h2>
             </div>
-            <p className="text-sm leading-relaxed max-w-sm" style={{ color: '#000000' }}>
+            <p className="text-sm leading-relaxed max-w-sm" style={{ color: '#1a1a1a' }}>
               Next-gen AI systems, built for tomorrow's innovators
             </p>
           </div>
@@ -85,14 +75,14 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row gap-12">
             {footerSections.map((section, index) => (
               <div key={index} className="flex flex-col">
-                <h3 className="text-sm font-semibold mb-4" style={{ color: '#000000' }}>{section.title}</h3>
+                <h3 className="text-sm font-semibold mb-4" style={{ color: '#1a1a1a' }}>{section.title}</h3>
                 <ul className="space-y-3">
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
                       <a 
                         href={link.href} 
-                        className="text-sm transition-colors hover:text-gray-600"
-                        style={{ color: '#000000' }}
+                        className="text-sm transition-colors hover:text-gray-600 hover:underline"
+                        style={{ color: '#1a1a1a' }}
                       >
                         {link.label}
                       </a>
@@ -106,12 +96,12 @@ const Footer = () => {
           {/* Right Section - Social Media and CTA */}
           <div className="flex flex-col items-start lg:items-end space-y-6">
             {/* Social Media Icons */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               {socialLinks.map((link, index) => (
                 <a 
                   key={index} 
                   href={link.href} 
-                  className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center hover:bg-[#333333] transition-colors" 
+                  className="w-10 h-10 rounded-full bg-black flex items-center justify-center hover:bg-gray-800 transition-colors" 
                   aria-label={link['aria-label']}
                 >
                   <link.icon className="h-5 w-5 text-white" strokeWidth={1.5} />
@@ -122,7 +112,7 @@ const Footer = () => {
             {/* CTA Button - Exact match to image */}
             <a
               href="#"
-              className="footer-cta-button inline-flex items-center gap-2 bg-[#1a1a1a] px-6 py-3 rounded-lg text-sm font-semibold hover:bg-[#333333] transition-colors"
+              className="footer-cta-button inline-flex items-center gap-2 bg-black px-8 py-4 rounded-lg text-sm font-semibold hover:bg-gray-800 transition-colors"
               style={{ color: '#ffffff' }}
             >
               Get Started
@@ -132,9 +122,9 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section - Copyright and Legal Links */}
-        <div className="pt-8 border-t border-gray-200">
+        <div className="pt-12 border-t border-gray-100/50">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-sm" style={{ color: '#000000' }}>
+            <p className="text-sm" style={{ color: '#1a1a1a' }}>
               © 2024 Link Innovations. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
@@ -142,8 +132,8 @@ const Footer = () => {
                 <a 
                   key={index} 
                   href={link.href} 
-                  className="text-sm transition-colors hover:text-gray-600"
-                  style={{ color: '#000000' }}
+                  className="text-sm transition-colors hover:text-gray-600 hover:underline"
+                  style={{ color: '#1a1a1a' }}
                 >
                   {link.label}
                 </a>

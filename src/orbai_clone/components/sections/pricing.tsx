@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
 
 const plans = [
   {
@@ -55,7 +55,7 @@ export default function Pricing() {
   return (
     <section
       id="pricing"
-      className="w-full bg-secondary-background py-20 lg:py-32"
+      className="w-full bg-secondary-background py-20"
     >
       <div className="container mx-auto px-4 md:px-6">
         <motion.div 
@@ -112,7 +112,7 @@ export default function Pricing() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           {plans.map((plan, index) => {
             const price = isYearly ? plan.price.yearly : plan.price.monthly;
             return (
@@ -122,14 +122,14 @@ export default function Pricing() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 + index * 0.1 }}
-                className={`relative flex h-full flex-col rounded-3xl p-8 transition-all duration-500 hover:scale-[1.03] ${
+                className={`relative flex h-full flex-col rounded-xl p-10 transition-all duration-500 hover:scale-[1.02] ${
                   plan.isPopular
-                    ? "border-2 border-primary/20 bg-white/70 backdrop-blur-xl shadow-[0_16px_48px_rgba(0,0,0,0.1)]"
-                    : "border border-white/40 bg-white/60 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
+                    ? "border border-gray-100/50 bg-white/90 backdrop-blur-md shadow-[0_4px_16px_rgba(0,0,0,0.08)]"
+                    : "border border-gray-100/50 bg-white/90 backdrop-blur-md shadow-[0_4px_16px_rgba(0,0,0,0.08)]"
                 }`}
               >
                 {plan.isPopular && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1.5 text-xs font-semibold text-primary-foreground">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-black text-white px-6 py-2 text-xs font-semibold">
                     Popular
                   </div>
                 )}
@@ -137,10 +137,10 @@ export default function Pricing() {
                   {plan.name}
                 </h3>
                 <div className="mt-4 flex items-baseline">
-                  <span className="text-5xl font-bold tracking-tight text-primary-text">
+                  <span className="text-6xl font-bold tracking-tight text-primary-text">
                     ${price}
                   </span>
-                  <span className="ml-1 text-xl font-medium text-secondary-text">
+                  <span className="ml-1 text-lg font-medium text-secondary-text">
                     /month
                   </span>
                 </div>
@@ -149,25 +149,26 @@ export default function Pricing() {
                 </p>
                 <a
                   href="#"
-                  className={`mt-8 block w-full py-3 text-center text-base font-semibold transition-all duration-300 hover:scale-105 ${
+                  className={`mt-8 flex items-center justify-center gap-2 w-full py-4 text-center text-base font-semibold transition-all duration-300 hover:scale-[1.02] ${
                     plan.isPopular
-                      ? "rounded-lg bg-primary text-primary-foreground shadow-lg shadow-black/20 hover:bg-black/90"
-                      : "rounded-lg border border-gray-300 bg-white/80 backdrop-blur-md text-primary-text hover:bg-gray-50"
+                      ? "rounded-lg bg-black text-white shadow-[0_4px_10px_rgba(0,0,0,0.15)] hover:bg-gray-800"
+                      : "rounded-lg border border-gray-200 bg-white/90 backdrop-blur-sm text-primary-text hover:bg-gray-50"
                   }`}
                 >
                   Get Started
+                  {plan.isPopular && <ArrowRight className="w-5 h-5" />}
                 </a>
-                <ul className="mt-8 flex-grow space-y-4">
+                <ul className="mt-8 flex-grow space-y-5">
                   {plan.features.map((feature, index) => (
                     <li
                       key={index}
                       className={`flex items-start gap-3 ${
                         index !== plan.features.length - 1
-                          ? "border-b border-dotted border-border pb-4"
+                          ? "border-b border-dotted border-gray-200 pb-5"
                           : ""
                       }`}
                     >
-                      <Check className="h-5 w-5 flex-shrink-0 text-primary-text" />
+                      <Check className="h-5 w-5 flex-shrink-0 text-black" />
                       <span className="text-[15px] text-secondary-text">
                         {feature}
                       </span>

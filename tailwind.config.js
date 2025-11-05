@@ -73,6 +73,13 @@ module.exports = {
         'white-100': '#ffffff',
         'white-200': '#f8f9fa',
         'white-300': '#e9ecef',
+        
+        // Link Innovations Color Palette
+        'robin-egg-blue': '#00c4b8',
+        'brandeis-blue': '#016cf7',
+        'link-black': '#000000',
+        'night': '#141414',
+        'baby-powder': '#fdfffd',
       },
       fontFamily: {
         'heading': ['Mango Grotesque', 'Helvetica Neue', 'Arial', 'sans-serif'],
@@ -105,6 +112,9 @@ module.exports = {
         'holographic': 'holographic 3s ease-in-out infinite',
         'particle-trail': 'particle-trail 2s ease-out infinite',
         'move': 'move 5s linear infinite',
+        'fade-in-up': 'fade-in-up 0.5s ease-out forwards',
+        'fade-in': 'fade-in 0.5s ease-out forwards',
+        'scale-in': 'scale-in 0.5s ease-out forwards',
       },
       keyframes: {
         orbit: {
@@ -203,6 +213,34 @@ module.exports = {
           '0%': { transform: 'translateX(-200px)' },
           '100%': { transform: 'translateX(200px)' },
         },
+        'fade-in-up': {
+          '0%': { 
+            opacity: '0',
+            transform: 'translateY(10px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          }
+        },
+        'fade-in': {
+          '0%': {
+            opacity: '0'
+          },
+          '100%': {
+            opacity: '1'
+          }
+        },
+        'scale-in': {
+          '0%': {
+            opacity: '0',
+            transform: 'scale(0.95)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'scale(1)'
+          }
+        },
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -216,6 +254,12 @@ module.exports = {
       },
       perspective: {
         '1000': '1000px',
+      },
+      maxWidth: {
+        container: '80rem',
+      },
+      boxShadow: {
+        glow: '0 -16px 128px 0 hsla(var(--brand-foreground) / 0.5) inset, 0 -16px 32px 0 hsla(var(--brand) / 0.5) inset',
       },
     },
   },

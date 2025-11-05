@@ -466,6 +466,13 @@ header.fixed {
   --sidebar-accent-foreground: #ffffff;
   --sidebar-primary-foreground: #ffffff;
 
+  /* ===== LINK INNOVATIONS COLOR PALETTE ===== */
+  --robin-egg-blue: #00c4b8;
+  --brandeis-blue: #016cf7;
+  --black: #000000;
+  --night: #141414;
+  --baby-powder: #fdfffd;
+
   /* ===== GOLDEN RATIO DESIGN SYSTEM ===== */
   /* Golden Ratio Constants (φ ≈ 1.618) */
   --phi: 1.618033988749895;
@@ -730,6 +737,14 @@ header.fixed {
   }
   h2 {
     @apply text-3xl leading-tight tracking-tight md:text-4xl lg:text-6xl;
+  }
+  :root {
+    --brand: 27 96% 61%;
+    --brand-foreground: 31 97% 72%;
+  }
+  .dark {
+    --brand: 31 97% 72%;
+    --brand-foreground: 27 96% 61%;
   }
 }
 
@@ -2440,4 +2455,35 @@ main > div > *:not(:last-child) {
 main > div > section {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
+}
+
+@layer utilities {
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+  .delay-700 {
+    animation-delay: 700ms;
+  }
+  
+  .fade-top-lg {
+    mask-image: linear-gradient(to bottom, 
+      transparent, 
+      rgba(0, 0, 0, 1) 8rem
+    );
+  }
+
+  .animate-in {
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+  }
 }

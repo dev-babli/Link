@@ -2,6 +2,7 @@
 
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import LogoLoop from "@/components/LogoLoop";
 import {
   SiReact,
@@ -101,34 +102,58 @@ const HeroSectionNew: React.FC = () => {
         aria-label="Hero animation showcasing Link Innovations"
       />
 
+      {/* Video overlay gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-[1] rounded-b-[80px] md:rounded-b-[120px]" />
+
       {/* Hero content layered on video */}
       <div className="relative z-10 w-full max-w-3xl text-left">
-        <h1 className="text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-lg" style={{ color: 'white' }}>
+        <h1 
+          className="text-5xl md:text-7xl font-bold leading-tight" 
+          style={{ 
+            color: 'white',
+            textShadow: '0 2px 8px rgba(0,0,0,0.3)'
+          }}
+        >
           Link Innovations
         </h1>
-        <h2 className="mt-3 text-2xl md:text-3xl font-semibold" style={{ color: 'white' }}>
+        <h2 
+          className="mt-6 text-3xl md:text-4xl font-semibold" 
+          style={{ 
+            color: 'white',
+            textShadow: '0 2px 8px rgba(0,0,0,0.3)'
+          }}
+        >
           Custom Software Excellence
         </h2>
-        <p className="mt-6 text-lg md:text-xl" style={{ color: 'white' }}>
+        <p 
+          className="mt-8 text-xl md:text-2xl leading-relaxed" 
+          style={{ 
+            color: 'white',
+            textShadow: '0 2px 8px rgba(0,0,0,0.3)'
+          }}
+        >
           Partner with Link Innovations to design and launch tailored digital
           platforms that streamline operations, elevate customer experiences,
           and accelerate growth.
         </p>
 
-        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-start">
+        <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-start">
           <a
             href="#contact"
-            className="inline-block px-8 py-3 rounded-lg font-semibold shadow-lg transition border border-white/40 bg-white/10 hover:bg-white/20"
-            style={{ color: 'white' }}
+            className="inline-flex items-center gap-2 bg-black text-white rounded-lg px-8 py-4 text-lg font-semibold shadow-[0_4px_10px_rgba(0,0,0,0.15)] hover:scale-105 transition-all duration-300"
           >
             Get Started
+            <ArrowRight className="w-5 h-5" />
           </a>
           <a
             href="#learn"
-            className="inline-block border border-white/40 px-8 py-3 rounded-lg hover:bg-white/10 transition"
-            style={{ color: 'white' }}
+            className="inline-flex items-center gap-2 border border-white/40 bg-white/10 backdrop-blur-sm text-white rounded-lg px-8 py-4 text-lg font-semibold hover:bg-white/20 transition-all duration-300"
+            style={{ 
+              textShadow: '0 2px 8px rgba(0,0,0,0.3)'
+            }}
           >
             Learn More
+            <ArrowRight className="w-5 h-5" />
           </a>
         </div>
 

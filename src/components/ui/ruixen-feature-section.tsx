@@ -77,7 +77,7 @@ const integrations = [
 
 export default function RuixenFeatureSection() {
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 bg-white">
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-[#f5f5f5]">
       <motion.div
         className="mx-auto max-w-2xl text-center mb-16"
         initial={{ opacity: 0, y: 20 }}
@@ -85,19 +85,19 @@ export default function RuixenFeatureSection() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <div className="mb-4 inline-flex items-center rounded-full bg-white px-4 py-1.5 shadow-sm border border-gray-200">
+        <div className="mb-4 inline-flex items-center rounded-full bg-white/90 backdrop-blur-sm px-4 py-2 shadow-sm border border-gray-100/50">
           <p className="text-xs font-medium text-[#000000] uppercase tracking-wider">FEATURES</p>
         </div>
-        <h2 className="text-4xl font-bold tracking-tight text-[#000000] sm:text-5xl mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#000000] mb-4">
           Powerful Features
         </h2>
-        <p className="text-lg leading-8 text-[#000000]">
+        <p className="text-lg md:text-xl leading-relaxed text-[#000000]">
           Discover features that simplify workflows and grow your business with intelligent solutions.
         </p>
       </motion.div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 relative">
+      <div className="grid grid-cols-1 lg:grid-cols-2 relative gap-6">
         {/* Left Block */}
-        <div className="flex flex-col items-start justify-center border border-gray-200 p-4 sm:p-6 lg:p-8 bg-white">
+        <div className="flex flex-col items-start justify-center border border-gray-100/50 rounded-xl p-8 bg-[#f5f5f5] shadow-[0_4px_16px_rgba(0,0,0,0.08)]">
           {/* Card */}
           <div className="relative w-full mb-4 sm:mb-6">
             <div className="absolute inset-x-0 -bottom-2 h-16 sm:h-20 lg:h-24 bg-gradient-to-t from-white to-transparent z-10"></div>
@@ -112,7 +112,7 @@ export default function RuixenFeatureSection() {
         </div>
 
         {/* Right Block */}
-        <div className="flex flex-col items-center justify-start border border-gray-200 p-4 sm:p-6 lg:p-8 bg-white">
+        <div className="flex flex-col items-center justify-start border border-gray-100/50 rounded-xl p-8 bg-[#f5f5f5] shadow-[0_4px_16px_rgba(0,0,0,0.08)]">
           {/* Content */}
           <h3 className="text-lg sm:text-xl lg:text-2xl font-normal text-[#000000] mb-4 sm:mb-6 leading-relaxed">
             Seamless Integration Ecosystem <span className="text-[#000000] font-semibold">Link Innovations</span>{" "}
@@ -125,11 +125,11 @@ export default function RuixenFeatureSection() {
             )}
           >
             {/* Integration List */}
-            <CardContent className="p-3 sm:p-4 lg:p-6 space-y-3 sm:space-y-4 bg-white border border-gray-200 rounded-2xl sm:rounded-3xl z-10 w-full">
+            <CardContent className="p-6 space-y-4 bg-white border border-gray-100/50 rounded-xl z-10 w-full">
               {integrations.map((item, i) => (
                 <div
                   key={i}
-                  className="flex items-center justify-between p-2 sm:p-3 border border-gray-200 rounded-xl sm:rounded-2xl hover:bg-gray-50 transition"
+                  className="flex items-center justify-between p-3 border border-gray-100/50 rounded-xl hover:bg-gray-50 transition"
                 >
                   <div className="flex items-center gap-2 sm:gap-3 flex-1">
                     <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-gray-100 flex items-center justify-center text-sm sm:text-lg flex-shrink-0">
@@ -140,7 +140,7 @@ export default function RuixenFeatureSection() {
                       <p className="text-xs text-[#666666] line-clamp-1 sm:line-clamp-2">{item.desc}</p>
                     </div>
                   </div>
-                  <button className="rounded-full border border-gray-200 p-1.5 sm:p-2 text-xs font-semibold flex-shrink-0 ml-2 hover:bg-gray-100"><TbHeartPlus className="w-3 h-3 sm:w-4 sm:h-4 text-[#000000]" /></button>
+                  <button className="rounded-full border border-gray-100/50 p-2 text-xs font-semibold flex-shrink-0 ml-2 hover:bg-gray-100 transition"><TbHeartPlus className="w-4 h-4 text-[#000000]" /></button>
                 </div>
               ))}
             </CardContent>
@@ -149,7 +149,7 @@ export default function RuixenFeatureSection() {
       </div>
       
       {/* Stats and Testimonial Section */}
-      <div className="mt-12 sm:mt-16 lg:mt-20 grid gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+      <div className="mt-20 grid gap-6 lg:grid-cols-2">
         <div className="flex justify-center items-center p-4 sm:p-6">
           <div className="grid grid-cols-3 gap-6 sm:gap-8 lg:gap-6 xl:gap-8 w-full text-center sm:text-left">
             <div className="space-y-2 sm:space-y-3">
@@ -167,7 +167,7 @@ export default function RuixenFeatureSection() {
           </div>
         </div>
         <div className="relative">
-          <blockquote className="border-l-2 border-gray-200 pl-4 sm:pl-6 lg:pl-8 text-[#666666]">
+          <blockquote className="border-l-2 border-gray-100/50 pl-8 text-[#666666] leading-relaxed">
             <p className="text-sm sm:text-base lg:text-lg leading-relaxed">Using Link Innovations has been like unlocking a new level of productivity. It's the perfect fusion of simplicity and versatility, enabling us to create exceptional digital solutions.</p>
             <div className="mt-4 sm:mt-6 space-y-2 sm:space-y-3">
               <cite className="block font-medium text-sm sm:text-base text-[#000000]">Saurabh, CEO</cite>
@@ -231,7 +231,7 @@ export const CardStack = ({
         return (
           <motion.div
             key={card.id}
-            className="absolute bg-white h-48 w-full md:h-48 md:w-96 rounded-3xl p-4 shadow-xl border border-gray-200 flex flex-col justify-between"
+            className="absolute bg-white h-48 w-full md:h-48 md:w-96 rounded-xl p-4 shadow-[0_4px_16px_rgba(0,0,0,0.08)] border border-gray-100/50 flex flex-col justify-between"
             style={{
               transformOrigin: "top center",
             }}
