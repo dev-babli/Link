@@ -2,7 +2,6 @@
 
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import LogoLoop from "@/components/LogoLoop";
 import {
   SiReact,
@@ -89,12 +88,12 @@ const HeroSectionNew: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   return (
-    <section className="relative w-full h-screen flex items-center justify-center md:justify-start bg-black overflow-hidden px-6 md:px-16 lg:px-24 rounded-b-[80px] md:rounded-b-[120px]">
-      {/* Inline hero video */}
+    <section className="relative w-full min-h-screen flex items-center justify-center md:justify-start bg-background-primary overflow-hidden px-6 md:px-16 lg:px-20 -mt-[104px] pt-[104px]">
+      {/* Hero video background */}
       <video
         ref={videoRef}
         src={VIDEO_SRC}
-        className="absolute inset-0 w-full h-full object-cover rounded-b-[80px] md:rounded-b-[120px]"
+        className="absolute inset-0 w-full h-full object-cover opacity-90"
         autoPlay
         loop
         muted
@@ -102,83 +101,78 @@ const HeroSectionNew: React.FC = () => {
         aria-label="Hero animation showcasing Link Innovations"
       />
 
-      {/* Video overlay gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-[1] rounded-b-[80px] md:rounded-b-[120px]" />
+      {/* Hero content */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 lg:gap-x-12 items-center">
+          <div className="text-center lg:text-left">
+            <h1 className="text-[56px] font-medium leading-[1.15] tracking-[-0.015em] md:text-[72px] hero-heading-black">
+              Link Innovations
+            </h1>
+            <h2 className="mt-3 text-[40px] font-medium leading-[1.2] tracking-[-0.01em] hero-heading-black">
+              Custom Software Excellence
+            </h2>
+            <p className="mt-6 text-large-paragraph max-w-lg mx-auto lg:mx-0 hero-text-white">
+              Partner with Link Innovations to design and launch tailored digital
+              platforms that streamline operations, elevate customer experiences,
+              and accelerate growth.
+            </p>
 
-      {/* Hero content layered on video */}
-      <div className="relative z-10 w-full max-w-3xl text-left">
-        <h1 
-          className="text-5xl md:text-7xl font-bold leading-tight" 
-          style={{ 
-            color: 'white',
-            textShadow: '0 2px 8px rgba(0,0,0,0.3)'
-          }}
-        >
-          Link Innovations
-        </h1>
-        <h2 
-          className="mt-6 text-3xl md:text-4xl font-semibold" 
-          style={{ 
-            color: 'white',
-            textShadow: '0 2px 8px rgba(0,0,0,0.3)'
-          }}
-        >
-          Custom Software Excellence
-        </h2>
-        <p 
-          className="mt-8 text-xl md:text-2xl leading-relaxed" 
-          style={{ 
-            color: 'white',
-            textShadow: '0 2px 8px rgba(0,0,0,0.3)'
-          }}
-        >
-          Partner with Link Innovations to design and launch tailored digital
-          platforms that streamline operations, elevate customer experiences,
-          and accelerate growth.
-        </p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a
+                href="#contact"
+                className="group bg-button-primary-bg text-button-primary-text text-button font-medium pl-6 pr-3.5 py-2.5 rounded-full flex items-center gap-2.5 transition-transform duration-200 ease-out hover:scale-[1.02] shadow-[0_5px_16px_0_rgba(0,0,0,0.2)] justify-center"
+              >
+                <span>Get Started</span>
+                <div className="bg-accent-yellow rounded-full p-[3px] flex items-center justify-center">
+                  <div className="relative w-5 h-5 overflow-hidden text-black">
+                    <div className="transition-transform duration-300 ease-in-out group-hover:-translate-x-[120%]">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                    <div className="absolute inset-0 transition-transform duration-300 ease-in-out translate-x-[120%] group-hover:translate-x-0">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a
+                href="#learn"
+                className="bg-transparent border-[1.5px] border-text-primary text-text-primary text-button font-medium px-6 py-3.5 rounded-full transition-colors hover:bg-black/[.05]"
+              >
+                Learn More
+              </a>
+            </div>
 
-        <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-start">
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 bg-black text-white rounded-lg px-8 py-4 text-lg font-semibold shadow-[0_4px_10px_rgba(0,0,0,0.15)] hover:scale-105 transition-all duration-300"
-          >
-            Get Started
-            <ArrowRight className="w-5 h-5" />
-          </a>
-          <a
-            href="#learn"
-            className="inline-flex items-center gap-2 border border-white/40 bg-white/10 backdrop-blur-sm text-white rounded-lg px-8 py-4 text-lg font-semibold hover:bg-white/20 transition-all duration-300"
-            style={{ 
-              textShadow: '0 2px 8px rgba(0,0,0,0.3)'
-            }}
-          >
-            Learn More
-            <ArrowRight className="w-5 h-5" />
-          </a>
-        </div>
-
-        <div className="relative mt-16 w-full">
-          <motion.div
-            className="absolute left-1/2 w-screen -translate-x-1/2 overflow-hidden py-6"
-            initial={{ opacity: 0, x: 120, rotate: 120 }}
-            whileInView={{ opacity: 1, x: 0, rotate: 360 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeOut" }}
-          >
-            <LogoLoop
-              logos={techLogos}
-              speed={70}
-              direction="left"
-              logoHeight={64}
-              gap={48}
-              pauseOnHover
-              scaleOnHover
-              fadeOut
-              fadeOutColor="rgba(17,25,40,0)"
-              ariaLabel="Technology stack"
-              className="[--logoloop-fadeColor:rgba(17,25,40,0)]"
-            />
-          </motion.div>
+            <div className="relative mt-16">
+              <motion.div
+                className="overflow-hidden py-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                <LogoLoop
+                  logos={techLogos}
+                  speed={70}
+                  direction="left"
+                  logoHeight={64}
+                  gap={48}
+                  pauseOnHover
+                  scaleOnHover
+                  fadeOut
+                  fadeOutColor="rgba(245,243,239,0)"
+                  ariaLabel="Technology stack"
+                  className="[--logoloop-fadeColor:rgba(245,243,239,0)]"
+                />
+              </motion.div>
+            </div>
+          </div>
+          <div className="relative mt-16 lg:mt-0 h-[450px] lg:h-[550px] hidden lg:block">
+            {/* Placeholder for hero image */}
+          </div>
         </div>
       </div>
     </section>

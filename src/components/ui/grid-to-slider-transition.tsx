@@ -3,7 +3,6 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Lenis from "lenis";
 import { colors } from "@/homepage-versions/shared/design-system/colors";
 
 // Register GSAP plugins
@@ -100,7 +99,6 @@ export default function GridToSliderTransition({
   const scrollTextRef = useRef<HTMLDivElement>(null);
   const contentSectionRef = useRef<HTMLDivElement>(null);
 
-  const lenisRef = useRef<Lenis | null>(null);
   const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
 
   // Preloader animation
@@ -149,43 +147,39 @@ export default function GridToSliderTransition({
     return () => clearInterval(counterInterval);
   }, [showPreloader]);
 
-  // Initialize Lenis
-  const initializeLenis = useCallback(() => {
-    if (lenisRef.current || typeof window === "undefined") return;
+  // Setup ScrollTrigger refresh on native scroll
+  useEffect(() => {
+    if (!isWebEntered) return;
 
-    // Check if global Lenis exists
-    if ((window as any).lenis) {
-      lenisRef.current = (window as any).lenis;
-      return;
-    }
+    // Update ScrollTrigger on scroll
+    const handleScroll = () => {
+      ScrollTrigger.refresh();
+    };
 
-    try {
-      const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        direction: "vertical",
-        gestureDirection: "vertical",
-        smooth: true,
-        mouseMultiplier: 1,
-        smoothTouch: false,
-        touchMultiplier: 2,
-        infinite: false,
-      });
+    // Throttle scroll events
+    let ticking = false;
+    const throttledScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
 
-      lenis.on("scroll", ScrollTrigger.update);
+    window.addEventListener('scroll', throttledScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
 
-      gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
-      });
+    // Initial refresh
+    ScrollTrigger.refresh();
 
-      gsap.ticker.lagSmoothing(0);
-
-      lenisRef.current = lenis;
-      (window as any).lenis = lenis;
-    } catch (error) {
-      console.warn("Lenis initialization failed:", error);
-    }
-  }, []);
+    // Cleanup
+    return () => {
+      window.removeEventListener('scroll', throttledScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [isWebEntered]);
 
   // Find leftmost visible image
   const findLeftmostVisibleImage = useCallback(() => {
@@ -323,7 +317,6 @@ export default function GridToSliderTransition({
         setIsAnimating(false);
         setIsWebEntered(true);
 
-        initializeLenis();
         document.body.style.overflow = "auto";
 
         if (scrollTextRef.current) {
@@ -457,7 +450,7 @@ export default function GridToSliderTransition({
       const thumbnailItems = thumbnailsRef.current.querySelectorAll(".thumbnail");
       tl.to(thumbnailItems, { opacity: 1, y: 0, duration: 0.4, stagger: 0.05, ease: "power2.out" }, 2.3);
     }
-  }, [isAnimating, isWebEntered, activeIndex, findLeftmostVisibleImage, updateSlideContent, initializeLenis]);
+  }, [isAnimating, isWebEntered, activeIndex, findLeftmostVisibleImage, updateSlideContent]);
 
   // Handle thumbnail clicks
   const handleThumbnailClick = useCallback(

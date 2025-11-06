@@ -4,9 +4,8 @@ import { useEffect, useRef } from 'react';
 
 export default function GSAPPinnedImageMaskReveal() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const lenisRef = useRef<any>(null);
-  const rafRef = useRef<number | null>(null);
   const scrollTriggersRef = useRef<any[]>([]);
+  const scrollCleanupRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
     if (!containerRef.current || typeof window === 'undefined') return;
@@ -16,30 +15,38 @@ export default function GSAPPinnedImageMaskReveal() {
         // Import GSAP and plugins
         const gsap = (await import('gsap')).default;
         const { ScrollTrigger } = await import('gsap/ScrollTrigger');
-        const { default: Lenis } = await import('lenis');
 
         // Register ScrollTrigger
         gsap.registerPlugin(ScrollTrigger);
 
-        // Initialize Lenis smooth scroll
-        const lenis = new Lenis({
-          duration: 1.2,
-          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-          smooth: true,
-          gestureDirection: "vertical",
-          smoothTouch: true,
-          touchMultiplier: 2
-        });
+        // Setup ScrollTrigger refresh on native scroll
+        const handleScroll = () => {
+          ScrollTrigger.refresh();
+        };
 
-        lenisRef.current = lenis;
+        // Throttle scroll events
+        let ticking = false;
+        const throttledScroll = () => {
+          if (!ticking) {
+            window.requestAnimationFrame(() => {
+              handleScroll();
+              ticking = false;
+            });
+            ticking = true;
+          }
+        };
 
-        function raf(time: number) {
-          lenis.raf(time);
-          ScrollTrigger.update();
-          rafRef.current = requestAnimationFrame(raf);
-        }
+        window.addEventListener('scroll', throttledScroll, { passive: true });
+        window.addEventListener('resize', handleScroll, { passive: true });
 
-        rafRef.current = requestAnimationFrame(raf);
+        // Store cleanup function
+        scrollCleanupRef.current = () => {
+          window.removeEventListener('scroll', throttledScroll);
+          window.removeEventListener('resize', handleScroll);
+        };
+
+        // Initial refresh
+        ScrollTrigger.refresh();
 
         // Set z-index for images
         containerRef.current?.querySelectorAll(".arch__right .img-wrapper").forEach((element) => {
@@ -180,11 +187,8 @@ export default function GSAPPinnedImageMaskReveal() {
         // Cleanup function
         return () => {
           window.removeEventListener("resize", resizeHandler);
-          if (rafRef.current) {
-            cancelAnimationFrame(rafRef.current);
-          }
-          if (lenisRef.current) {
-            lenisRef.current.destroy();
+          if (scrollCleanupRef.current) {
+            scrollCleanupRef.current();
           }
           scrollTriggersRef.current.forEach(st => {
             if (st && st.kill) st.kill();
@@ -206,11 +210,8 @@ export default function GSAPPinnedImageMaskReveal() {
     // Cleanup on unmount
     return () => {
       clearTimeout(timeoutId);
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
-      }
-      if (lenisRef.current) {
-        lenisRef.current.destroy();
+      if (scrollCleanupRef.current) {
+        scrollCleanupRef.current();
       }
       scrollTriggersRef.current.forEach(st => {
         if (st && st.kill) st.kill();

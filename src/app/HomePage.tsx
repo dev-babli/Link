@@ -1,13 +1,11 @@
 import { Header } from '@/components/header-3';
 import HeroSectionNew from '@/components/HeroSectionNew';
 import ProcessCards from '@/homepage-versions/shared/components/ProcessCards';
-import DetailsSummaryAccordion from '@/components/DetailsSummaryAccordion';
 import OurAIServices from '@/components/MStackCard';
 import CenterModeProductivitySlider from '@/components/ui/center-mode-productivity-slider';
 import AITransformationCirrusInteractive from '@/components/MVerticalCard';
 import { Process } from '@/components/ui/cards-stack-demo';
 import RuixenFeatureSection from '@/components/ui/ruixen-feature-section';
-import { FeaturesCarouselSection } from '@/components/ui/features-carousel-section';
 import StackFeatureSection from '@/components/ui/stack-feature-section';
 import { WhyChooseUsBento } from '@/components/ui/why-choose-us-bento';
 import GalleryHoverCarousel from '@/components/ui/gallery-hover-carousel';
@@ -19,7 +17,6 @@ import FaqSection from '@/orbai_clone/components/sections/faq';
 import { TrustedBySparkles } from '@/components/ui/trusted-by-sparkles';
 import { CTAWithShader } from '@/components/ui/cta-with-shader';
 import Footer from '@/orbai_clone/components/sections/footer';
-import ThreeDImageScrollReveal from '@/components/ui/3d-image-scroll-reveal';
 
 export default function HomePage() {
   return (
@@ -27,15 +24,12 @@ export default function HomePage() {
       <Header />
       <div className="pt-0 [&>*]:mb-0 [&>*]:pb-0 [&>*:not(:first-child)]:mt-12 [&>*:not(:last-child)]:mb-12 md:[&>*:not(:first-child)]:mt-16 md:[&>*:not(:last-child)]:mb-16">
         <HeroSectionNew />
-        <ThreeDImageScrollReveal />
         <ProcessCards />
-        <DetailsSummaryAccordion />
         <OurAIServices />
         <CenterModeProductivitySlider />
         <AITransformationCirrusInteractive />
         <Process />
         <RuixenFeatureSection />
-        <FeaturesCarouselSection />
         <StackFeatureSection />
         <WhyChooseUsBento />
         <GalleryHoverCarousel heading="Simple & Scalable" />

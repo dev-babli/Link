@@ -16,23 +16,27 @@ export const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
     useEffect(() => {
         // Only create one global Lenis instance
         if (!globalLenis) {
+            let rafId: number | undefined;
+            
             try {
                 globalLenis = new Lenis({
                     // Core smoothness settings - optimized for buttery smooth scrolling
-                    lerp: 0.06, // Lower for smoother scrolling (0.05-0.08 optimal)
-                    duration: 1.2, // Slightly longer for smoother programmatic scrolling
-                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Smooth easing curve
+                    // Lower lerp = smoother, slower scroll (0.08-0.1 is optimal for smoothness)
+                    lerp: 0.08, // Smooth but still responsive (lower than default 0.1 for extra smoothness)
 
-                    // Input sensitivity - fine-tuned for responsiveness
-                    wheelMultiplier: 1.0, // Standard wheel sensitivity
-                    touchMultiplier: 2.0, // Higher touch sensitivity for mobile
+                    // Input sensitivity - optimized for smooth, responsive scrolling
+                    wheelMultiplier: 1.5, // Higher value for faster, more responsive scrolling
+                    smoothWheel: true, // Enable smooth wheel scrolling
+
+                    // Touch settings for mobile
+                    touchMultiplier: 1.5, // Balanced touch sensitivity
+                    smoothTouch: true, // Enable smooth touch scrolling
 
                     // Performance optimizations
-                    smoothWheel: true, // Enable smooth wheel scrolling
-                    autoRaf: true, // Automatically handle requestAnimationFrame
+                    autoRaf: false, // Disable autoRaf when using manual RAF for better control
                     syncTouch: true, // Sync touch events for better mobile experience
 
-                    // Additional smoothness settings
+                    // Additional settings
                     infinite: false, // Disable infinite scroll for better performance
                     orientation: 'vertical', // Vertical scrolling only
                     gestureOrientation: 'vertical', // Vertical gesture orientation
@@ -43,19 +47,19 @@ export const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
                 // Expose Lenis globally for ScrollTrigger integration
                 (window as any).lenis = globalLenis;
 
-                // Enhanced animation frame function with performance monitoring
+                // Optimized animation frame function for smooth scrolling
                 function raf(time: number) {
                     try {
                         if (globalLenis) {
                             globalLenis.raf(time);
-                            requestAnimationFrame(raf);
+                            rafId = requestAnimationFrame(raf);
                         }
                     } catch (error) {
                         console.warn('Lenis RAF error:', error);
                     }
                 }
 
-                requestAnimationFrame(raf);
+                rafId = requestAnimationFrame(raf);
             } catch (error) {
                 console.warn('Lenis initialization failed:', error);
                 globalLenis = null;
@@ -69,10 +73,7 @@ export const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
                         e.preventDefault();
                         const targetId = target.getAttribute('href');
                         if (targetId && globalLenis) {
-                            const scrollPromise = globalLenis.scrollTo(targetId, {
-                                duration: 1.2,
-                                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
-                            });
+                            const scrollPromise = globalLenis.scrollTo(targetId);
 
                             // Handle promise rejection if scrollTo returns a promise
                             if (scrollPromise && typeof scrollPromise.catch === 'function') {
@@ -94,6 +95,9 @@ export const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
             const cleanup = () => {
                 try {
                     document.removeEventListener('click', handleAnchorLinks);
+                    if (rafId) {
+                        cancelAnimationFrame(rafId);
+                    }
                     if (globalLenis) {
                         globalLenis.destroy();
                         globalLenis = null;
@@ -103,8 +107,10 @@ export const LenisProvider: React.FC<LenisProviderProps> = ({ children }) => {
                 }
             };
 
-            // Store cleanup function for later use
-            (globalLenis as any).cleanup = cleanup;
+            // Store cleanup function for later use (only if Lenis was initialized successfully)
+            if (globalLenis) {
+                (globalLenis as any).cleanup = cleanup;
+            }
         } else {
             // Use existing global instance
             lenisRef.current = globalLenis;

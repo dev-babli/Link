@@ -57,14 +57,16 @@ export default function GalleryHoverCarousel({
   items?: GalleryHoverCarouselItem[];
 }) {
   return (
-    <section className="py-32 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="mb-8 md:mb-14 lg:mb-16">
+    <section className="w-full bg-background-primary py-24 lg:py-32">
+      <div className="container mx-auto max-w-7xl px-6 lg:px-20">
+        <div className="mb-12 lg:mb-16">
           <div className="max-w-2xl">
-            <h3 className="text-lg sm:text-xl lg:text-3xl font-medium text-[#1a1a1a] leading-relaxed">
-              {heading}{" "}
-              <span className="text-[#666666] text-sm sm:text-base lg:text-3xl"> A transparent process of collaboration and feedback designed to deliver exceptional results for your business.</span>
+            <h3 className="text-[56px] font-medium leading-[1.15] tracking-[-0.015em] text-text-primary mb-4">
+              {heading}
             </h3>
+            <p className="text-large-paragraph text-text-secondary">
+              A transparent process of collaboration and feedback designed to deliver exceptional results for your business.
+            </p>
           </div>
         </div>
 
@@ -77,7 +79,7 @@ export default function GalleryHoverCarousel({
               {items.map((item) => (
                 <CarouselItem key={item.id} className="ml-6 md:max-w-[350px]">
                   <Link href={item.url} className="group block relative w-full h-[300px] md:h-[350px]">
-                    <Card className="overflow-hidden rounded-xl h-full w-full rounded-3xl">
+                    <Card className="overflow-hidden rounded-2xl h-full w-full border border-border-subtle bg-background-secondary shadow-[0px_2px_8px_rgba(0,0,0,0.06)] transition-all duration-500 hover:shadow-[0px_8px_32px_rgba(0,0,0,0.12)]">
                       {/* Image */}
                       <div className="relative h-full w-full transition-all duration-500 group-hover:h-1/2">
                         <Image
@@ -85,21 +87,21 @@ export default function GalleryHoverCarousel({
                           height={300}
                           src={item.image}
                           alt={item.title}
-                          className="h-full w-full object-cover object-center"
+                          className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                         />
                         {/* Fade overlay at bottom */}
                         <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
                       {/* Text Section */}
-                      <div className="absolute bottom-0 left-0 w-full px-4 transition-all duration-500 group-hover:h-1/2 group-hover:flex flex-col justify-center bg-white/95 backdrop-blur-sm opacity-0 group-hover:opacity-100">
-                        <h3 className="text-lg font-medium md:text-xl text-[#1a1a1a]">{item.title}</h3>
-                        <p className="text-[#666666] text-sm md:text-base line-clamp-2">
+                      <div className="absolute bottom-0 left-0 w-full px-6 py-6 transition-all duration-500 group-hover:h-1/2 group-hover:flex flex-col justify-center bg-background-secondary/95 backdrop-blur-sm opacity-0 group-hover:opacity-100">
+                        <h3 className="text-[28px] font-medium leading-[1.3] tracking-[-0.01em] text-text-primary mb-2">{item.title}</h3>
+                        <p className="text-base leading-[1.6] text-text-secondary line-clamp-2">
                           {item.summary}
                         </p>
                         <Button
                           variant="outline"
                           size="icon"
-                          className="absolute bottom-2 right-2 border border-gray-200 hover:-rotate-45 transition-all duration-500 rounded-full mt-2 px-0 flex items-center gap-1 text-[#1a1a1a] hover:text-[#666666]"
+                          className="absolute bottom-4 right-4 border border-border-subtle hover:-rotate-45 transition-all duration-500 rounded-full mt-2 px-0 flex items-center gap-1 text-text-primary hover:text-text-secondary bg-background-secondary"
                         >
                           <ArrowRight className="size-4" />
                         </Button>

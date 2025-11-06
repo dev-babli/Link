@@ -59,5 +59,3 @@ export default function Logo({
   return logoContent;
 }
 
-
-

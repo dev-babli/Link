@@ -91,6 +91,12 @@ module.exports = {
         'exo2': ['Exo 2', 'sans-serif'],
         'poppins': ['Poppins', 'sans-serif'],
       },
+      maxWidth: {
+        container: "80rem",
+      },
+      boxShadow: {
+        glow: "0 -16px 128px 0 hsla(var(--brand-foreground) / 0.5) inset, 0 -16px 32px 0 hsla(var(--brand) / 0.5) inset",
+      },
       animation: {
         'orbit': 'orbit calc(var(--duration)*1s) linear infinite',
         'marquee': 'marquee 20s linear infinite',
@@ -254,12 +260,6 @@ module.exports = {
       },
       perspective: {
         '1000': '1000px',
-      },
-      maxWidth: {
-        container: '80rem',
-      },
-      boxShadow: {
-        glow: '0 -16px 128px 0 hsla(var(--brand-foreground) / 0.5) inset, 0 -16px 32px 0 hsla(var(--brand) / 0.5) inset',
       },
     },
   },

@@ -4,13 +4,14 @@ import { CardHoverReveal, CardHoverRevealMain, CardHoverRevealContent } from "@/
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
+import { useEffect, useRef, useState } from "react"
 
 const industries = [
   {
     id: 1,
     name: "Healthcare",
     description: "Transforming healthcare delivery with innovative digital solutions, telemedicine platforms, and patient management systems that improve care quality and accessibility.",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "/images/industry_cards/healthare.webp",
     services: ["EHR Systems", "Telemedicine", "Health Analytics"],
     technologies: ["HIPAA Compliance", "Cloud Infrastructure"],
     color: "from-blue-500/20 to-cyan-500/20",
@@ -63,94 +64,157 @@ const industries = [
 ]
 
 export const CardHoverRevealSection = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-gray-50/30 to-white overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-[0.02]" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-      }} />
-      
-      <div className="max-w-7xl mx-auto relative z-10">
-        <motion.div 
-          className="text-center mb-16 md:mb-20"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+    <section ref={sectionRef} className="w-full bg-background-primary py-24 lg:py-32 overflow-hidden relative">
+      {/* Subtle background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background-primary/50 to-transparent pointer-events-none" />
+
+      <div className="container mx-auto max-w-7xl px-6 lg:px-20 relative z-10">
+        <div
+          className={`text-center mb-16 lg:mb-20 transition-all duration-1000 ease-in-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
         >
-          <motion.div 
-            className="mb-6 inline-flex items-center rounded-full bg-white px-5 py-2 shadow-[0_2px_8px_rgba(0,0,0,0.08)] border border-gray-100"
+          <motion.div
+            className="mb-6 inline-flex items-center rounded-full bg-background-secondary/90 backdrop-blur-xl px-4 py-2 shadow-[0px_4px_16px_rgba(0,0,0,0.08)] border border-border-subtle"
             initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
+            animate={isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <p className="text-xs font-semibold text-[#000000] uppercase tracking-wider">Industries We Serve</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.02em] text-text-secondary">Industries We Serve</p>
           </motion.div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#1a1a1a]">
-            Industries We <span className="bg-gradient-to-r from-[#1a1a1a] to-[#666666] bg-clip-text text-transparent">Serve</span>
+          <h2 className="text-[56px] font-medium leading-[1.15] tracking-[-0.015em] text-text-primary mb-6">
+            Industries We Serve
           </h2>
-          <p className="text-lg md:text-xl text-[#666666] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-large-paragraph text-text-secondary max-w-3xl mx-auto leading-relaxed">
             Discover how we deliver innovative solutions across diverse industries, driving digital transformation and business growth.
           </p>
-        </motion.div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        </div>
+
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 transition-all duration-1000 ease-in-out delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+        >
           {industries.map((industry, index) => (
             <motion.div
               key={industry.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="h-full"
             >
-              <CardHoverReveal 
-                className="h-[520px] w-full rounded-2xl overflow-hidden border border-gray-100 bg-white shadow-[0_4px_12px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.15)] transition-all duration-500 group"
+              <CardHoverReveal
+                className="h-[480px] w-full rounded-3xl overflow-visible border border-border-subtle bg-background-secondary shadow-[0px_4px_16px_rgba(0,0,0,0.08)] hover:shadow-[0px_12px_48px_rgba(0,0,0,0.15)] hover:border-border-subtle/80 transition-all duration-700 ease-out group relative"
               >
-                <CardHoverRevealMain>
-                  <Image
-                    width={800}
-                    height={600}
-                    alt={`${industry.name} industry`}
-                    src={industry.image}
-                    className="inline-block size-full max-h-full max-w-full object-cover align-middle transition-transform duration-700 group-hover:scale-110"
-                  />
-                  {/* Gradient overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${industry.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                {/* Premium glow effect on hover */}
+                <div className="absolute -inset-0.5 bg-gradient-to-br from-transparent via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl blur-xl -z-10" />
+
+                <CardHoverRevealMain className="relative overflow-hidden rounded-3xl h-full w-full">
+                  <div className="absolute inset-0 z-0">
+                    <Image
+                      fill
+                      alt={`${industry.name} industry`}
+                      src={industry.image}
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      unoptimized
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                      }}
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent z-10 opacity-40 group-hover:opacity-60 transition-opacity duration-700" />
+                  {/* Subtle gradient overlay */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${industry.color} opacity-0 group-hover:opacity-20 transition-opacity duration-700 z-20`} />
+
+                  {/* Industry number badge */}
+                  <div className="absolute top-6 left-6 z-30">
+                    <div className="w-12 h-12 rounded-2xl bg-background-secondary/90 backdrop-blur-xl border border-border-subtle/50 shadow-[0px_4px_16px_rgba(0,0,0,0.12)] flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                      <span className="text-lg font-medium text-text-primary">{String(industry.id).padStart(2, '0')}</span>
+                    </div>
+                  </div>
                 </CardHoverRevealMain>
 
-                <CardHoverRevealContent className="space-y-4 rounded-2xl bg-white/95 backdrop-blur-md border border-gray-100 p-6 md:p-8 shadow-xl">
-                  <div className="space-y-4">
-                    <div className="flex items-start justify-between gap-4">
-                      <h3 className="text-2xl md:text-3xl font-bold text-[#1a1a1a]">{industry.name}</h3>
-                      <div className="shrink-0 w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center group-hover:rotate-90 transition-transform duration-500">
-                        <ArrowRight className="w-5 h-5 text-white" />
+                <CardHoverRevealContent className="space-y-3 rounded-2xl bg-background-secondary/98 backdrop-blur-2xl border border-border-subtle/80 p-4 lg:p-5 shadow-[0px_12px_48px_rgba(0,0,0,0.15)] z-50 max-w-[90%]">
+                  <div className="space-y-2.5">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex-1">
+                        <h3 className="text-[24px] font-medium leading-[1.3] tracking-[-0.01em] text-text-primary group-hover:translate-x-1 transition-transform duration-500">
+                          {industry.name}
+                        </h3>
+                      </div>
+                      <div className="shrink-0 w-8 h-8 rounded-xl bg-text-primary flex items-center justify-center group-hover:rotate-90 transition-transform duration-500 shadow-[0px_2px_8px_rgba(0,0,0,0.2)]">
+                        <ArrowRight className="w-4 h-4 text-white" />
                       </div>
                     </div>
-                    <p className="text-[#666666] leading-relaxed text-sm md:text-base">
+                    <p className="text-sm leading-[1.6] text-text-secondary line-clamp-2">
                       {industry.description}
                     </p>
                   </div>
 
-                  <div className="space-y-4 pt-4 border-t border-gray-100">
+                  <div className="space-y-3 pt-3 border-t border-border-subtle">
                     <div>
-                      <h4 className="text-xs font-semibold text-[#1a1a1a] uppercase tracking-wider mb-3">Services</h4>
+                      <h4 className="text-[10px] font-semibold text-text-primary uppercase tracking-[0.02em] mb-2 flex items-center gap-1.5">
+                        <span className="w-0.5 h-0.5 rounded-full bg-text-primary"></span>
+                        Services
+                      </h4>
                       <div className="flex flex-wrap gap-2">
                         {industry.services.map((service, idx) => (
-                          <div key={idx} className="rounded-full bg-gray-50 px-4 py-2 border border-gray-100 hover:bg-gray-100 transition-colors">
-                            <p className="text-xs font-medium text-[#1a1a1a] leading-normal">{service}</p>
-                          </div>
+                          <motion.div
+                            key={idx}
+                            className="rounded-lg bg-background-secondary px-2.5 py-1 border border-border-subtle hover:bg-background-secondary/80 transition-all duration-300 shadow-[0px_1px_4px_rgba(0,0,0,0.04)]"
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <p className="text-[10px] font-medium text-text-primary leading-normal">{service}</p>
+                          </motion.div>
                         ))}
                       </div>
                     </div>
 
                     <div>
-                      <h4 className="text-xs font-semibold text-[#1a1a1a] uppercase tracking-wider mb-3">Technologies</h4>
+                      <h4 className="text-[10px] font-semibold text-text-primary uppercase tracking-[0.02em] mb-2 flex items-center gap-1.5">
+                        <span className="w-0.5 h-0.5 rounded-full bg-text-primary"></span>
+                        Technologies
+                      </h4>
                       <div className="flex flex-wrap gap-2">
                         {industry.technologies.map((tech, idx) => (
-                          <div key={idx} className="rounded-full bg-[#1a1a1a] px-4 py-2 hover:bg-[#000000] transition-colors">
-                            <p className="text-xs font-medium text-white leading-normal">{tech}</p>
-                          </div>
+                          <motion.div
+                            key={idx}
+                            className="rounded-lg bg-text-primary px-2.5 py-1 hover:bg-text-primary/90 transition-all duration-300 shadow-[0px_2px_6px_rgba(0,0,0,0.15)]"
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <p className="text-[10px] font-medium text-white leading-normal">{tech}</p>
+                          </motion.div>
                         ))}
                       </div>
                     </div>

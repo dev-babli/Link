@@ -29,7 +29,6 @@ import {
 	HelpCircle,
 	BarChart,
 	PlugIcon,
-	ArrowRight,
 } from 'lucide-react';
 
 type LinkItem = {
@@ -59,17 +58,31 @@ export function Header() {
 			className={cn(
 				'sticky top-0 z-50 w-full border-b transition-all duration-300',
 				scrolled
-					? 'bg-white/90 backdrop-blur-md supports-[backdrop-filter]:bg-white/80 border-gray-100/50 shadow-sm'
-					: 'bg-white/90 backdrop-blur-md supports-[backdrop-filter]:bg-white/80 border-gray-100/50'
+					? 'bg-white/60 backdrop-blur-xl supports-[backdrop-filter]:bg-white/40 border-gray-200/40 shadow-sm'
+					: 'bg-white/50 backdrop-blur-xl supports-[backdrop-filter]:bg-white/30 border-transparent'
 			)}
 		>
 			<nav className="mx-auto flex h-24 w-full max-w-5xl items-center justify-between px-4">
 				<div className="flex items-center gap-5">
 					<a href="/" className="flex items-center relative">
-						<div className={cn(
-							"relative h-20 w-auto rounded-lg overflow-hidden transition-all duration-300",
-							scrolled && "backdrop-blur-md bg-white/80 shadow-sm"
-						)}>
+						<div className="relative h-20 w-auto">
+							{scrolled && (
+								<div 
+									className="absolute inset-0 backdrop-blur-xl bg-white/10"
+									style={{
+										WebkitMaskImage: 'url(/logos/Logo_link%20(1).png)',
+										WebkitMaskSize: 'contain',
+										WebkitMaskRepeat: 'no-repeat',
+										WebkitMaskPosition: 'center',
+										WebkitMaskComposite: 'source-in',
+										maskImage: 'url(/logos/Logo_link%20(1).png)',
+										maskSize: 'contain',
+										maskRepeat: 'no-repeat',
+										maskPosition: 'center',
+										maskComposite: 'intersect',
+									}}
+								/>
+							)}
 							<Image
 								src="/logos/Logo_link%20(1).png"
 								alt="Link Innovations"
@@ -82,8 +95,9 @@ export function Header() {
 								priority
 								style={{
 									filter: scrolled 
-										? 'drop-shadow(0 2px 8px rgba(0,0,0,0.2)) brightness(1.1)' 
+										? 'drop-shadow(0 2px 8px rgba(0,0,0,0.15)) brightness(1.1)' 
 										: 'none',
+									mixBlendMode: scrolled ? 'normal' : 'normal',
 								}}
 							/>
 						</div>
@@ -137,26 +151,20 @@ export function Header() {
 									</div>
 								</NavigationMenuContent>
 							</NavigationMenuItem>
-							<NavigationMenuLink className="px-6" asChild>
-								<a href="/pricing" className="text-black hover:text-gray-600 transition-colors">
+							<NavigationMenuLink className="px-4" asChild>
+								<a href="/pricing" className="text-black hover:text-gray-600">
 									Pricing
 								</a>
 							</NavigationMenuLink>
 						</NavigationMenuList>
 					</NavigationMenu>
 				</div>
-				<div className="hidden items-center gap-4 md:flex">
-					<Button className="bg-black text-white hover:bg-gray-800 rounded-lg px-6 py-3 transition-all duration-300 hover:scale-105" asChild>
-						<a href="/contact" className="flex items-center gap-2">
-							Contact
-							<ArrowRight className="w-4 h-4" />
-						</a>
+				<div className="hidden items-center gap-2 md:flex">
+					<Button variant="outline" className="bg-white border-black text-black hover:bg-gray-50" asChild>
+						<a href="/contact">Contact</a>
 					</Button>
-					<Button className="bg-black text-white hover:bg-gray-800 rounded-lg px-6 py-3 transition-all duration-300 hover:scale-105" asChild>
-						<a href="/contact" className="flex items-center gap-2">
-							Get Started
-							<ArrowRight className="w-4 h-4" />
-						</a>
+					<Button className="bg-black text-white hover:bg-gray-800" asChild>
+						<a href="/contact">Get Started</a>
 					</Button>
 				</div>
 				<Button
@@ -188,17 +196,11 @@ export function Header() {
 					</div>
 				</NavigationMenu>
 				<div className="flex flex-col gap-2">
-					<Button className="w-full bg-black text-white hover:bg-gray-800 rounded-lg px-6 py-3 transition-all duration-300 hover:scale-105" asChild>
-						<a href="/contact" className="flex items-center justify-center gap-2">
-							Contact
-							<ArrowRight className="w-4 h-4" />
-						</a>
+					<Button variant="outline" className="w-full bg-white border-black text-black hover:bg-gray-50" asChild>
+						<a href="/contact">Contact</a>
 					</Button>
-					<Button className="w-full bg-black text-white hover:bg-gray-800 rounded-lg px-6 py-3 transition-all duration-300 hover:scale-105" asChild>
-						<a href="/contact" className="flex items-center justify-center gap-2">
-							Get Started
-							<ArrowRight className="w-4 h-4" />
-						</a>
+					<Button className="w-full bg-black text-white hover:bg-gray-800" asChild>
+						<a href="/contact">Get Started</a>
 					</Button>
 				</div>
 			</MobileMenu>
@@ -217,7 +219,7 @@ function MobileMenu({ open, children, className, ...props }: MobileMenuProps) {
 		<div
 			id="mobile-menu"
 			className={cn(
-				'bg-white/90 backdrop-blur-md supports-[backdrop-filter]:bg-white/80 border-b border-gray-100/50 shadow-sm',
+				'bg-white/60 backdrop-blur-xl supports-[backdrop-filter]:bg-white/40 border-b border-gray-200/40 shadow-sm',
 				'fixed top-24 right-0 bottom-0 left-0 z-40 flex flex-col overflow-hidden md:hidden',
 			)}
 		>

@@ -59,5 +59,3 @@ export const spacing = {
 
 export type SpacingScale = keyof typeof spacing.scale;
 
-
-

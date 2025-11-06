@@ -83,9 +83,7 @@ export default function MarqueeTextAnimation() {
                 // Register GSAP plugins
                 gsap.registerPlugin(ScrollTrigger);
 
-                // Use existing Lenis instance from LenisProvider
-                // No need to create a new Lenis instance here
-                // ScrollTrigger will work with the global Lenis instance
+                // ScrollTrigger works with native smooth scroll
 
                 // Get all heading elements within this component
                 const headings = gsap.utils.toArray('.marquee-title h1');

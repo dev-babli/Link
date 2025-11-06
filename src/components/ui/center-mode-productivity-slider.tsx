@@ -120,43 +120,49 @@ export default function CenterModeProductivitySlider() {
           --productivity-speed: 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           --productivity-closed: 5rem;
           --productivity-open: 30rem;
-          --productivity-accent: #4f46e5;
+          --productivity-accent: #000000;
         }
         :global(.productivity-head) {
           max-width: 1400px;
           margin: auto;
-          padding: 70px 20px 40px;
+          padding: 96px 80px 40px;
           display: flex;
           justify-content: space-between;
           align-items: flex-end;
           gap: 2rem;
         }
         :global(.productivity-head h2) {
-          font: 400 1.5rem/1.2 Inter, sans-serif;
-          color: #1a1a1a;
+          font: 500 3.5rem/1.15 Inter, sans-serif;
+          letter-spacing: -0.015em;
+          color: #000000;
         }
-        @media (min-width: 1024px) {
+        @media (max-width: 1023px) {
+          :global(.productivity-head) {
+            padding: 96px 24px 40px;
+          }
           :global(.productivity-head h2) {
-            font-size: 2.25rem;
+            font-size: 3.5rem;
           }
         }
         :global(.productivity-nav-btn) {
           width: 2.5rem;
           height: 2.5rem;
-          border: none;
+          border: 1.5px solid rgba(0, 0, 0, 0.08);
           border-radius: 50%;
-          background: #f3f4f6;
-          color: #1a1a1a;
+          background: #ffffff;
+          color: #000000;
           font-size: 1.5rem;
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
           transition: 0.3s;
+          box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
         }
         :global(.productivity-nav-btn:hover) {
-          background: var(--productivity-accent);
+          background: #000000;
           color: #fff;
+          box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.12);
         }
         :global(.productivity-nav-btn:disabled) {
           opacity: 0.3;
@@ -166,6 +172,12 @@ export default function CenterModeProductivitySlider() {
           max-width: 1400px;
           margin: auto;
           overflow: hidden;
+          padding: 0 80px;
+        }
+        @media (max-width: 1023px) {
+          :global(.productivity-slider) {
+            padding: 0 24px;
+          }
         }
         :global(.productivity-controls) {
           display: flex;
@@ -192,11 +204,13 @@ export default function CenterModeProductivitySlider() {
           overflow: hidden;
           cursor: pointer;
           transition: flex-basis var(--productivity-speed), transform var(--productivity-speed);
+          border: 1px solid rgba(0, 0, 0, 0.08);
+          background: #ffffff;
         }
         :global(.productivity-project-card[active]) {
           flex-basis: var(--productivity-open);
           transform: translateY(-6px);
-          box-shadow: 0 18px 55px rgba(0, 0, 0, 0.45);
+          box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.12);
         }
         :global(.productivity-project-card__bg) {
           position: absolute;
@@ -220,12 +234,12 @@ export default function CenterModeProductivitySlider() {
           align-items: center;
           gap: 0.7rem;
           padding: 0;
-          background: linear-gradient(transparent 40%, rgba(0, 0, 0, 0.7) 100%);
+          background: linear-gradient(transparent 40%, rgba(245, 243, 239, 0.95) 100%);
           z-index: 2;
         }
         :global(.productivity-project-card__title) {
-          color: #fff;
-          font-weight: 700;
+          color: #000000;
+          font-weight: 500;
           font-size: 1.35rem;
           writing-mode: vertical-rl;
           transform: rotate(180deg);
@@ -244,7 +258,10 @@ export default function CenterModeProductivitySlider() {
         :global(.productivity-project-card[active] .productivity-project-card__title) {
           writing-mode: horizontal-tb;
           transform: none;
-          font-size: 2.4rem;
+          font-size: 2.5rem;
+          font-weight: 500;
+          line-height: 1.2;
+          letter-spacing: -0.01em;
         }
         :global(.productivity-project-card[active] .productivity-project-card__thumb),
         :global(.productivity-project-card[active] .productivity-project-card__desc),
@@ -259,23 +276,27 @@ export default function CenterModeProductivitySlider() {
           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
         }
         :global(.productivity-project-card__desc) {
-          color: #ddd;
+          color: #000000;
           font-size: 1rem;
-          line-height: 1.4;
+          line-height: 1.6;
           max-width: 16rem;
         }
         :global(.productivity-project-card__btn) {
           padding: 0.55rem 1.3rem;
-          border: none;
+          border: 1.5px solid rgba(0, 0, 0, 0.08);
           border-radius: 9999px;
-          background: var(--productivity-accent);
-          color: #fff;
-          font-size: 0.9rem;
-          font-weight: 600;
+          background: #ffffff;
+          color: #000000;
+          font-size: 1rem;
+          font-weight: 500;
           cursor: pointer;
+          transition: 0.3s;
+          box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
         }
         :global(.productivity-project-card__btn:hover) {
-          background: #6366f1;
+          background: #000000;
+          color: #fff;
+          box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.12);
         }
         :global(.productivity-dots) {
           display: flex;
@@ -302,13 +323,16 @@ export default function CenterModeProductivitySlider() {
             --productivity-gap: 0.8rem;
           }
           :global(.productivity-head) {
-            padding: 30px 15px 20px;
+            padding: 96px 24px 40px;
             flex-direction: column;
             align-items: flex-start;
             gap: 1rem;
           }
+          :global(.productivity-head h2) {
+            font-size: 3.5rem;
+          }
           :global(.productivity-slider) {
-            padding: 0 15px;
+            padding: 0 24px;
           }
           :global(.productivity-track) {
             flex-direction: column;
@@ -377,7 +401,7 @@ export default function CenterModeProductivitySlider() {
           }
         }
       `}</style>
-      <section ref={containerRef} className="w-full bg-white py-12 sm:py-16">
+      <section ref={containerRef} className="w-full bg-background-primary py-24 lg:py-32">
         <div className="productivity-head">
           <h2>Transform your business with innovative solutions</h2>
           <div className="productivity-controls">

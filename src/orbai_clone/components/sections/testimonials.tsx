@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Star, Users, Quote } from "lucide-react";
+import { Star, Users } from "lucide-react";
 
 const testimonialsData = [
   {
@@ -38,7 +38,7 @@ const statsData = [
 ];
 
 const StarRating = ({ rating = 4, count = 5 }: { rating: number; count?: number }) => (
-  <div className="flex items-center gap-1">
+  <div className="flex items-center">
     {Array.from({ length: count }).map((_, i) => (
       <Star
         key={i}
@@ -52,7 +52,7 @@ const StarRating = ({ rating = 4, count = 5 }: { rating: number; count?: number 
 
 const Testimonials = () => {
   return (
-    <section id="customers" className="bg-secondary py-20">
+    <section id="customers" className="bg-secondary py-[100px]">
       <div className="container">
         <motion.div 
           className="flex flex-col items-center text-center"
@@ -76,7 +76,7 @@ const Testimonials = () => {
         </motion.div>
 
         <motion.div 
-          className="mt-16 grid grid-cols-1 items-center gap-10 rounded-xl border border-gray-100/50 bg-[#f5f5f5] p-10 lg:grid-cols-[1fr,536px] shadow-[0_4px_16px_rgba(0,0,0,0.08)]"
+          className="mt-16 grid grid-cols-1 items-center gap-10 rounded-[30px] border border-white/40 bg-white/60 backdrop-blur-xl p-10 lg:grid-cols-[1fr,536px] shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -113,19 +113,18 @@ const Testimonials = () => {
           </div>
         </motion.div>
 
-        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {testimonialsData.map((testimonial, index) => (
             <motion.div
               key={index}
-              className="relative flex flex-col rounded-xl border border-gray-100/50 bg-[#f5f5f5] p-8 shadow-[0_4px_16px_rgba(0,0,0,0.08)] transition-all duration-500 ease-in-out hover:-translate-y-2 hover:shadow-[0_6px_20px_rgba(0,0,0,0.10)]"
+              className="flex flex-col rounded-[30px] border border-white/40 bg-white/60 backdrop-blur-xl p-[30px] transition-all duration-500 ease-in-out hover:-translate-y-2 hover:shadow-[0_16px_48px_rgba(0,0,0,0.12)]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
             >
-              <Quote className="absolute top-4 left-4 w-16 h-16 text-gray-200 opacity-50" />
               <StarRating rating={4} />
-              <p className="mt-5 flex-grow text-base leading-relaxed text-secondary-text">
+              <p className="mt-5 flex-grow text-base text-secondary-text">
                 {testimonial.quote}
               </p>
               <div className="mt-6 flex items-center gap-4">
@@ -134,7 +133,7 @@ const Testimonials = () => {
                   alt={testimonial.name}
                   width={50}
                   height={50}
-                  className="h-[50px] w-[50px] rounded-xl object-cover border-2 border-gray-100"
+                  className="h-[50px] w-[50px] rounded-full object-cover"
                 />
                 <div>
                   <p className="text-base font-medium text-primary-text">

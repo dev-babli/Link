@@ -40,34 +40,31 @@ export default function ProcessCards({ className = "", variant = "light" }: Proc
 
   return (
     <section
-      className={`relative py-24 ${isDark ? "bg-[#141414]" : "bg-[#fdfffd]"} ${className}`}
+      className={`relative py-24 lg:py-32 bg-background-primary ${className}`}
     >
-      <div className="max-w-7xl mx-auto px-6 text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className={`text-4xl md:text-5xl font-bold mb-4 ${
-            isDark ? "text-white" : "text-[#141414]"
-          }`}
-          style={{ fontFamily: "var(--font-headline)" }}
-        >
-          How It Works
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className={`text-lg md:text-xl max-w-3xl mx-auto mb-12 ${
-            isDark ? "text-gray-300" : "text-gray-600"
-          }`}
-        >
-          A simple 3-step process to help your team set up, collaborate, and track success
-          efficiently.
-        </motion.p>
-        <div className="relative p-5 bg-gradient-to-br from-[#00c4b8]/10 to-[#016cf7]/10 rounded-3xl flex flex-col md:flex-row justify-center gap-6 illuminated-primary">
+      <div className="container mx-auto max-w-7xl px-6 lg:px-20">
+        <div className="flex flex-col items-center text-center mb-20">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-[56px] font-medium leading-[1.15] tracking-[-0.015em] text-text-primary"
+          >
+            How It Works
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-large-paragraph text-text-secondary mt-4 max-w-3xl"
+          >
+            A simple 3-step process to help your team set up, collaborate, and track success
+            efficiently.
+          </motion.p>
+        </div>
+        <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3">
           {processSteps.map((step, index) => {
             const isHovered = hoveredIndex === index;
             const isExpanded =
@@ -80,38 +77,25 @@ export default function ProcessCards({ className = "", variant = "light" }: Proc
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="relative cursor-pointer overflow-hidden rounded-2xl border border-[#00c4b8]/20 shadow-lg flex bg-white/95 backdrop-blur-sm illuminated-card"
-                style={{ height: "329.6px", minWidth: "300px" }}
+                className="group relative overflow-hidden rounded-2xl border border-border-subtle bg-background-secondary p-8 shadow-[0px_2px_8px_rgba(0,0,0,0.06)] transition-all duration-300 ease-in-out hover:shadow-[0px_8px_32px_rgba(0,0,0,0.12)] cursor-pointer"
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                whileHover={{ y: -5 }}
               >
-                {/* Left side text */}
-                <div className="w-64 flex flex-col justify-between p-6 relative z-10">
-                  <div className="text-xl font-bold text-left text-[#00c4b8]">{step.id}</div>
-                  <div className="mt-auto">
-                    <h3 className="text-lg font-semibold mb-1 text-left text-[#141414]">
+                <div className="relative z-10 flex h-full flex-col">
+                  <div className="text-xl font-normal text-text-secondary">{step.id}</div>
+                  <div className="mt-6 flex flex-grow flex-col">
+                    <h3 className="text-[28px] font-medium leading-[1.3] text-text-primary" style={{letterSpacing: '-0.01em'}}>
                       {step.title}
                     </h3>
-                    <p className="text-sm text-gray-600 text-left">{step.text}</p>
+                    <p className="mt-2 text-base font-normal text-text-secondary" style={{ lineHeight: 1.6 }}>
+                      {step.text}
+                    </p>
                   </div>
                 </div>
-                {/* Right side image */}
-                <motion.div
-                  className="relative overflow-hidden flex-1"
-                  initial={{ width: 0 }}
-                  animate={{ width: isExpanded ? 300 : 0 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                >
-                  {isExpanded && (
-                    <Image
-                      src={step.img}
-                      alt={step.title}
-                      fill
-                      className="object-cover"
-                    />
-                  )}
-                </motion.div>
+                <div
+                  className="absolute inset-0 z-0 bg-cover bg-center opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100 rounded-2xl"
+                  style={{ backgroundImage: `url(${step.img})` }}
+                />
               </motion.div>
             );
           })}
@@ -120,6 +104,4 @@ export default function ProcessCards({ className = "", variant = "light" }: Proc
     </section>
   );
 }
-
-
 

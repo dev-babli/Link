@@ -1,46 +1,50 @@
 "use client"
 
 import { ContainerScroll, CardSticky } from "@/components/ui/cards-stack"
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 
 const PROCESS_PHASES = [
   {
     id: "process-1",
     title: "Research and Analysis",
-    description:
-      "With your vision in mind, we enter the Research and Analysis phase. Here, we examine your competitors, industry trends, and user preferences. This informed approach ensures your website stands out and provides an excellent user experience.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+    description: "Examine competitors, trends, and user preferences to create standout experiences.",
+    image: "/Step-1.png",
     gradient: "from-blue-500 to-cyan-500",
   },
   {
     id: "process-2",
     title: "Wireframing and Prototyping",
-    description:
-      "We move on to Wireframing and Prototyping, where we create skeletal representations of your website's pages. These visual indigoprints allow us to test and refine the user experience before diving into design.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
+    description: "Create skeletal representations to test and refine user experience before design.",
+    image: "/Step-1(2).png",
     gradient: "from-purple-500 to-pink-500",
   },
   {
     id: "process-3",
     title: "Design Creation",
-    description:
-      "Now, it's time for the Design Creation phase. Our talented designers bring your vision to life. We focus on aesthetics, ensuring your website not only looks stunning but also aligns perfectly with your brand identity.",
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop",
+    description: "Bring your vision to life with stunning aesthetics aligned to your brand identity.",
+    image: "/Step-2.png",
     gradient: "from-emerald-500 to-teal-500",
   },
   {
     id: "process-4",
     title: "Development and Testing",
-    description:
-      "In the Development and Testing phase, our skilled developers turn designs into a fully functional website. Rigorous testing ensures everything works seamlessly, providing an exceptional user experience.",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop",
+    description: "Transform designs into fully functional websites with rigorous quality assurance.",
+    image: "/Step-3.png",
     gradient: "from-orange-500 to-amber-500",
   },
   {
     id: "process-5",
     title: "Launch and Support",
-    description:
-      "Our commitment continues beyond launch. We offer post-launch support to address questions, provide assistance, and ensure your website remains updated and optimized. The Website Design Process isn't just about creating a website; it's about crafting a digital experience that resonates, engages, and converts.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop",
+    description: "Strategic deployment and ongoing optimization for lasting digital success.",
+    image: "/Step-4.png",
+    gradient: "from-indigo-500 to-blue-500",
+  },
+  {
+    id: "process-6",
+    title: "Maintenance and Support",
+    description: "Continuous updates and dedicated support to ensure optimal performance.",
+    image: "/Step-5.png",
     gradient: "from-indigo-500 to-blue-500",
   },
 ]
@@ -102,22 +106,36 @@ const ACHIEVEMENTS = [
 
 export const Process = () => {
   return (
-    <div className="w-full bg-white px-4 py-12 text-gray-900 sm:px-6 md:px-8 xl:px-12">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-8 md:grid-cols-2 md:gap-12 xl:gap-16">
+    <section className="w-full bg-background-primary py-24 lg:py-32">
+      <div className="container mx-auto max-w-7xl px-6 lg:px-20">
+        <div className="grid gap-12 md:grid-cols-2 md:gap-16 lg:gap-20">
           <div className="left-0 top-0 md:sticky md:h-[calc(100vh-6rem)] md:py-12">
             <div className="flex h-full flex-col justify-center">
-              <h5 className="mb-4 text-xs uppercase tracking-wide text-gray-600">our process</h5>
-              <h2 className="mb-6 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+              <h2 className="text-[56px] font-medium leading-[1.15] tracking-[-0.015em] text-text-primary mb-4">
                 Planning your{" "}
-                <span className="text-indigo-600">project development</span> journey
+                <span className="text-text-primary">project development</span> journey
               </h2>
-              <p className="max-w-prose text-sm leading-relaxed text-gray-600 sm:text-base">
-                Our journey begins with a deep dive into your vision. In the
-                Discovery phase, we engage in meaningful conversations to grasp your
-                brand identity, goals, and the essence you want to convey. This
-                phase sets the stage for all that follows.
+              <p className="text-base leading-[1.6] text-text-secondary max-w-prose mb-10">
+                We transform your vision into reality through strategic planning and execution.
               </p>
+
+              {/* Learn More Button - Improved Design */}
+              <div>
+                <Link
+                  href="/about"
+                  className="group relative inline-flex items-center justify-center gap-3 rounded-full px-10 py-5 bg-white text-text-primary font-semibold text-base transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_12px_32px_0_rgba(0,0,0,0.12)] overflow-hidden w-fit border border-border-subtle"
+                >
+                  {/* Button Background Glow */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white via-background-primary/50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  {/* Hover illumination effect */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-[shimmer_1.5s_ease-in-out_infinite] transition-opacity duration-300" />
+
+                  <span className="relative z-10">Learn More</span>
+                  <div className="relative z-10 flex items-center justify-center w-8 h-8 rounded-full bg-text-primary/10 group-hover:bg-text-primary/15 transition-colors duration-300">
+                    <ArrowRight className="w-4 h-4 text-text-primary transition-transform duration-300 group-hover:translate-x-0.5" strokeWidth={2.5} />
+                  </div>
+                </Link>
+              </div>
             </div>
           </div>
           <ContainerScroll className="min-h-[300vh] space-y-6 py-8 md:min-h-[400vh] md:space-y-8 md:py-12">
@@ -125,49 +143,69 @@ export const Process = () => {
               <CardSticky
                 key={phase.id}
                 index={index + 2}
-                className="group overflow-hidden rounded-2xl border border-gray-200/50 bg-white shadow-sm transition-all duration-300 hover:shadow-md hover:border-gray-300/50"
+                className="group overflow-hidden rounded-2xl border border-border-subtle bg-background-secondary shadow-[0px_2px_8px_rgba(0,0,0,0.06)] transition-all duration-300 hover:shadow-[0px_8px_32px_rgba(0,0,0,0.12)]"
               >
-                {/* Image Section - Clean and minimal */}
-                <div className="relative h-64 w-full overflow-hidden sm:h-72 md:h-80">
+                {/* Image Section with Text Overlay */}
+                <div className="relative h-96 w-full overflow-hidden sm:h-[450px] md:h-[500px]">
                   <img
                     src={phase.image}
                     alt={phase.title}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                   />
-                  
-                  {/* Minimal Step Number */}
-                  <div className="absolute top-6 left-6">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/95 backdrop-blur-sm border border-gray-200/50 shadow-sm">
-                      <span className="text-sm font-semibold text-gray-700">
+
+                  {/* Step Number Badge */}
+                  <div className="absolute top-6 left-6 z-10">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-background-secondary/90 backdrop-blur-sm border border-border-subtle shadow-[0px_2px_8px_rgba(0,0,0,0.06)]">
+                      <span className="text-sm font-medium text-text-primary">
                         {String(index + 1).padStart(2, "0")}
                       </span>
                     </div>
                   </div>
-                </div>
-                
-                {/* Content Section - Minimal and elegant */}
-                <div className="p-8 sm:p-10">
-                  {/* Step Number Badge - Minimal */}
-                  <div className="mb-4">
-                    <span className="text-xs font-semibold tracking-wider uppercase text-gray-500">
-                      Step {index + 1}
-                    </span>
+
+                  {/* Text Content Overlay - Only at bottom with subtle overlay */}
+                  <div className="absolute inset-x-0 bottom-0 z-10">
+                    {/* Subtle Overlay with smooth fade effect - Only around text area */}
+                    <div
+                      className="relative backdrop-blur-md"
+                      style={{
+                        background: index < 3
+                          ? 'linear-gradient(to top, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.60) 25%, rgba(255,255,255,0.40) 50%, rgba(255,255,255,0.25) 75%, transparent 100%)'
+                          : 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.70) 25%, rgba(0,0,0,0.50) 50%, rgba(0,0,0,0.30) 75%, transparent 100%)'
+                      }}
+                    >
+                      <div className="p-6 sm:p-8 md:p-10">
+                        {/* Step Number Badge - Minimal */}
+                        <div className="mb-2">
+                          <span className={`text-[10px] font-semibold uppercase tracking-[0.08em] ${index < 3 ? 'process-text-black' : 'process-text-white'}`}>
+                            Step {index + 1}
+                          </span>
+                        </div>
+
+                        <h2 className={`text-[24px] sm:text-[28px] md:text-[32px] font-semibold leading-[1.2] tracking-[-0.015em] mb-3 ${index < 3 ? 'process-text-black' : 'process-text-white'}`}>
+                          {phase.title}
+                        </h2>
+
+                        <p className={`text-sm sm:text-base leading-[1.5] max-w-xl font-medium ${index < 3 ? 'process-text-black' : 'process-text-white'}`} style={{
+                          opacity: index < 3 ? 0.9 : 0.95
+                        }}>
+                          {phase.description}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  
-                  <h2 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-                    {phase.title}
-                  </h2>
-                  
-                  <p className="text-base leading-relaxed text-gray-600 sm:text-lg font-light">
-                    {phase.description}
-                  </p>
                 </div>
               </CardSticky>
             ))}
           </ContainerScroll>
         </div>
       </div>
-    </div>
+      <style jsx global>{`
+        @keyframes shimmer {
+          0% { transform: translateX(-100%) skewX(-15deg); }
+          100% { transform: translateX(200%) skewX(-15deg); }
+        }
+      `}</style>
+    </section>
   )
 }
 

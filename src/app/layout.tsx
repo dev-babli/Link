@@ -9,8 +9,6 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import PageTransition from "@/components/PageTransition";
-import LenisProvider from "@/components/LenisProvider";
 
 // McKinsey-Inspired Professional Fonts
 const merriweather = Merriweather({
@@ -86,11 +84,7 @@ export default function RootLayout({
       >
         <ErrorReporter />
         <ErrorBoundary>
-          <LenisProvider>
-            <PageTransition>
-              {children}
-            </PageTransition>
-          </LenisProvider>
+          {children}
         </ErrorBoundary>
         <VisualEditsMessenger />
         <Analytics />

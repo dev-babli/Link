@@ -53,9 +53,7 @@ const TimelineAnimation = () => {
                 // Register GSAP plugins
                 gsap.registerPlugin(ScrollTrigger);
 
-                // Use existing Lenis instance from LenisProvider
-                // No need to create a new Lenis instance here
-                // ScrollTrigger will work with the global Lenis instance
+                // ScrollTrigger works with native smooth scroll
 
                 // Text fill animation for animated text elements
                 const animatedTextElements = gsap.utils.toArray('.animate-text');

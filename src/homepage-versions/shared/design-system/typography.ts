@@ -72,5 +72,3 @@ export const typography = {
 
 export type TypographySize = keyof typeof typography.sizes;
 
-
-

@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 // GLSL utility functions
 const declarePI = `
@@ -337,11 +337,54 @@ export function DitheringShader({
   style = {},
 }: DitheringShaderProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   const animationRef = useRef<number>()
   const programRef = useRef<WebGLProgram | null>(null)
   const glRef = useRef<WebGL2RenderingContext | null>(null)
   const uniformLocationsRef = useRef<Record<string, WebGLUniformLocation | null>>({})
   const startTimeRef = useRef<number>(Date.now())
+  const [dimensions, setDimensions] = useState({ width, height })
+
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout
+    const updateDimensions = () => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect()
+        setDimensions({ width: rect.width, height: rect.height })
+      }
+    }
+
+    const throttledUpdate = () => {
+      clearTimeout(timeoutId)
+      timeoutId = setTimeout(updateDimensions, 100)
+    }
+
+    updateDimensions()
+    window.addEventListener("resize", throttledUpdate)
+    return () => {
+      window.removeEventListener("resize", throttledUpdate)
+      clearTimeout(timeoutId)
+    }
+  }, [])
+
+  // Update canvas size when dimensions change (with device pixel ratio optimization)
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas || !glRef.current) return
+    
+    const gl = glRef.current
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5) // Lower DPR for better performance
+    const actualWidth = Math.floor((dimensions.width || width) * dpr)
+    const actualHeight = Math.floor((dimensions.height || height) * dpr)
+    
+    if (canvas.width !== actualWidth || canvas.height !== actualHeight) {
+      canvas.width = actualWidth
+      canvas.height = actualHeight
+      canvas.style.width = `${dimensions.width || width}px`
+      canvas.style.height = `${dimensions.height || height}px`
+      gl.viewport(0, 0, actualWidth, actualHeight)
+    }
+  }, [dimensions.width, dimensions.height, width, height])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -381,12 +424,17 @@ export function DitheringShader({
     gl.enableVertexAttribArray(positionAttributeLocation)
     gl.vertexAttribPointer(positionAttributeLocation, 2, gl.FLOAT, false, 0, 0)
 
-    // Set canvas size
-    canvas.width = width
-    canvas.height = height
-    gl.viewport(0, 0, width, height)
+    // Initial canvas setup with device pixel ratio optimization
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5) // Lower DPR for better performance
+    const actualWidth = Math.floor((dimensions.width || width) * dpr)
+    const actualHeight = Math.floor((dimensions.height || height) * dpr)
+    canvas.width = actualWidth
+    canvas.height = actualHeight
+    canvas.style.width = `${dimensions.width || width}px`
+    canvas.style.height = `${dimensions.height || height}px`
+    gl.viewport(0, 0, actualWidth, actualHeight)
 
-    // Animation loop
+    // Optimized animation loop
     const render = () => {
       const currentTime = (Date.now() - startTimeRef.current) * 0.001 * speed
 
@@ -396,13 +444,16 @@ export function DitheringShader({
       if (!context || !shaderProgram) return
 
       context.clear(context.COLOR_BUFFER_BIT)
-      context["useProgram"](shaderProgram)
+      context.useProgram(shaderProgram)
 
       // Set uniforms
       const locations = uniformLocationsRef.current
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5) // Lower DPR for better performance
+      const actualWidth = Math.floor((dimensions.width || width) * dpr)
+      const actualHeight = Math.floor((dimensions.height || height) * dpr)
 
       if (locations.u_time) context.uniform1f(locations.u_time, currentTime)
-      if (locations.u_resolution) context.uniform2f(locations.u_resolution, width, height)
+      if (locations.u_resolution) context.uniform2f(locations.u_resolution, actualWidth, actualHeight)
       if (locations.u_colorBack) context.uniform4fv(locations.u_colorBack, hexToRgba(colorBack))
       if (locations.u_colorFront) context.uniform4fv(locations.u_colorFront, hexToRgba(colorFront))
       if (locations.u_shape) context.uniform1f(locations.u_shape, DitheringShapes[shape])
@@ -432,15 +483,16 @@ export function DitheringShader({
         glRef.current.deleteProgram(programRef.current)
       }
     }
-  }, [width, height, colorBack, colorFront, shape, type, pxSize, speed])
+  }, [dimensions.width, dimensions.height, colorBack, colorFront, shape, type, pxSize, speed, width, height])
 
   return (
     <div
+      ref={containerRef}
       className={className}
       style={{
         position: "relative",
-        width,
-        height,
+        width: "100%",
+        height: "100%",
         ...style,
       }}
     >
@@ -455,5 +507,3 @@ export function DitheringShader({
     </div>
   )
 }
-
-
