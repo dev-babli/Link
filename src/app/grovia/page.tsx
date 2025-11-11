@@ -14,6 +14,7 @@ import TestimonialsColumns from '@/components/ui/testimonials-columns-1';
 import { TrustedBySparkles } from '@/components/ui/trusted-by-sparkles';
 import { CTAWithShader } from '@/components/ui/cta-with-shader';
 import OurAIServices from '@/components/MStackCard';
+import OverlappingCardsCarousel from '@/components/ui/overlapping-cards-carousel';
 
 export default function GroviaHomePage() {
     return (
@@ -30,40 +31,43 @@ export default function GroviaHomePage() {
             {/* 2️⃣ Why Choose Us */}
             <FeaturesSection />
             
-            {/* 3️⃣ Services Cards */}
+            {/* 3️⃣ Overlapping Cards Carousel */}
+            <OverlappingCardsCarousel />
+            
+            {/* 4️⃣ Services Cards */}
             <SuccessStories />
             
-            {/* 4️⃣ Our Process (6-Step Journey) */}
+            {/* 5️⃣ Our Process (6-Step Journey) */}
             <Process />
             
-            {/* 5️⃣ CTA (Transformed from Hero) - MIDDLE */}
+            {/* 6️⃣ CTA (Transformed from Hero) - MIDDLE */}
             <ShaderShowcase />
             
-            {/* 6️⃣ The Link Innovations Way */}
+            {/* 7️⃣ The Link Innovations Way */}
             <ProcessSection />
             
-            {/* 7️⃣ Technologies Showcase */}
+            {/* 8️⃣ Technologies Showcase */}
             <RuixenFeatureSection />
             
-            {/* 8️⃣ Flow Animation Component */}
+            {/* 9️⃣ Flow Animation Component */}
             <FlowAnimationSection />
             
-            {/* 9️⃣ Our Promise & What We Believe - MStack Cards */}
+            {/* 🔟 Our Promise & What We Believe - MStack Cards */}
             <OurAIServices />
             
-            {/* 🔟 Philosophy & Promise & Beliefs (Merged) */}
+            {/* 1️⃣1️⃣ Philosophy & Promise & Beliefs (Merged) */}
             <PhilosophyPromiseSection />
             
-            {/* 1️⃣1️⃣ Social Proof */}
+            {/* 1️⃣2️⃣ Social Proof */}
             <div className="bg-background-primary">
                 <TestimonialsColumns />
                 <TrustedBySparkles />
             </div>
             
-            {/* 1️⃣1️⃣ Final CTA */}
+            {/* 1️⃣3️⃣ Final CTA */}
             <CTAWithShader />
             
-            {/* 1️⃣2️⃣ Footer */}
+            {/* 1️⃣4️⃣ Footer */}
             <Footer />
         </main>
     );

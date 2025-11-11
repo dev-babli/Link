@@ -9,6 +9,7 @@ import RuixenFeatureSection from '@/components/ui/ruixen-feature-section';
 import StackFeatureSection from '@/components/ui/stack-feature-section';
 import { WhyChooseUsBento } from '@/components/ui/why-choose-us-bento';
 import GalleryHoverCarousel from '@/components/ui/gallery-hover-carousel';
+import OverlappingCardsCarousel from '@/components/ui/overlapping-cards-carousel';
 import RuixenBentoCards from '@/components/ui/ruixen-bento-cards';
 import ProjectsSection from '@/orbai_clone/components/sections/projects';
 import { CardHoverRevealSection } from '@/components/ui/card-hover-reveal-section';
@@ -33,6 +34,7 @@ export default function HomePage() {
         <StackFeatureSection />
         <WhyChooseUsBento />
         <GalleryHoverCarousel heading="Simple & Scalable" />
+        <OverlappingCardsCarousel />
         <RuixenBentoCards />
         <ProjectsSection />
         <CardHoverRevealSection />
