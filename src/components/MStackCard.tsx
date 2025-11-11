@@ -2,66 +2,67 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ClientOnlyMeshGradient } from "@/components/ui/client-only-shaders";
-import { DitheringShader } from "@/components/ui/dithering-shader";
+import { Sparkles } from "@/components/ui/sparkles";
 import {
-  FaLightbulb,
-  FaCode,
-  FaCloud,
-  FaTools,
-} from "react-icons/fa";
-import Image from "next/image"; // for optimized Next.js images
+  Eye,
+  Clock,
+  Handshake,
+  Lightbulb,
+  Link2,
+} from "lucide-react";
+import Image from "next/image";
 
 const solutionStacks = [
   {
-    title: "Product Strategy & Experience",
-    icon: FaLightbulb,
-    type: "video" as const,
-    media: "/videos/product-strategy.mp4",
+    title: "Transparency.",
+    icon: Eye,
+    type: "image" as const,
+    media: "/Step-1.png",
     items: [
-      "Vision workshops, customer journey mapping, and UX research to prioritise features.",
-      "Design systems, component libraries, and interactive prototypes for faster handoff.",
-      "Experimentation frameworks to validate ideas and measure product-market fit.",
+      "You'll always know what's happening — no hidden layers.",
     ],
     color: "from-[#6B5BF5] to-[#6B5BF5]",
   },
   {
-    title: "Full-Stack Engineering Pods",
-    icon: FaCode,
+    title: "Reliability.",
+    icon: Clock,
     type: "image" as const,
-    media:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80",
+    media: "/Step-1(2).png",
     items: [
-      "Composable frontends with React, Next.js, and design-system alignment.",
-      "API platforms, microservices, and integration layers built for scale.",
-      "Automated testing, CI/CD pipelines, and DevOps tooling baked in.",
+      "We deliver on time, or communicate early.",
     ],
     color: "from-[#0490F2] to-[#0490F2]",
   },
   {
-    title: "Cloud & Platform Modernisation",
-    icon: FaCloud,
-    type: "video" as const,
-    media: "/videos/cloud-services.mp4",
+    title: "Partnership.",
+    icon: Handshake,
+    type: "image" as const,
+    media: "/Step-3.png",
     items: [
-      "Cloud migrations across AWS, Azure, and GCP with infrastructure-as-code.",
-      "Observability, SRE practices, and cost optimisation baked into every release.",
-      "Data platforms, event streaming, and API gateways for connected ecosystems.",
+      "We grow when you do — your goals are ours.",
     ],
     color: "from-[#6B5BF5] to-[#6B5BF5]",
   },
   {
-    title: "Lifecycle & Managed Services",
-    icon: FaTools,
+    title: "Technology should simplify, not complicate.",
+    icon: Lightbulb,
     type: "image" as const,
-    media:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
+    media: "/Step-4.png",
     items: [
-      "24/7 application support, SLAs, and incident response for mission-critical systems.",
-      "Roadmap delivery, enhancements, and release management to keep teams shipping.",
-      "Security hardening, compliance audits, and governance reporting on autopilot.",
+      "We design products that make life easier — not harder.",
     ],
     color: "from-[#0490F2] to-[#0490F2]",
+  },
+  {
+    title: "Partnerships should outlast projects. Transparency builds trust.",
+    icon: Link2,
+    type: "image" as const,
+    media: "/Step-5.png",
+    items: [
+      "We're here for the journey, not just the launch.",
+      "We stay open in process, pricing, and communication.",
+    ],
+    color: "from-[#6B5BF5] to-[#6B5BF5]",
   },
 ];
 
@@ -83,19 +84,33 @@ const OurAIServices: React.FC = () => {
 
   return (
     <section className="bg-background-primary" id="ai-services">
-      <div className="container mx-auto max-w-7xl px-6 lg:px-20 py-24 lg:py-32">
+      {/* Sparkles Background */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <Sparkles
+          density={600}
+          className="absolute inset-0 w-full h-full"
+          color="#ffffff"
+          size={2}
+          opacity={0.3}
+          minOpacity={0.1}
+          speed={0.5}
+          background="transparent"
+        />
+      </div>
+
+      <div className="container mx-auto max-w-7xl px-6 lg:px-20 py-24 lg:py-32 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-4xl mx-auto mb-20"
         >
           <h2 className="text-[56px] font-medium leading-[1.15] tracking-[-0.015em] text-text-primary">
-            Complete Software Solutions for Every Business Need
+            Our Promise & What We Believe
           </h2>
           <p className="text-large-paragraph text-text-secondary mt-4">
-            From product strategy to cloud modernisation and managed delivery, Link Innovations assembles the right pod to accelerate your roadmap.
+            Built on principles that don't compromise. We deliver clarity, craftsmanship, and care in everything we build.
           </p>
         </motion.div>
 
@@ -117,23 +132,22 @@ const OurAIServices: React.FC = () => {
                     ease: [0.16, 1, 0.3, 1]
                   }}
                   whileHover={{ scale: 1.01, transition: { duration: 0.3 } }}
-                  className="group relative w-full max-w-7xl mx-auto rounded-2xl flex flex-col lg:flex-row overflow-hidden border border-border-subtle shadow-[0px_2px_8px_rgba(0,0,0,0.06)] hover:shadow-[0px_8px_32px_rgba(0,0,0,0.12)] transition-all duration-300"
+                  className="group relative w-full max-w-7xl mx-auto rounded-2xl flex flex-col lg:flex-row overflow-hidden 
+                    backdrop-blur-2xl
+                    bg-gradient-to-br from-white/[0.08] via-white/[0.05] to-white/[0.03]
+                    border border-white/20
+                    shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_8px_32px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.15)]
+                    transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]
+                    hover:border-white/30
+                    hover:bg-gradient-to-br hover:from-white/[0.12] hover:via-white/[0.08] hover:to-white/[0.05]
+                    hover:shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_16px_48px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.2)]"
                 >
-                  {/* Shader Background - Same as CTAWithShader */}
-                  <div className="absolute inset-0 z-0 bg-[#F5F5DC]" />
-                  <div className="absolute inset-0 z-[1]">
-                    <DitheringShader
-                      shape="wave"
-                      type="8x8"
-                      colorBack="#F5F5DC"
-                      colorFront="#00c4b8"
-                      pxSize={4}
-                      speed={0.4}
-                      className="w-full h-full"
-                      style={{ width: "100%", height: "100%", opacity: 0.7 }}
-                    />
-                  </div>
-                  <div className="absolute inset-0 z-[2] bg-gradient-to-br from-black/50 via-black/45 to-black/50" />
+                  {/* Premium Background Gradient */}
+                  <div className="absolute inset-0 z-0 bg-gradient-to-br from-black/40 via-black/35 to-black/40" />
+
+                  {/* Top Edge Highlight */}
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent z-[4]" />
+
                   {/* Left: Content */}
                   <div className="relative z-[3] w-full lg:w-[45%] p-8 lg:p-12 flex flex-col justify-center space-y-6">
                     {/* Header icon and title */}
@@ -141,9 +155,15 @@ const OurAIServices: React.FC = () => {
                       <motion.div
                         whileHover={{ scale: 1.05 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                        className="relative inline-flex items-center justify-center w-14 h-14 rounded-xl bg-white/20 border border-white/30 shadow-[0px_2px_8px_rgba(0,0,0,0.06)] transition-all duration-300"
+                        className="relative inline-flex items-center justify-center w-14 h-14 rounded-xl 
+                          backdrop-blur-xl
+                          bg-white/[0.12] border border-white/25
+                          shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.3)]
+                          transition-all duration-300
+                          group-hover:bg-white/[0.16]
+                          group-hover:border-white/35"
                       >
-                        <Icon className="w-6 h-6 !text-white relative z-10" />
+                        <Icon className="w-6 h-6 !text-white relative z-10" strokeWidth={2} />
                       </motion.div>
                       <h3 className="text-[40px] font-medium leading-[1.2] tracking-[-0.01em] !text-white">
                         {service.title}
@@ -161,7 +181,7 @@ const OurAIServices: React.FC = () => {
                           transition={{ duration: 0.5, delay: idx * 0.15 + i * 0.1 }}
                           className="flex items-start gap-3"
                         >
-                          <div className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-white/80 mt-2.5" />
+                          <div className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-white/80 mt-2.5 shadow-[0_0_6px_rgba(255,255,255,0.5)]" />
                           <p className="text-base !text-white leading-[1.6]">
                             {item}
                           </p>
@@ -178,10 +198,17 @@ const OurAIServices: React.FC = () => {
                     <motion.div
                       whileHover={{ scale: 1.03 }}
                       transition={{ duration: 0.4 }}
-                      className="relative w-full max-w-2xl aspect-square lg:aspect-video rounded-3xl overflow-hidden shadow-[0_20px_60px_-12px_rgba(0,0,0,0.15),0_0_0_1px_rgba(0,0,0,0.05)] border border-gray-200/80 bg-gray-50/50 backdrop-blur-sm group-hover:shadow-[0_30px_80px_-12px_rgba(0,0,0,0.25),0_0_0_1px_rgba(0,0,0,0.08),0_0_40px_rgba(114,185,187,0.2)] transition-all duration-500"
+                      className="relative w-full max-w-2xl aspect-square lg:aspect-video rounded-3xl overflow-hidden 
+                        backdrop-blur-xl
+                        bg-white/[0.05]
+                        border border-white/20
+                        shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_16px_48px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.15)]
+                        transition-all duration-500
+                        group-hover:border-white/30
+                        group-hover:shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_24px_64px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.2)]"
                     >
-                      {/* Premium border glow */}
-                      <div className="absolute -inset-0.5 rounded-3xl bg-gradient-to-r from-[#72b9bb]/30 via-[#b5d9d9]/30 to-[#ffd1bd]/30 opacity-0 group-hover:opacity-100 blur-lg transition-opacity duration-500 -z-10" />
+                      {/* Top Edge Highlight */}
+                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent z-10 rounded-t-3xl" />
 
                       {/* Subtle overlay on media */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-transparent pointer-events-none z-10 rounded-3xl" />
@@ -189,23 +216,14 @@ const OurAIServices: React.FC = () => {
                       {/* Shine effect on media */}
                       <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent pointer-events-none z-10 rounded-3xl opacity-50" />
 
-                      {service.type === "video" ? (
-                        <video
-                          src={service.media}
-                          autoPlay
-                          loop
-                          muted
-                          playsInline
-                          className="h-full w-full object-cover rounded-3xl"
-                        />
-                      ) : (
-                        <Image
-                          src={service.media}
-                          alt={service.title}
-                          fill
-                          className="object-cover rounded-3xl"
-                        />
-                      )}
+                      <Image
+                        src={service.media}
+                        alt={service.title}
+                        fill
+                        className="object-cover rounded-3xl transition-transform duration-1000 ease-out"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 55vw"
+                        quality={95}
+                      />
                     </motion.div>
                   </div>
                 </motion.div>

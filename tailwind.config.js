@@ -80,6 +80,28 @@ module.exports = {
         'link-black': '#000000',
         'night': '#141414',
         'baby-powder': '#fdfffd',
+        
+        // Grovia Page Design System (Unified)
+        'background': {
+          'primary': '#FFFFFF',
+          'secondary': '#F8F9FA',
+          'tertiary': '#F5F3EF',
+          'muted': '#F5F5DC',
+          'dark': '#000000',
+        },
+        'text': {
+          'primary': '#1A1A1A',
+          'secondary': '#4A4A4A',
+          'tertiary': '#6B7280',
+          'inverse': '#FFFFFF',
+          'muted': '#9CA3AF',
+        },
+        'border': {
+          'DEFAULT': '#E5E7EB',
+          'subtle': '#F3F4F6',
+          'medium': '#D1D5DB',
+          'strong': '#9CA3AF',
+        },
       },
       fontFamily: {
         'heading': ['Mango Grotesque', 'Helvetica Neue', 'Arial', 'sans-serif'],
@@ -93,6 +115,15 @@ module.exports = {
       },
       maxWidth: {
         container: "80rem",
+        'container-standard': "80rem", // 1280px
+        'container-lg': "90rem", // 1440px
+      },
+      fontSize: {
+        'large-paragraph': '1.125rem', // 18px
+      },
+      spacing: {
+        'section': '6rem', // 96px
+        'section-lg': '8rem', // 128px
       },
       boxShadow: {
         glow: "0 -16px 128px 0 hsla(var(--brand-foreground) / 0.5) inset, 0 -16px 32px 0 hsla(var(--brand) / 0.5) inset",

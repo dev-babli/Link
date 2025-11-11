@@ -1,35 +1,41 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Image from "next/image"
 import { Sparkles } from "@/components/ui/sparkles"
 import { useEffect, useRef, useState } from "react"
+import { SiNextdotjs, SiPython, SiDocker, SiGithub } from 'react-icons/si';
+import { FaAws } from 'react-icons/fa';
 
-const companies = [
+const technologies = [
   {
-    name: "Google",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
-    website: "https://google.com"
+    name: "Next.js",
+    icon: SiNextdotjs,
+    color: "text-text-primary",
+    href: "https://nextjs.org"
   },
   {
-    name: "Microsoft",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
-    website: "https://microsoft.com"
+    name: "Python",
+    icon: SiPython,
+    color: "text-yellow-400",
+    href: "https://www.python.org"
   },
   {
-    name: "Amazon",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
-    website: "https://amazon.com"
+    name: "Docker",
+    icon: SiDocker,
+    color: "text-blue-400",
+    href: "https://www.docker.com"
   },
   {
-    name: "Apple",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
-    website: "https://apple.com"
+    name: "AWS",
+    icon: FaAws,
+    color: "text-orange-400",
+    href: "https://aws.amazon.com"
   },
   {
-    name: "Meta",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg",
-    website: "https://meta.com"
+    name: "GitHub",
+    icon: SiGithub,
+    color: "text-text-primary",
+    href: "https://github.com"
   },
 ]
 
@@ -63,26 +69,23 @@ export function TrustedBySparkles() {
 
   return (
     <section ref={sectionRef} className="relative w-full overflow-hidden bg-background-primary pb-16">
-      <div className="container mx-auto pt-20 pb-12 w-full max-w-5xl px-6 lg:px-20">
+      <div className="container mx-auto pt-20 pb-4 w-full max-w-5xl px-6 lg:px-20">
         <div
           className={`text-center transition-all duration-1000 ease-in-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
         >
           <h2 className="text-[56px] font-medium leading-[1.15] tracking-[-0.015em] text-text-primary">
-            <span className="text-text-primary">
-              Trusted by experts.
-            </span>
-            <br />
-            <span className="text-text-primary">Used by the leaders.</span>
+            Technologies We Use
           </h2>
 
           <div className={`mt-14 grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8 transition-all duration-1000 ease-in-out delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
-            {companies.map((company, index) => {
+            {technologies.map((tech, index) => {
+              const IconComponent = tech.icon;
               return (
                 <motion.a
-                  key={company.name}
-                  href={company.website}
+                  key={tech.name}
+                  href={tech.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 20 }}
@@ -92,13 +95,8 @@ export function TrustedBySparkles() {
                   className="flex items-center justify-center group cursor-pointer"
                 >
                   <div className="relative w-full h-12 flex items-center justify-center">
-                    <Image
-                      src={company.logo}
-                      alt={`${company.name} logo`}
-                      width={120}
-                      height={48}
-                      className="h-10 w-auto object-contain filter grayscale opacity-60 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110"
-                      unoptimized
+                    <IconComponent 
+                      className={`w-12 h-12 ${tech.color} filter grayscale opacity-60 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110`}
                     />
                   </div>
                 </motion.a>
@@ -109,16 +107,16 @@ export function TrustedBySparkles() {
       </div>
 
       {/* Sparkles effect that blends into footer - Reduced size */}
-      <div className="relative h-[300px] w-full overflow-visible -mb-32">
+      <div className="relative h-[300px] w-full overflow-visible -mb-32 -mt-8">
         <div className="absolute inset-0 [mask-image:radial-gradient(50%_50%,white,transparent)]">
           <div className="absolute inset-0 before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_bottom_center,rgba(0,0,0,0.08),transparent_70%)] before:opacity-40" />
           <div className="absolute -left-1/2 top-1/2 aspect-[1/0.7] z-10 w-[200%] rounded-[100%] border-t border-text-primary/10 bg-background-primary" />
           <Sparkles
-            density={600}
+            density={1200}
             className="absolute inset-x-0 bottom-0 h-full w-full [mask-image:radial-gradient(50%_50%,white,transparent_85%)]"
-            color="#000000"
+            color="#f97316"
             size={1.5}
-            opacity={0.4}
+            opacity={0.6}
             background="#F5F3EF"
           />
         </div>

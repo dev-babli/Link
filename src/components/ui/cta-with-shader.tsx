@@ -52,12 +52,12 @@ export function CTAWithShader({ className }: CTAWithShaderProps) {
                             <div className="flex flex-col gap-6 text-white">
                                 {/* Headline */}
                                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white tracking-tight">
-                                    Transform Your Business with Link Innovations
+                                    Let's bring your idea to life.
                                 </h2>
 
                                 {/* Sub-headline */}
                                 <p className="text-lg md:text-xl text-white font-normal leading-relaxed">
-                                    Partner with us to design and launch tailored digital platforms that streamline operations, elevate customer experiences, and accelerate growth.
+                                    Schedule a free discovery call — we'll respond within 24 hours.
                                 </p>
 
                                 {/* Contact Details */}
@@ -107,17 +107,29 @@ export function CTAWithShader({ className }: CTAWithShaderProps) {
                                     </div>
                                 </div>
 
-                                {/* Get Started Button */}
-                                <div className="mt-6">
+                                {/* CTA Buttons */}
+                                <div className="mt-6 flex flex-col sm:flex-row gap-4">
                                     <Button
                                         variant="outline"
                                         size="lg"
                                         className="rounded-lg px-6 py-3 gap-2 text-sm font-semibold bg-black/40 border-white/30 hover:bg-black/50 border-2"
                                     >
-                                        <span className="text-white">Get Started</span>
+                                        <span className="text-white">Book a Call</span>
                                         <Moon className="w-4 h-4 text-white" />
                                     </Button>
+                                    <Button
+                                        variant="outline"
+                                        size="lg"
+                                        className="rounded-lg px-6 py-3 gap-2 text-sm font-semibold bg-transparent border-white/30 hover:bg-white/10 border-2"
+                                    >
+                                        <span className="text-white">Get a Free Estimate</span>
+                                    </Button>
                                 </div>
+                                
+                                {/* Micro assurance text */}
+                                <p className="mt-4 text-sm text-white/80">
+                                    All discussions are confidential and protected by NDA.
+                                </p>
                             </div>
 
                             {/* Right Column - Contact Form */}

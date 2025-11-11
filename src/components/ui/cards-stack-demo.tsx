@@ -3,47 +3,48 @@
 import { ContainerScroll, CardSticky } from "@/components/ui/cards-stack"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
+import { motion } from "framer-motion"
 
 const PROCESS_PHASES = [
   {
     id: "process-1",
-    title: "Research and Analysis",
-    description: "Examine competitors, trends, and user preferences to create standout experiences.",
+    title: "Discovery & Strategy",
+    description: "We start by understanding your business goals, challenges, and vision to create a strategic roadmap for success.",
     image: "/Step-1.png",
     gradient: "from-blue-500 to-cyan-500",
   },
   {
     id: "process-2",
-    title: "Wireframing and Prototyping",
-    description: "Create skeletal representations to test and refine user experience before design.",
+    title: "Design & Prototyping",
+    description: "We create user-centered designs and interactive prototypes to validate concepts before development begins.",
     image: "/Step-1(2).png",
     gradient: "from-purple-500 to-pink-500",
   },
   {
     id: "process-3",
-    title: "Design Creation",
-    description: "Bring your vision to life with stunning aesthetics aligned to your brand identity.",
+    title: "Development & Quality Assurance",
+    description: "We build scalable, performant solutions with modern technologies and rigorous quality assurance.",
     image: "/Step-2.png",
     gradient: "from-emerald-500 to-teal-500",
   },
   {
     id: "process-4",
-    title: "Development and Testing",
-    description: "Transform designs into fully functional websites with rigorous quality assurance.",
+    title: "Testing & Refinement",
+    description: "We test thoroughly, gather feedback, and refine until your solution meets the highest standards.",
     image: "/Step-3.png",
     gradient: "from-orange-500 to-amber-500",
   },
   {
     id: "process-5",
-    title: "Launch and Support",
-    description: "Strategic deployment and ongoing optimization for lasting digital success.",
+    title: "Launch & Deployment",
+    description: "We handle strategic deployment with zero downtime, ensuring a smooth launch experience.",
     image: "/Step-4.png",
     gradient: "from-indigo-500 to-blue-500",
   },
   {
     id: "process-6",
-    title: "Maintenance and Support",
-    description: "Continuous updates and dedicated support to ensure optimal performance.",
+    title: "Ongoing Support & Growth",
+    description: "We provide continuous support, monitoring, and optimization to help your business grow and evolve.",
     image: "/Step-5.png",
     gradient: "from-indigo-500 to-blue-500",
   },
@@ -109,15 +110,21 @@ export const Process = () => {
     <section className="w-full bg-background-primary py-24 lg:py-32">
       <div className="container mx-auto max-w-7xl px-6 lg:px-20">
         <div className="grid gap-12 md:grid-cols-2 md:gap-16 lg:gap-20">
-          <div className="left-0 top-0 md:sticky md:h-[calc(100vh-6rem)] md:py-12">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="left-0 top-0 md:sticky md:h-[calc(100vh-6rem)] md:py-12"
+          >
             <div className="flex h-full flex-col justify-center">
-              <h2 className="text-[56px] font-medium leading-[1.15] tracking-[-0.015em] text-text-primary mb-4">
-                Planning your{" "}
-                <span className="text-text-primary">project development</span> journey
-              </h2>
-              <p className="text-base leading-[1.6] text-text-secondary max-w-prose mb-10">
-                We transform your vision into reality through strategic planning and execution.
-              </p>
+                    <h2 className="text-[56px] font-medium leading-[1.15] tracking-[-0.015em] text-text-primary mb-4">
+                      Planning your{" "}
+                      <span className="text-text-primary">project development</span> journey
+                    </h2>
+                    <p className="text-base leading-[1.6] text-text-secondary max-w-prose mb-10">
+                      From discovery to deployment, we guide you through every step of your project with clarity, transparency, and expertise.
+                    </p>
 
               {/* Learn More Button - Improved Design */}
               <div>
@@ -137,7 +144,7 @@ export const Process = () => {
                 </Link>
               </div>
             </div>
-          </div>
+          </motion.div>
           <ContainerScroll className="min-h-[300vh] space-y-6 py-8 md:min-h-[400vh] md:space-y-8 md:py-12">
             {PROCESS_PHASES.map((phase, index) => (
               <CardSticky

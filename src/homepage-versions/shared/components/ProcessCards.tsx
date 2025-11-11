@@ -7,23 +7,30 @@ import Image from "next/image";
 const processSteps = [
   {
     id: "01",
-    title: "Easy setup",
-    text: "Create your workspace and invite your team. Get everything ready.",
+    title: "We Listen",
+    text: "Every project starts with understanding your goals, not just your requirements.",
     color: "from-[#00c4b8] to-[#016cf7]",
     img: "/images/process-cards/easy.jpg",
   },
   {
     id: "02",
-    title: "Collaborate",
-    text: "Assign tasks and keep communication clear. Everyone stays aligned.",
+    title: "We Simplify",
+    text: "We transform complex ideas into clear product plans and user flows.",
     color: "from-[#016cf7] to-[#00c4b8]",
     img: "/images/process-cards/collabarate.jpg",
   },
   {
     id: "03",
-    title: "Track growth",
-    text: "Use dashboards to monitor progress, trends, and what matters most.",
+    title: "We Build Together",
+    text: "Agile sprints, weekly demos, transparent progress — no black boxes.",
     color: "from-[#00c4b8] to-[#016cf7]",
+    img: "/images/process-cards/track.jpg",
+  },
+  {
+    id: "04",
+    title: "We Stand With You",
+    text: "From launch to iteration, we stay as your long-term partner.",
+    color: "from-[#016cf7] to-[#00c4b8]",
     img: "/images/process-cards/track.jpg",
   },
 ];
@@ -51,7 +58,7 @@ export default function ProcessCards({ className = "", variant = "light" }: Proc
             transition={{ duration: 0.6 }}
             className="text-[56px] font-medium leading-[1.15] tracking-[-0.015em] text-text-primary"
           >
-            How It Works
+            How We Turn Ideas Into Impact.
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -60,11 +67,19 @@ export default function ProcessCards({ className = "", variant = "light" }: Proc
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-large-paragraph text-text-secondary mt-4 max-w-3xl"
           >
-            A simple 3-step process to help your team set up, collaborate, and track success
-            efficiently.
+            Every great product starts with a great collaboration. Here's how we do it.
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg font-medium text-text-primary mt-6"
+          >
+            💬 The Link Innovations Way
           </motion.p>
         </div>
-        <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-4">
           {processSteps.map((step, index) => {
             const isHovered = hoveredIndex === index;
             const isExpanded =

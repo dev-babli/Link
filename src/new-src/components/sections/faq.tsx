@@ -15,27 +15,27 @@ const faqData = [
   {
     question: "What types of companies do you work with?",
     answer:
-      "We partner with startups, small businesses, and growing teams across industries. Whether you're in tech, retail, or services, our solutions adapt to your needs.",
+      "Link Innovations partners with startups, small businesses, and enterprises across various industries including healthcare, finance, retail, manufacturing, and technology. Our solutions are tailored to meet the unique needs of each client, regardless of size or industry.",
   },
   {
     question: "How long does it take to see results?",
     answer:
-      "Most clients begin noticing improvements within the first few weeks. For deeper operational changes, we typically see lasting impact within 2 to 3 months.",
+      "Project timelines vary based on scope and complexity. Most clients begin seeing improvements within the first few weeks of implementation. For comprehensive digital transformations, we typically deliver measurable results within 2 to 4 months, with ongoing optimization and support.",
   },
   {
-    question: "Can Grovia integrate with our existing tools?",
+    question: "What services does Link Innovations provide?",
     answer:
-      "Yes. Grovia is built to work with a wide range of platforms including Slack, Notion, Google Workspace, and more.",
+      "We offer comprehensive IT and technology solutions including web development, mobile app development, cloud services, AI solutions, cybersecurity, data analytics, UI/UX design, DevOps, API development, database design, IT consulting, and 24/7 support & maintenance.",
   },
   {
-    question: "Do you offer one-time consultations or ongoing support?",
+    question: "Do you offer one-time projects or ongoing support?",
     answer:
-      "Both. You can engage us for one-time strategy sessions or ongoing advisory support depending on your goals and team needs.",
+      "Both. Link Innovations provides one-time project development as well as ongoing support and maintenance services. We offer flexible engagement models including project-based work, retainer agreements, and managed services to suit your business needs and budget.",
   },
   {
-    question: "What does onboarding look like?",
+    question: "What does the project onboarding process look like?",
     answer:
-      "Our onboarding process is simple and collaborative. We start with a kickoff session, align on goals, and provide a tailored roadmap to guide the next steps.",
+      "Our onboarding process is collaborative and transparent. We start with a discovery session to understand your requirements, followed by a detailed proposal and timeline. Once approved, we conduct a kickoff meeting, establish communication channels, and provide a comprehensive project roadmap with regular milestones and updates.",
   },
 ];
 
@@ -91,7 +91,7 @@ const FaqSection = () => {
                 </span>
               </h2>
               <p className="text-xl md:text-2xl leading-relaxed text-[#3a3a3a] font-light max-w-lg">
-                Get quick answers to the most common questions about our platform and services.
+                Get quick answers to the most common questions about Link Innovations' technology solutions and services.
               </p>
             </div>
             <div className="mt-4">

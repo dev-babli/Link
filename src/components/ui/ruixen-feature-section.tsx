@@ -3,6 +3,8 @@
 import { cn } from "@/lib/utils"
 import { CardContent } from "@/components/ui/card";
 import { TbHeartPlus } from "react-icons/tb";
+import { SiReact, SiNextdotjs, SiTypescript, SiNodedotjs, SiPostgresql, SiTailwindcss, SiMongodb, SiDocker, SiKubernetes, SiPython, SiGit, SiGithub, SiJenkins } from "react-icons/si";
+import { FaAws, FaCode, FaShieldAlt, FaCloud, FaRocket, FaCog } from "react-icons/fa";
 import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
@@ -28,52 +30,72 @@ export const Highlight = ({
   );
 };
 
-const CARDS = [
+const technologyStacks = [
   {
     id: 0,
-    name: "Sarah Chen",
-    designation: "Frontend Developer",
-    content: (
-      <p>
-        <Highlight>Link Innovations</Highlight> has completely transformed our development workflow. The solutions are beautifully crafted and{" "}
-        <Highlight>incredibly easy to integrate</Highlight> into any modern application.
-      </p>
-    ),
+    category: "Frontend",
+    technologies: [
+      { name: "React", Icon: SiReact },
+      { name: "Next.js", Icon: SiNextdotjs },
+      { name: "TypeScript", Icon: SiTypescript },
+      { name: "Tailwind CSS", Icon: SiTailwindcss },
+    ],
+    description: "Modern frontend technologies for building scalable, performant user interfaces.",
   },
   {
     id: 1,
-    name: "Alex Rodriguez",
-    designation: "UI/UX Designer",
-    content: (
-      <p>
-        The <Highlight>design system</Highlight> behind Link Innovations is both elegant and consistent. From layout to interactivity, every detail is thoughtfully built with{" "}
-        <Highlight>accessibility and usability</Highlight> in mind.
-      </p>
-    ),
+    category: "Backend",
+    technologies: [
+      { name: "Node.js", Icon: SiNodedotjs },
+      { name: "Python", Icon: SiPython },
+      { name: "PostgreSQL", Icon: SiPostgresql },
+      { name: "MongoDB", Icon: SiMongodb },
+    ],
+    description: "Robust backend solutions with scalable architecture and reliable databases.",
   },
   {
     id: 2,
-    name: "David Kim",
-    designation: "Product Manager",
-    content: (
-      <p>
-        After adopting <Highlight>Link Innovations</Highlight>, our team shipped features 40% faster. The comprehensive solutions and{" "}
-        <Highlight>clear documentation</Highlight> have made it an essential tool in our product development.
-      </p>
-    ),
+    category: "Cloud & DevOps",
+    technologies: [
+      { name: "AWS", Icon: FaAws },
+      { name: "Docker", Icon: SiDocker },
+      { name: "Kubernetes", Icon: SiKubernetes },
+      { name: "CI/CD", Icon: null },
+    ],
+    description: "Cloud infrastructure and DevOps practices for seamless deployment and scaling.",
   },
 ];
 
 const integrations = [
   {
-    name: "Figma",
-    desc: "Design collaboratively in real-time with intuitive UI tools",
-    icon: "🎨",
+    name: "React",
+    desc: "Modern UI library for building interactive interfaces",
+    Icon: SiReact,
   },
   {
-    name: "Vercel",
-    desc: "Deploy your projects seamlessly with global scale",
-    icon: "🚀",
+    name: "Next.js",
+    desc: "Full-stack React framework for production-ready apps",
+    Icon: SiNextdotjs,
+  },
+  {
+    name: "TypeScript",
+    desc: "Type-safe JavaScript for better code quality",
+    Icon: SiTypescript,
+  },
+  {
+    name: "Node.js",
+    desc: "Server-side JavaScript runtime for scalable backends",
+    Icon: SiNodedotjs,
+  },
+  {
+    name: "PostgreSQL",
+    desc: "Advanced open-source relational database",
+    Icon: SiPostgresql,
+  },
+  {
+    name: "AWS",
+    desc: "Cloud infrastructure and services platform",
+    Icon: FaAws,
   }
 ];
 
@@ -104,152 +126,322 @@ export default function RuixenFeatureSection() {
   }, []);
 
   return (
-    <section className="w-full bg-background-primary py-24 lg:py-32">
-      <div className="container mx-auto max-w-7xl px-6 lg:px-20">
+    <section className="w-full bg-background-primary py-16 sm:py-20">
+      <div className="container mx-auto max-w-[1600px] px-6 lg:px-20">
+        {/* Main glassmorphic container for entire component */}
         <motion.div
-          className="mx-auto max-w-2xl text-center mb-16"
+          className="relative rounded-[32px] p-6 lg:p-10"
+          style={{
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03) 100%)',
+            backdropFilter: 'blur(40px) saturate(190%)',
+            WebkitBackdropFilter: 'blur(40px) saturate(190%)',
+            border: '1px solid rgba(255,255,255,0.25)',
+            boxShadow: '0 12px 48px rgba(0,0,0,0.08), 0 0 0 1px rgba(255,255,255,0.2), inset 0 1px 1px rgba(255,255,255,0.3), inset 0 -1px 1px rgba(255,255,255,0.15)'
+          }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="mb-4 inline-flex items-center rounded-[6px] bg-accent-yellow px-3 py-1">
-            <p className="text-xs font-medium text-text-primary uppercase tracking-[0.02em]">FEATURES</p>
+          {/* Premium glass shine overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/[0.12] via-transparent to-transparent pointer-events-none rounded-[32px]" />
+          
+          <div className="relative z-10">
+        <motion.div
+          className="mx-auto max-w-2xl text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="mb-3 inline-flex items-center rounded-[6px] bg-accent-yellow px-3 py-1">
+            <p className="text-xs font-medium text-text-primary uppercase tracking-[0.02em] font-body">FEATURES</p>
           </div>
-          <h2 className="text-[56px] font-medium leading-[1.15] tracking-[-0.015em] text-text-primary mb-4">
-            Powerful Features
+          <h2 className="text-[48px] font-bold leading-[1.15] tracking-[-0.015em] mb-3 font-heading" style={{ color: '#000000' }}>
+            Technologies We Use
           </h2>
-          <p className="text-large-paragraph text-text-secondary">
-            Discover features that simplify workflows and grow your business with intelligent solutions.
+          <p className="text-base text-text-secondary font-body">
+            Cutting-edge technologies for scalable, performant solutions.
           </p>
         </motion.div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 relative">
-          {/* Left Block - Enhanced with scroll animations and buttons */}
-          <div
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-6 relative">
+          {/* Left Block - Premium glassmorphic design */}
+          <motion.div
             ref={leftBlockRef}
-            className="flex flex-col items-start justify-center border border-border-subtle bg-background-secondary rounded-2xl p-6 lg:p-8 shadow-[0px_2px_8px_rgba(0,0,0,0.06)] relative overflow-hidden"
+            className="group flex flex-col items-start justify-center rounded-[24px] p-6 lg:p-7 relative overflow-hidden"
+            style={{
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03) 100%)',
+              backdropFilter: 'blur(36px) saturate(190%)',
+              WebkitBackdropFilter: 'blur(36px) saturate(190%)',
+              border: '1px solid rgba(255,255,255,0.24)',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.06), 0 0 0 1px rgba(255,255,255,0.2), inset 0 1px 1px rgba(255,255,255,0.3), inset 0 -1px 1px rgba(255,255,255,0.15)'
+            }}
+            whileHover={{ scale: 1.005, y: -2 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Decorative gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-background-primary/50 via-transparent to-background-secondary/30 opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            {/* Premium glass shine overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.1] via-transparent to-transparent pointer-events-none rounded-[28px]" />
+            
+            {/* Subtle inner glow on hover */}
+            <div className="absolute inset-[1px] rounded-[27px] bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-600 pointer-events-none" />
 
-            {/* Card */}
-            <div className={`relative w-full mb-6 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {/* Technology Stack Cards */}
+            <div className={`relative w-full mb-5 transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <div className="absolute inset-x-0 -bottom-2 h-16 sm:h-20 lg:h-24 bg-gradient-to-t from-background-secondary to-transparent z-10"></div>
-              <CardStack items={CARDS} />
+              <TechnologyStack items={technologyStacks} />
             </div>
 
-            {/* Reduced Content with scroll animation */}
-            <div className={`relative z-10 transition-all duration-1000 ease-out delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <h3 className="text-[28px] font-medium leading-[1.3] tracking-[-0.01em] text-text-primary mb-4">
-                Intuitive Dashboard Experience
+            {/* Minimal Content with scroll animation */}
+            <div className={`relative z-10 transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <h3 className="text-[24px] font-bold leading-[1.3] tracking-[-0.01em] mb-2 font-heading" style={{ color: '#000000' }}>
+                Modern Tech Stack
               </h3>
-              <p className="text-base leading-[1.6] text-text-secondary mb-6">
-                Simplify your development workflow with beautifully designed solutions.
+              <p className="text-sm leading-[1.6] mb-5 font-body" style={{ color: '#000000' }}>
+                Industry-leading technologies for exceptional results.
               </p>
             </div>
 
-            {/* Grovia-style Buttons with scroll animation */}
-            <div className={`relative z-10 w-full flex flex-col sm:flex-row gap-4 transition-all duration-1000 ease-out delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              {/* Primary Button - About Us */}
+            {/* Premium Buttons with scroll animation */}
+            <div className={`relative z-10 w-full flex flex-col sm:flex-row gap-3 transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] delay-250 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              {/* Primary Button */}
               <Link
                 href="/about"
-                className="group relative rounded-full px-8 py-4 bg-white text-text-primary font-medium text-base flex items-center justify-center gap-3 transition-all duration-300 hover:scale-[1.05] hover:shadow-[0_8px_24px_0_rgba(0,0,0,0.15)] overflow-hidden w-full sm:w-auto"
+                className="group relative rounded-full px-8 py-4 bg-white text-text-primary font-medium text-base flex items-center justify-center gap-3 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.03] hover:shadow-[0_12px_40px_0_rgba(0,0,0,0.12)] overflow-hidden w-full sm:w-auto font-body"
+                style={{
+                  boxShadow: '0 4px 24px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.9)'
+                }}
               >
-                {/* Button Background Glow */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white to-background-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                {/* Hover illumination effect */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-[shimmer_1.5s_ease-in-out_infinite] transition-opacity duration-300" />
                 <span className="relative z-10">Learn More</span>
-                <div className="relative z-10 bg-text-primary/10 rounded-full p-1.5 flex items-center justify-center backdrop-blur-sm">
-                  <ArrowRight className="w-5 h-5 text-text-primary transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2.5} />
+                <div className="relative z-10 bg-text-primary/8 rounded-full p-1.5 flex items-center justify-center backdrop-blur-sm">
+                  <ArrowRight className="w-5 h-5 text-text-primary transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1" strokeWidth={2.5} />
                 </div>
               </Link>
 
-              {/* Secondary Button - Glassmorphic */}
+              {/* Secondary Button - Premium Glassmorphic */}
               <Link
                 href="/about"
-                className="group relative rounded-full px-8 py-4 bg-white/30 backdrop-blur-md border border-white/60 text-text-primary font-medium text-base transition-all duration-300 hover:bg-white/40 hover:border-white/80 hover:scale-[1.05] hover:shadow-[0_4px_16px_0_rgba(0,0,0,0.1)] w-full sm:w-auto flex items-center justify-center"
+                className="group relative rounded-full px-8 py-4 text-text-primary font-medium text-base transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.03] w-full sm:w-auto flex items-center justify-center font-body"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.15) 100%)',
+                  backdropFilter: 'blur(20px) saturate(180%)',
+                  WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+                  border: '1px solid rgba(255,255,255,0.35)',
+                  boxShadow: '0 4px 24px rgba(0,0,0,0.06), inset 0 1px 1px rgba(255,255,255,0.4)'
+                }}
               >
                 <span className="relative z-10">About Us</span>
               </Link>
             </div>
+          </motion.div>
 
-            {/* Creative floating elements */}
-            <div className={`absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-accent-yellow/20 to-transparent rounded-full blur-2xl transition-all duration-1000 ease-out delay-400 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`} />
-            <div className={`absolute bottom-4 left-4 w-16 h-16 bg-gradient-to-tr from-background-primary/30 to-transparent rounded-full blur-xl transition-all duration-1000 ease-out delay-500 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}`} />
-          </div>
+          {/* Right Block - Premium glassmorphic */}
+          <motion.div 
+            className="group flex flex-col items-center justify-start rounded-[24px] p-6 lg:p-7 relative overflow-hidden"
+            style={{
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03) 100%)',
+              backdropFilter: 'blur(36px) saturate(190%)',
+              WebkitBackdropFilter: 'blur(36px) saturate(190%)',
+              border: '1px solid rgba(255,255,255,0.24)',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.06), 0 0 0 1px rgba(255,255,255,0.2), inset 0 1px 1px rgba(255,255,255,0.3), inset 0 -1px 1px rgba(255,255,255,0.15)'
+            }}
+            whileHover={{ scale: 1.005, y: -2 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {/* Premium glass shine overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.1] via-transparent to-transparent pointer-events-none rounded-[28px]" />
+            
+            {/* Subtle inner glow on hover */}
+            <div className="absolute inset-[1px] rounded-[27px] bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-600 pointer-events-none" />
 
-          {/* Right Block */}
-          <div className="flex flex-col items-center justify-start border border-border-subtle bg-background-secondary rounded-2xl p-6 lg:p-8 shadow-[0px_2px_8px_rgba(0,0,0,0.06)]">
             {/* Content */}
-            <h3 className="text-[28px] font-medium leading-[1.3] tracking-[-0.01em] text-text-primary mb-6">
-              Seamless Integration Ecosystem <span className="text-text-primary font-medium">Link Innovations</span>{" "}
-              <span className="text-base leading-[1.6] text-text-secondary"> Integrate effortlessly with your favorite tools using Link Innovations' smart API-ready architecture and eliminate silos in seconds.</span>
+            <h3 className="text-[24px] font-bold leading-[1.3] tracking-[-0.01em] mb-3 font-heading" style={{ color: '#000000' }}>
+              Technology Integration
             </h3>
-            <div
-              className={cn(
-                "group relative mt-auto w-full inline-flex cursor-pointer items-center justify-center rounded-2xl border-0 bg-background-secondary px-6 lg:px-8 py-2 font-medium text-text-primary transition-colors",
-              )}
-            >
-              {/* Integration List */}
-              <CardContent className="p-4 lg:p-6 space-y-4 bg-background-secondary border border-border-subtle rounded-2xl z-10 w-full shadow-[0px_2px_8px_rgba(0,0,0,0.06)]">
-                {integrations.map((item, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center justify-between p-3 border border-border-subtle rounded-xl hover:bg-background-primary transition"
-                  >
-                    <div className="flex items-center gap-3 flex-1">
-                      <div className="w-8 h-8 rounded-lg bg-background-primary flex items-center justify-center text-lg flex-shrink-0">
-                        {item.icon}
+            <p className="text-sm leading-[1.6] mb-5 font-body" style={{ color: '#000000' }}>
+              Seamless integration with existing tools via API-ready architecture.
+            </p>
+            <div className="mt-auto w-full relative z-10">
+              {/* Integration List - Premium glassmorphic */}
+              <CardContent 
+                className="p-4 lg:p-5 space-y-2.5 rounded-xl w-full"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 100%)',
+                  backdropFilter: 'blur(24px) saturate(180%)',
+                  WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+                  border: '1px solid rgba(255,255,255,0.25)',
+                  boxShadow: '0 4px 24px rgba(0,0,0,0.06), inset 0 1px 1px rgba(255,255,255,0.3)'
+                }}
+              >
+                {integrations.map((item, i) => {
+                  const IconComponent = item.Icon;
+                  return (
+                    <motion.div
+                      key={i}
+                      className="flex items-center justify-between p-3 rounded-xl transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                      style={{
+                        background: 'rgba(255,255,255,0.05)',
+                        border: '1px solid rgba(255,255,255,0.15)'
+                      }}
+                      whileHover={{ 
+                        scale: 1.02,
+                        background: 'rgba(255,255,255,0.12)',
+                        border: '1px solid rgba(255,255,255,0.25)'
+                      }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <div className="flex items-center gap-3 flex-1">
+                        <div 
+                          className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                          style={{
+                            background: 'linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.15) 100%)',
+                            backdropFilter: 'blur(16px) saturate(180%)',
+                            WebkitBackdropFilter: 'blur(16px) saturate(180%)',
+                            border: '1px solid rgba(255,255,255,0.3)',
+                            boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.4), 0 2px 8px rgba(0,0,0,0.05)'
+                          }}
+                        >
+                          <IconComponent className="w-5 h-5" style={{ color: '#000000' }} />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <p className="text-sm font-medium truncate font-body" style={{ color: '#000000' }}>{item.name}</p>
+                          <p className="text-xs line-clamp-2 font-body" style={{ color: '#000000', opacity: 0.7 }}>{item.desc}</p>
+                        </div>
                       </div>
-                      <div className="min-w-0 flex-1">
-                        <p className="text-sm font-medium text-text-primary truncate">{item.name}</p>
-                        <p className="text-xs text-text-secondary line-clamp-2">{item.desc}</p>
-                      </div>
-                    </div>
-                    <button className="rounded-full border border-border-subtle p-2 text-xs font-semibold flex-shrink-0 ml-2 hover:bg-background-primary transition"><TbHeartPlus className="w-4 h-4 text-text-primary" /></button>
-                  </div>
-                ))}
+                      <motion.button 
+                        className="rounded-full p-2 text-xs font-semibold flex-shrink-0 ml-2"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 100%)',
+                          backdropFilter: 'blur(12px)',
+                          border: '1px solid rgba(255,255,255,0.25)',
+                          boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.3)'
+                        }}
+                        whileHover={{ scale: 1.1, background: 'rgba(255,255,255,0.25)' }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <TbHeartPlus className="w-4 h-4" style={{ color: '#000000' }} />
+                      </motion.button>
+                    </motion.div>
+                  );
+                })}
               </CardContent>
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        {/* Stats and Testimonial Section */}
-        <div className="mt-16 lg:mt-20 grid gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
-          <div className="flex justify-center items-center p-6">
-            <div className="grid grid-cols-3 gap-6 lg:gap-8 w-full text-center sm:text-left">
-              <div className="space-y-3">
-                <div className="text-4xl font-medium text-text-primary">+1200</div>
-                <p className="text-base text-text-secondary">Projects Delivered</p>
+        {/* Development Methodologies & Core Capabilities - Card Stacks Container */}
+        <motion.div
+          className="mt-10 lg:mt-12 rounded-[24px] p-6 lg:p-8 relative overflow-hidden"
+          style={{
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.02) 100%)',
+            backdropFilter: 'blur(32px) saturate(185%)',
+            WebkitBackdropFilter: 'blur(32px) saturate(185%)',
+            border: '1px solid rgba(255,255,255,0.22)',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.06), 0 0 0 1px rgba(255,255,255,0.18), inset 0 1px 1px rgba(255,255,255,0.25), inset 0 -1px 1px rgba(255,255,255,0.12)'
+          }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+        >
+          {/* Subtle glass shine */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] via-transparent to-transparent pointer-events-none rounded-[24px]" />
+          
+          <div className="relative z-10 grid gap-6 lg:grid-cols-2 lg:gap-8">
+            {/* Development Methodologies Card Stack */}
+            <div className="flex flex-col items-center">
+              <h3 className="text-[24px] font-bold mb-5 font-heading text-center" style={{ color: '#000000' }}>
+                Development Methodologies
+              </h3>
+              <div className="relative w-full">
+                <TechnologyStack 
+                  items={[
+                    {
+                      id: 0,
+                      category: "Agile Development",
+                      technologies: [
+                        { name: "Scrum", Icon: FaRocket },
+                        { name: "Sprint Planning", Icon: FaCog },
+                        { name: "Daily Standups", Icon: SiGit },
+                        { name: "Retrospectives", Icon: null },
+                      ],
+                      description: "Iterative development with continuous feedback and rapid delivery cycles.",
+                    },
+                    {
+                      id: 1,
+                      category: "DevOps & CI/CD",
+                      technologies: [
+                        { name: "CI/CD Pipelines", Icon: SiJenkins },
+                        { name: "Git Workflow", Icon: SiGithub },
+                        { name: "Automated Testing", Icon: FaCode },
+                        { name: "Deployment", Icon: FaRocket },
+                      ],
+                      description: "Automated workflows for seamless integration, testing, and deployment.",
+                    },
+                    {
+                      id: 2,
+                      category: "Microservices",
+                      technologies: [
+                        { name: "API Gateway", Icon: FaCode },
+                        { name: "Service Mesh", Icon: SiDocker },
+                        { name: "Containerization", Icon: SiDocker },
+                        { name: "Orchestration", Icon: SiKubernetes },
+                      ],
+                      description: "Scalable architecture with independent, deployable service components.",
+                    },
+                  ]}
+                />
               </div>
-              <div className="space-y-3">
-                <div className="text-4xl font-medium text-text-primary">22M</div>
-                <p className="text-base text-text-secondary">Lines of Code</p>
-              </div>
-              <div className="space-y-3">
-                <div className="text-4xl font-medium text-text-primary">+500</div>
-                <p className="text-base text-text-secondary">Happy Clients</p>
+            </div>
+
+            {/* Core Capabilities Card Stack */}
+            <div className="flex flex-col items-center">
+              <h3 className="text-[24px] font-bold mb-5 font-heading text-center" style={{ color: '#000000' }}>
+                Core Capabilities
+              </h3>
+              <div className="relative w-full">
+                <TechnologyStack 
+                  items={[
+                    {
+                      id: 0,
+                      category: "API Development",
+                      technologies: [
+                        { name: "REST APIs", Icon: FaCode },
+                        { name: "GraphQL", Icon: FaCode },
+                        { name: "Microservices", Icon: SiDocker },
+                        { name: "Integration", Icon: null },
+                      ],
+                      description: "Robust API architecture for seamless system integration and scalability.",
+                    },
+                    {
+                      id: 1,
+                      category: "Cloud Solutions",
+                      technologies: [
+                        { name: "AWS", Icon: FaAws },
+                        { name: "Migration", Icon: FaCloud },
+                        { name: "Infrastructure", Icon: SiKubernetes },
+                        { name: "Optimization", Icon: FaCog },
+                      ],
+                      description: "Cloud-native solutions with scalable infrastructure and cost optimization.",
+                    },
+                    {
+                      id: 2,
+                      category: "Security & Compliance",
+                      technologies: [
+                        { name: "Security Audit", Icon: FaShieldAlt },
+                        { name: "Threat Protection", Icon: FaShieldAlt },
+                        { name: "Compliance", Icon: FaShieldAlt },
+                        { name: "Monitoring", Icon: FaCog },
+                      ],
+                      description: "Comprehensive security measures and compliance-ready implementations.",
+                    },
+                  ]}
+                />
               </div>
             </div>
           </div>
-          <div className="relative">
-            <blockquote className="border-l-2 border-border-subtle pl-6 lg:pl-8 text-text-secondary">
-              <p className="text-base lg:text-lg leading-[1.6]">Using Link Innovations has been like unlocking a new level of productivity. It's the perfect fusion of simplicity and versatility, enabling us to create exceptional digital solutions.</p>
-              <div className="mt-6 space-y-3">
-                <cite className="block font-medium text-base text-text-primary">Saurabh, CEO</cite>
-                <Image
-                  className="h-10 w-fit"
-                  src="https://opencv.org/wp-content/uploads/2022/05/logo.png"
-                  alt="Company Logo"
-                  height={40}
-                  width={100}
-                  unoptimized
-                />
-              </div>
-            </blockquote>
+        </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
       <style jsx global>{`
         @keyframes shimmer {
@@ -270,18 +462,25 @@ type Card = {
   content: React.ReactNode;
 };
 
-export const CardStack = ({
+type TechnologyStack = {
+  id: number;
+  category: string;
+  technologies: Array<{ name: string; Icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }> | null }>;
+  description: string;
+};
+
+export const TechnologyStack = ({
   items,
   offset,
   scaleFactor,
 }: {
-  items: Card[];
+  items: TechnologyStack[];
   offset?: number;
   scaleFactor?: number;
 }) => {
   const CARD_OFFSET = offset || 10;
   const SCALE_FACTOR = scaleFactor || 0.06;
-  const [cards, setCards] = useState<Card[]>(items);
+  const [stacks, setStacks] = useState<TechnologyStack[]>(items);
 
   useEffect(() => {
     startFlipping();
@@ -291,8 +490,8 @@ export const CardStack = ({
 
   const startFlipping = () => {
     interval = setInterval(() => {
-      setCards((prevCards: Card[]) => {
-        const newArray = [...prevCards];
+      setStacks((prevStacks: TechnologyStack[]) => {
+        const newArray = [...prevStacks];
         newArray.unshift(newArray.pop()!);
         return newArray;
       });
@@ -301,30 +500,64 @@ export const CardStack = ({
 
   return (
     <div className="relative mx-auto h-48 w-full md:h-48 md:w-96 my-4">
-      {cards.map((card, index) => {
+      {stacks.map((stack, index) => {
+        const isFrontCard = index === 0;
+        const blurAmount = index * 2; // Increase blur for cards further back
+        
         return (
           <motion.div
-            key={card.id}
-            className="absolute bg-background-secondary h-48 w-full md:h-48 md:w-96 rounded-2xl p-4 shadow-[0px_8px_32px_rgba(0,0,0,0.12)] border border-border-subtle flex flex-col justify-between"
+            key={stack.id}
+            className="absolute h-48 w-full md:h-48 md:w-96 rounded-[20px] p-5 flex flex-col justify-between"
             style={{
               transformOrigin: "top center",
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.10) 50%, rgba(255,255,255,0.06) 100%)',
+              backdropFilter: 'blur(28px) saturate(190%)',
+              WebkitBackdropFilter: 'blur(28px) saturate(190%)',
+              border: '1px solid rgba(255,255,255,0.28)',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.1), 0 0 0 1px rgba(255,255,255,0.25), inset 0 1px 1px rgba(255,255,255,0.4), inset 0 -1px 1px rgba(255,255,255,0.15)',
+              zIndex: stacks.length - index,
+              filter: isFrontCard ? 'none' : `blur(${blurAmount}px)`,
+              opacity: isFrontCard ? 1 : 0.7 - (index * 0.15),
             }}
             animate={{
               top: index * -CARD_OFFSET,
               scale: 1 - index * SCALE_FACTOR,
-              zIndex: cards.length - index,
             }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="font-normal text-text-primary">
-              {card.content}
-            </div>
-            <div>
-              <p className="text-text-primary font-medium">
-                {card.name}
-              </p>
-              <p className="text-text-secondary font-normal">
-                {card.designation}
-              </p>
+            {/* Premium glass shine */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.12] via-transparent to-transparent pointer-events-none rounded-[20px]" />
+            
+            <div className="font-normal relative z-10">
+              <h4 className="text-lg font-bold mb-2 font-heading" style={{ color: '#000000' }}>{stack.category}</h4>
+              <p className="text-sm mb-3 font-body leading-relaxed" style={{ color: '#000000', opacity: 0.8 }}>{stack.description}</p>
+              <div className="flex flex-wrap gap-2">
+                {stack.technologies.map((tech, i) => {
+                  const IconComponent = tech.Icon;
+                  return (
+                    <div
+                      key={i}
+                      className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg"
+                      style={{
+                        background: 'linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.15) 100%)',
+                        backdropFilter: 'blur(16px) saturate(180%)',
+                        WebkitBackdropFilter: 'blur(16px) saturate(180%)',
+                        border: '1px solid rgba(255,255,255,0.3)',
+                        boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.4), 0 2px 8px rgba(0,0,0,0.05)'
+                      }}
+                    >
+                      {IconComponent && (
+                        <div className="flex-shrink-0">
+                          <IconComponent className="w-4 h-4" style={{ color: '#000000' }} />
+                        </div>
+                      )}
+                      <span className="text-xs font-body" style={{ color: '#000000' }}>
+                        {tech.name}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </motion.div>
         );
@@ -332,4 +565,5 @@ export const CardStack = ({
     </div>
   );
 };
+
 

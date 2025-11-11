@@ -1,368 +1,240 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
 
-import { ClientOnlyMeshGradient, ClientOnlyPulsingBorder } from "@/components/ui/client-only-shaders"
+const logos = [
+  { src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7e6eac5d-453f-448a-9950-5c71cf8711bf-grovia-template-webflow-io/assets/images/68a46d745969fc10692d9fae_Fakebrand_205-4.png", alt: "sample logo" },
+  { src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7e6eac5d-453f-448a-9950-5c71cf8711bf-grovia-template-webflow-io/assets/images/68a46d74e1b7d5538d9a030a_Fakebrand_206-5.png", alt: "sample logo" },
+  { src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7e6eac5d-453f-448a-9950-5c71cf8711bf-grovia-template-webflow-io/assets/images/68a46d74beeb7f92e488d779_Fakebrand_202-6.png", alt: "sample logo" },
+  { src: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/7e6eac5d-453f-448a-9950-5c71cf8711bf-grovia-template-webflow-io/assets/images/68a46d744ccac3dc2d99b007_Fakebrand_204-7.png", alt: "sample logo" },
+];
 
-import { motion } from "framer-motion"
+// Enhanced Background with #F5F3EF Color Tones and Vertical Stripe Pattern
+const HeroBackground = () => (
+  <div className="absolute inset-0 -z-10 overflow-hidden">
+    {/* Base Gradient Background - Tones of #F5F3EF */}
+    <div className="absolute inset-0 bg-gradient-to-br from-[#F7F5F1] via-[#F5F3EF] to-[#F2F0EC]" />
 
-// Brand colors from Link Innovations design system
-const brandColors = {
-  blue: "#3B82F6",
-  purple: "#8B5CF6",
-  cyan: "#06B6D4",
-  primary: "#00D1BF",
-  secondary: "#FF4FD8",
-  black: "#000000",
-  white: "#FFFFFF",
-}
+    {/* Subtle Vertical Stripe Pattern */}
+    <div className="absolute inset-0 flex">
+      {Array.from({ length: 24 }).map((_, i) => (
+        <div
+          key={i}
+          className={`w-[4.166666%] h-full ${i % 2 === 0 ? '' : 'bg-black/[0.02]'}`}
+        />
+      ))}
+    </div>
 
-interface ShaderShowcaseProps {
-  title?: string
-  subtitle?: string
-  description?: string
-  showNavigation?: boolean
-  showPulsingBorder?: boolean
-}
+    {/* Subtle Texture Overlay */}
+    <div
+      className="absolute inset-0 opacity-[0.03]"
+      style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        backgroundSize: '60px 60px'
+      }}
+    />
 
-export default function ShaderShowcase({
-  title = "Beautiful Shader Experiences",
-  subtitle = "✨ New Shader Experience",
-  description = "Create stunning visual experiences with our advanced shader technology. Interactive lighting, smooth animations, and beautiful effects that respond to your every move.",
-  showNavigation = true,
-  showPulsingBorder = true,
-}: ShaderShowcaseProps = {}) {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [isActive, setIsActive] = useState(false)
+    {/* Soft Gradient Overlays */}
+    <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#F2F0EC]/50 to-transparent" />
+    <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#F7F5F1]/30 to-transparent" />
+    <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-[#F2F0EC]/30 to-transparent" />
+  </div>
+);
+
+const LogoTicker = () => (
+  <div className="mt-16 sm:mt-24 lg:mt-32">
+    <div className="relative w-full overflow-hidden group">
+      <style jsx global>{`
+                @keyframes marquee {
+                  0% { transform: translateX(0); }
+                  100% { transform: translateX(-50%); }
+                }
+                @keyframes shimmer {
+                  0% { transform: translateX(-100%) skewX(-15deg); }
+                  100% { transform: translateX(200%) skewX(-15deg); }
+                }
+            `}</style>
+
+      <div className="flex animate-[marquee_25s_linear_infinite]">
+        {[...logos, ...logos, ...logos, ...logos].map((logo, index) => (
+          <div key={index} className="flex-shrink-0 w-40 h-20 flex items-center justify-center mx-6">
+            <Image
+              src={logo.src}
+              alt={logo.alt}
+              width={140}
+              height={40}
+              className="object-contain grayscale opacity-60 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
+            />
+          </div>
+        ))}
+      </div>
+
+      <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#F7F5F1] to-transparent pointer-events-none"></div>
+      <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#F2F0EC] to-transparent pointer-events-none"></div>
+    </div>
+  </div>
+);
+
+
+export default function ShaderShowcase() {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const handleMouseEnter = () => setIsActive(true)
-    const handleMouseLeave = () => setIsActive(false)
-
-    const container = containerRef.current
-    if (container) {
-      container.addEventListener("mouseenter", handleMouseEnter)
-      container.addEventListener("mouseleave", handleMouseLeave)
-    }
-
-    return () => {
-      if (container) {
-        container.removeEventListener("mouseenter", handleMouseEnter)
-        container.removeEventListener("mouseleave", handleMouseLeave)
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.1,
       }
+    );
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
-  }, [])
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-black relative overflow-hidden">
-      <svg className="absolute inset-0 w-0 h-0">
-        <defs>
-          <filter id="glass-effect" x="-50%" y="-50%" width="200%" height="200%">
-            <feTurbulence baseFrequency="0.005" numOctaves="1" result="noise" />
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.3" />
-            <feColorMatrix
-              type="matrix"
-              values="1 0 0 0 0.02
-                      0 1 0 0 0.02
-                      0 0 1 0 0.05
-                      0 0 0 0.9 0"
-              result="tint"
-            />
-          </filter>
-          <filter id="gooey-filter" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
-            <feColorMatrix
-              in="blur"
-              mode="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-              result="gooey"
-            />
-            <feComposite in="SourceGraphic" in2="gooey" operator="atop" />
-          </filter>
-          <filter id="logo-glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-          <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor={brandColors.cyan} />
-            <stop offset="50%" stopColor={brandColors.white} />
-            <stop offset="100%" stopColor={brandColors.blue} />
-          </linearGradient>
-          <linearGradient id="hero-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor={brandColors.white} />
-            <stop offset="30%" stopColor={brandColors.cyan} />
-            <stop offset="50%" stopColor={brandColors.primary} />
-            <stop offset="70%" stopColor={brandColors.secondary} />
-            <stop offset="100%" stopColor={brandColors.white} />
-          </linearGradient>
-          <filter id="text-glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="2" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-      </svg>
+    <section ref={sectionRef} className="relative overflow-hidden pt-24 lg:pt-32 pb-16 lg:pb-24" style={{ background: 'linear-gradient(to bottom, #F7F5F1, #F5F3EF, #F2F0EC)' }}>
+      <style jsx global>{`
+                .hero-image-text-white h3,
+                .hero-image-text-white p {
+                    color: #ffffff !important;
+                }
+                .hero-image-text-black h3,
+                .hero-image-text-black p {
+                    color: #000000 !important;
+                }
+            `}</style>
+      <HeroBackground />
+      <div className="container relative z-10">
+        {/* Transparent Glassmorphic Container Box - Wraps All Content */}
+        <div className={`relative rounded-3xl lg:rounded-[2.5rem] p-8 lg:p-12 xl:p-16 backdrop-blur-xl bg-transparent border border-transparent shadow-none transition-all duration-1000 ease-in-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
+          {/* Glassmorphic Effect Layers - Fully Transparent */}
+          <div className="absolute inset-0 rounded-3xl lg:rounded-[2.5rem] bg-transparent backdrop-blur-md" />
+          <div className="absolute inset-0 rounded-3xl lg:rounded-[2.5rem] bg-transparent backdrop-blur-sm" />
 
-      {/* Mesh gradients with brand colors */}
-      <ClientOnlyMeshGradient
-        className="absolute inset-0 w-full h-full"
-        colors={[brandColors.black, brandColors.cyan, brandColors.blue, brandColors.purple, brandColors.primary]}
-        speed={0.3}
-        backgroundColor={brandColors.black}
-      />
-      <ClientOnlyMeshGradient
-        className="absolute inset-0 w-full h-full opacity-60"
-        colors={[brandColors.black, brandColors.white, brandColors.cyan, brandColors.secondary]}
-        speed={0.2}
-        wireframe="true"
-        backgroundColor="transparent"
-      />
+          {/* Content Grid */}
+          <div className="relative z-10 grid lg:grid-cols-2 lg:gap-x-16 items-center">
+            {/* Left Column - Text Content */}
+            <div className="hero-text text-center lg:text-left relative">
+              <h1 className={`text-4xl lg:text-5xl xl:text-6xl font-bold text-[#1a1a1a] leading-tight mb-6 transition-all duration-1000 ease-in-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                Ready to Transform Your Business?
+              </h1>
+              <p className={`text-lg lg:text-xl text-[#4a4a4a] leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0 transition-all duration-1000 ease-in-out delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                Partner with Link Innovations to build software that scales with your business. From web applications to mobile apps and custom solutions, we deliver clarity, craftsmanship, and care.
+              </p>
 
-      {showNavigation && (
-        <header className="relative z-20 flex items-center justify-between p-6">
-          <motion.div
-            className="flex items-center group cursor-pointer"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          >
-            <motion.svg
-              fill="currentColor"
-              viewBox="0 0 100 100"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-              className="size-10 text-white group-hover:drop-shadow-lg transition-all duration-300"
-              style={{
-                filter: "url(#logo-glow)",
-              }}
-              whileHover={{
-                fill: "url(#logo-gradient)",
-                rotate: [0, -2, 2, 0],
-                transition: {
-                  fill: { duration: 0.3 },
-                  rotate: { duration: 0.6, ease: "easeInOut" },
-                },
-              }}
-            >
-              <motion.path
-                d="M15 85V15h12l18 35 18-35h12v70h-12V35L45 70h-10L17 35v50H15z"
-                initial={{ pathLength: 1 }}
-                whileHover={{
-                  pathLength: [1, 0, 1],
-                  transition: { duration: 1.2, ease: "easeInOut" },
-                }}
-              />
-            </motion.svg>
-
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-              {[...Array(6)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="absolute w-1 h-1 bg-white/60 rounded-full"
-                  style={{
-                    left: `${20 + Math.random() * 60}%`,
-                    top: `${20 + Math.random() * 60}%`,
-                  }}
-                  animate={{
-                    y: [-10, -20, -10],
-                    x: [0, Math.random() * 20 - 10, 0],
-                    opacity: [0, 1, 0],
-                    scale: [0, 1, 0],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Number.POSITIVE_INFINITY,
-                    delay: i * 0.2,
-                    ease: "easeInOut",
-                  }}
-                />
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Navigation */}
-          <nav className="flex items-center space-x-2">
-            <a
-              href="#"
-              className="text-white/80 hover:text-white text-xs font-light px-3 py-2 rounded-full hover:bg-white/10 transition-all duration-200"
-            >
-              Features
-            </a>
-            <a
-              href="#"
-              className="text-white/80 hover:text-white text-xs font-light px-3 py-2 rounded-full hover:bg-white/10 transition-all duration-200"
-            >
-              Pricing
-            </a>
-            <a
-              href="#"
-              className="text-white/80 hover:text-white text-xs font-light px-3 py-2 rounded-full hover:bg-white/10 transition-all duration-200"
-            >
-              Docs
-            </a>
-          </nav>
-
-          {/* Login Button Group with Arrow */}
-          <div id="gooey-btn" className="relative flex items-center group" style={{ filter: "url(#gooey-filter)" }}>
-            <button className="absolute right-0 px-2.5 py-2 rounded-full bg-white text-black font-normal text-xs transition-all duration-300 hover:bg-white/90 cursor-pointer h-8 flex items-center justify-center -translate-x-10 group-hover:-translate-x-19 z-0">
-              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
-              </svg>
-            </button>
-            <button className="px-6 py-2 rounded-full bg-white text-black font-normal text-xs transition-all duration-300 hover:bg-white/90 cursor-pointer h-8 flex items-center z-10">
-              Login
-            </button>
-          </div>
-        </header>
-      )}
-
-      <main className="absolute bottom-8 left-8 z-20 max-w-2xl">
-        <div className="text-left">
-          {subtitle && (
-            <motion.div
-              className="inline-flex items-center px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm mb-6 relative border border-white/10"
-              style={{
-                filter: "url(#glass-effect)",
-              }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <div className="absolute top-0 left-1 right-1 h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent rounded-full" />
-              <span className="text-white/90 text-sm font-medium relative z-10 tracking-wide">
-                {subtitle}
-              </span>
-            </motion.div>
-          )}
-
-          <motion.h1
-            className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-none tracking-tight"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            {title.split(" ").length > 1 ? (
-              <>
-                <motion.span
-                  className="block font-light text-white/90 text-4xl md:text-5xl lg:text-6xl mb-2 tracking-wider"
-                  style={{
-                    background: `linear-gradient(135deg, ${brandColors.white} 0%, ${brandColors.cyan} 30%, ${brandColors.primary} 50%, ${brandColors.secondary} 70%, ${brandColors.white} 100%)`,
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                    filter: "url(#text-glow)",
-                  }}
-                  animate={{
-                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                  }}
-                  transition={{
-                    duration: 8,
-                    repeat: Number.POSITIVE_INFINITY,
-                    ease: "linear",
-                  }}
+              {/* Buttons Container */}
+              <div className={`flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 transition-all duration-1000 ease-in-out delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+                {/* Primary CTA Button */}
+                <a
+                  href="/contact"
+                  className="group relative rounded-full px-8 py-4 bg-white text-[#1a1a1a] font-medium text-base flex items-center gap-3 transition-all duration-300 hover:scale-[1.05] hover:shadow-[0_8px_24px_0_rgba(0,0,0,0.15)] overflow-hidden"
                 >
-                  {title.split(" ")[0]}
-                </motion.span>
-                <span className="block font-black text-white drop-shadow-2xl">{title.split(" ").slice(1).join(" ")}</span>
-              </>
-            ) : (
-              <span className="block font-black text-white drop-shadow-2xl">{title}</span>
-            )}
-          </motion.h1>
+                  {/* Button Background Glow */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white to-gray-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* Hover illumination effect */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-[shimmer_1.5s_ease-in-out_infinite] transition-opacity duration-300" />
 
-          {description && (
-            <motion.p
-              className="text-lg font-light text-white/70 mb-8 leading-relaxed max-w-xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-            >
-              {description}
-            </motion.p>
-          )}
+                  <span className="relative z-10">Get Started</span>
+                  <div className="relative z-10 bg-[#1a1a1a]/10 rounded-full p-1.5 flex items-center justify-center backdrop-blur-sm">
+                    <ArrowRight className="w-5 h-5 text-[#1a1a1a] transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2.5} />
+                  </div>
+                </a>
 
-          <motion.div
-            className="flex items-center gap-6 flex-wrap"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.0 }}
-          >
-            <motion.button
-              className="px-10 py-4 rounded-full bg-transparent border-2 border-white/30 text-white font-medium text-sm transition-all duration-300 hover:bg-white/10 hover:border-cyan-400/50 hover:text-cyan-100 cursor-pointer backdrop-blur-sm"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              View Pricing
-            </motion.button>
-            <motion.button
-              className="px-10 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-orange-500 text-white font-semibold text-sm transition-all duration-300 hover:from-cyan-400 hover:to-orange-400 cursor-pointer shadow-lg hover:shadow-xl"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              style={{
-                background: `linear-gradient(135deg, ${brandColors.cyan} 0%, ${brandColors.primary} 50%, ${brandColors.secondary} 100%)`,
-              }}
-            >
-              Get Started
-            </motion.button>
-          </motion.div>
-        </div>
-      </main>
+                {/* Secondary CTA Button - Glassmorphic */}
+                <a
+                  href="/contact"
+                  className="group relative rounded-full px-8 py-4 bg-white/30 backdrop-blur-md border border-white/60 text-[#1a1a1a] font-medium text-base transition-all duration-300 hover:bg-white/40 hover:border-white/80 hover:scale-[1.05] hover:shadow-[0_4px_16px_0_rgba(0,0,0,0.1)]"
+                >
+                  <span className="relative z-10">Schedule a Call</span>
+                </a>
+              </div>
+            </div>
 
-      {showPulsingBorder && (
-        <div className="absolute bottom-8 right-8 z-30">
-          <div className="relative w-20 h-20 flex items-center justify-center">
-            <ClientOnlyPulsingBorder
-              colors={[brandColors.cyan, brandColors.blue, brandColors.purple, brandColors.primary, brandColors.secondary, "#00FF88", brandColors.white]}
-              colorBack="#00000000"
-              speed={1.5}
-              roundness={1}
-              thickness={0.1}
-              softness={0.2}
-              intensity={5}
-              spotsPerColor={5}
-              spotSize={0.1}
-              pulse={0.1}
-              smoke={0.5}
-              smokeSize={4}
-              scale={0.65}
-              rotation={0}
-              frame={9161408.251009725}
-              style={{
-                width: "60px",
-                height: "60px",
-                borderRadius: "50%",
-              }}
-            />
+            {/* Right Column - Dashboard Mockup */}
+            <div className="relative mt-16 lg:mt-0 h-[450px] lg:h-[550px]">
+              {/* Main Dashboard Card */}
+              <div className={`absolute w-[85%] sm:w-[70%] lg:w-[420px] left-0 top-1/2 lg:top-auto lg:bottom-0 -translate-y-1/2 lg:translate-y-0 transition-all duration-1000 ease-in-out transform-gpu delay-100 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'}`}>
+                <div className="group relative rounded-3xl overflow-hidden shadow-[0_20px_60px_-12px_rgba(0,0,0,0.5)] border border-white/10 transition-all duration-700 ease-in-out hover:scale-[1.02] hover:shadow-[0_30px_80px_-12px_rgba(0,0,0,0.6)]">
+                  {/* Illumination effect from behind */}
+                  <div className="absolute -inset-4 bg-gradient-to-br from-blue-400/20 via-purple-400/20 to-pink-400/20 opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-700 ease-in-out -z-10" />
+                  <div className="absolute -inset-2 bg-gradient-to-br from-blue-300/30 via-purple-300/30 to-pink-300/30 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-700 ease-in-out -z-10" />
 
-            {/* Rotating Text Around the Pulsing Border */}
-            <motion.svg
-              className="absolute inset-0 w-full h-full"
-              viewBox="0 0 100 100"
-              animate={{ rotate: 360 }}
-              transition={{
-                duration: 20,
-                repeat: Number.POSITIVE_INFINITY,
-                ease: "linear",
-              }}
-              style={{ transform: "scale(1.6)" }}
-            >
-              <defs>
-                <path id="circle" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
-              </defs>
-              <text className="text-sm fill-white/80 font-medium">
-                <textPath href="#circle" startOffset="0%">
-                  Loxt - Mozzi • 21st.dev is amazing • 21st.dev is amazing • Loxt-MoZzI •
-                </textPath>
-              </text>
-            </motion.svg>
+                  <Image
+                    src="/freepik__create-a-image-like-the-prompt-below-but-for-conta__40693.jpeg"
+                    alt="Web and mobile development interface"
+                    width={420}
+                    height={280}
+                    className="w-full h-auto object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
+                    priority
+                  />
+
+                  {/* Text reveal on hover - White text */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out flex items-end justify-center pb-6">
+                    <div className="hero-image-text-white text-center px-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 ease-in-out">
+                      <h3 className="text-xl font-bold mb-2">Web & Mobile Development</h3>
+                      <p className="text-sm">Build scalable applications that grow with your business</p>
+                    </div>
+                  </div>
+
+                  {/* Subtle overlay for depth */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Floating Stats Card */}
+              <div className={`absolute w-[75%] sm:w-[60%] lg:w-[360px] right-0 top-1/2 lg:top-0 -translate-y-[15%] lg:translate-y-0 transition-all duration-1000 ease-in-out delay-300 transform-gpu ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-5'}`}>
+                <div className="group relative rounded-3xl overflow-hidden shadow-[0_20px_60px_-12px_rgba(0,0,0,0.5)] border border-white/10 transition-all duration-700 ease-in-out hover:scale-[1.02] hover:shadow-[0_30px_80px_-12px_rgba(0,0,0,0.6)]">
+                  {/* Illumination effect from behind */}
+                  <div className="absolute -inset-4 bg-gradient-to-br from-cyan-400/20 via-blue-400/20 to-indigo-400/20 opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-700 ease-in-out -z-10" />
+                  <div className="absolute -inset-2 bg-gradient-to-br from-cyan-300/30 via-blue-300/30 to-indigo-300/30 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-700 ease-in-out -z-10" />
+
+                  <Image
+                    src="/freepik__create-a-image-like-the-prompt-below-but-for-conta__40695.jpeg"
+                    alt="Custom solutions interface"
+                    width={360}
+                    height={360}
+                    className="w-full h-auto object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
+                    priority
+                  />
+
+                  {/* Text reveal on hover - White text (same style as first card) */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out flex items-end justify-center pb-6">
+                    <div className="hero-image-text-white text-center px-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 ease-in-out">
+                      <h3 className="text-xl font-bold mb-2">Custom Solutions</h3>
+                      <p className="text-sm">Tailored software solutions designed for your unique needs</p>
+                    </div>
+                  </div>
+
+                  {/* Subtle overlay for depth */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      )}
-    </div>
-  )
-}
 
+          {/* Decorative Elements */}
+          <div className="absolute -top-4 -right-4 w-32 h-32 bg-gradient-to-br from-white/10 to-transparent rounded-full blur-3xl" />
+          <div className="absolute -bottom-4 -left-4 w-40 h-40 bg-gradient-to-tr from-white/5 to-transparent rounded-full blur-3xl" />
+        </div>
+
+        {/* Logo Carousel */}
+        <div className={`transition-opacity duration-1000 ease-out delay-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <LogoTicker />
+        </div>
+      </div>
+    </section>
+  );
+}
