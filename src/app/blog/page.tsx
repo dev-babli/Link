@@ -1,13 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { Header } from "@/components/header-3";
-import { Footer } from "@/components/Footer";
+import Navigation from "@/new-src/components/sections/navigation";
+import Footer from "@/new-src/components/sections/footer";
 import { PerformanceOptimizer } from "@/components/PerformanceOptimizer";
-import { motion } from "motion/react";
-import { PositivusCard, PositivusButton, PositivusSection, PositivusGrid } from "@/components/positivus";
 import Link from "next/link";
-import "@/styles/positivus-theme.css";
+import HeroSectionNew from "@/components/HeroSectionNew";
 
 const blogPosts = [
   {
@@ -76,38 +74,36 @@ export default function BlogPage() {
     : blogPosts.filter(post => post.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background-primary">
       <PerformanceOptimizer />
-      <Header />
+      <Navigation />
 
-      {/* Hero Section - Positivus Style */}
-      <PositivusSection background="white" padding="xl">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-4xl mx-auto"
-        >
+      {/* Hero Section */}
+      <HeroSectionNew />
+      
+      {/* Blog Content */}
+      <section className="bg-background-primary py-24">
+        <div className="text-center max-w-4xl mx-auto">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#8B5CF6]/20 bg-[#8B5CF6]/5 px-4 py-2 text-sm text-[#8B5CF6] mb-8">
-            <span className="w-2 h-2 bg-[#8B5CF6] rounded-full"></span>
+          <div className="inline-flex items-center gap-2 rounded-full border border-border-subtle bg-accent-yellow/20 px-4 py-2 text-sm text-text-primary mb-8">
+            <span className="w-2 h-2 bg-accent-yellow rounded-full"></span>
             Blog & Articles
           </div>
 
           {/* Main Heading */}
-          <h1 className="positivus-heading-1 text-gray-900 mb-6">
-            Insights & <span className="text-[#8B5CF6]">Resources</span>
+          <h1 className="text-4xl md:text-5xl font-medium text-text-primary mb-6">
+            Insights & <span className="text-text-primary">Resources</span>
           </h1>
 
           {/* Description */}
-          <p className="positivus-body-large text-gray-600 leading-relaxed mb-10 max-w-2xl mx-auto">
+          <p className="text-lg text-text-secondary leading-relaxed mb-10 max-w-2xl mx-auto">
             Stay updated with the latest trends, best practices, and insights from our team of experts.
           </p>
         </motion.div>
-      </PositivusSection>
+      </section>
 
-      {/* Categories Filter - Positivus Style */}
-      <PositivusSection background="gray" padding="md">
+      {/* Categories Filter */}
+      <section className="bg-background-secondary py-8">
         <div className="flex flex-wrap gap-3 justify-center">
           {categories.map((category) => (
             <button
@@ -115,45 +111,40 @@ export default function BlogPage() {
               onClick={() => setSelectedCategory(category)}
               className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 selectedCategory === category
-                  ? "bg-[#8B5CF6] text-white shadow-md"
-                  : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
+                  ? "bg-accent-yellow text-text-primary shadow-md"
+                  : "bg-background-secondary text-text-secondary hover:bg-background-primary border border-border-subtle"
               }`}
             >
               {category}
             </button>
           ))}
         </div>
-      </PositivusSection>
+      </section>
 
-      {/* Blog Posts Grid - Positivus Style */}
-      <PositivusSection background="white" padding="lg">
-        <PositivusGrid columns={3} gap="lg">
+      {/* Blog Posts Grid */}
+      <section className="bg-background-primary py-24">
+        <div className="container mx-auto px-6 lg:px-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredPosts.map((post, index) => (
-            <motion.div
-              key={post.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-            >
-              <PositivusCard variant="light" hover className="h-full">
+            <div key={post.id}>
+              <Link href={`/blog/${post.id}`} className="group block h-full rounded-xl border border-border-subtle bg-background-secondary p-6 shadow-soft transition-all hover:shadow-lg hover:-translate-y-1">
                 {/* Image */}
                 <div className="w-full h-48 rounded-lg bg-gradient-to-br from-[#8B5CF6]/20 to-[#3B82F6]/20 flex items-center justify-center text-6xl mb-4">
                   {post.image}
                 </div>
 
                 {/* Category */}
-                <div className="text-xs font-medium text-[#8B5CF6] mb-2">
+                <div className="text-xs font-medium text-text-primary mb-2">
                   {post.category}
                 </div>
 
                 {/* Title */}
-                <h3 className="positivus-heading-4 text-gray-900 mb-3">
+                <h3 className="text-xl font-medium text-text-primary mb-3">
                   {post.title}
                 </h3>
 
                 {/* Excerpt */}
-                <p className="positivus-body-small text-gray-600 leading-relaxed mb-4">
+                <p className="text-sm text-text-secondary leading-relaxed mb-4">
                   {post.excerpt}
                 </p>
 
@@ -164,47 +155,42 @@ export default function BlogPage() {
                 </div>
 
                 {/* CTA */}
-                <div className="text-sm text-[#8B5CF6] font-medium flex items-center group-hover:text-[#7C3AED] transition-colors">
+                <div className="text-sm text-text-primary font-medium flex items-center group-hover:opacity-70 transition-colors">
                   Read Article
                   <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </div>
-              </PositivusCard>
-            </motion.div>
+              </Link>
+            </div>
           ))}
-        </PositivusGrid>
-      </PositivusSection>
+          </div>
+        </div>
+      </section>
 
-      {/* CTA Section - Positivus Style */}
-      <PositivusSection background="gray" padding="lg">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto text-center"
-        >
-          <PositivusCard variant="elevated" className="p-8 md:p-12">
-            <h2 className="positivus-heading-2 text-gray-900 mb-4">
+      {/* CTA Section */}
+      <section className="bg-background-secondary py-24">
+        <div className="container mx-auto px-6 lg:px-20">
+          <div className="max-w-3xl mx-auto text-center rounded-xl border border-border-subtle bg-background-secondary p-8 md:p-12 shadow-soft">
+            <h2 className="text-3xl font-medium text-text-primary mb-4">
               Want to Stay Updated?
             </h2>
-            <p className="positivus-body-large text-gray-600 mb-8">
+            <p className="text-base text-text-secondary mb-8">
               Subscribe to our newsletter to receive the latest insights and updates directly in your inbox.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#8B5CF6] focus:border-transparent"
+                className="flex-1 px-4 py-3 rounded-lg border border-border-subtle bg-background-primary text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-yellow focus:border-transparent"
               />
-              <PositivusButton variant="primary" size="lg">
+              <button className="rounded-full bg-accent-yellow px-8 py-3.5 font-medium text-text-primary transition-transform hover:scale-[1.02]">
                 Subscribe
-              </PositivusButton>
+              </button>
             </div>
-          </PositivusCard>
-        </motion.div>
-      </PositivusSection>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>

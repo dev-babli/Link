@@ -1,10 +1,10 @@
 "use client";
 
-import EnhancedServicePageTemplate from "@/components/EnhancedServicePageTemplate";
+import GroviaServiceTemplate from "@/components/GroviaServiceTemplate";
 
 export default function MobileAppDevelopmentPage() {
   return (
-    <EnhancedServicePageTemplate
+    <GroviaServiceTemplate
       serviceName="Mobile App Development"
       heroTitle="Build Powerful, Scalable Mobile Apps that Users Love"
       heroSubtitle="Turn your ideas into seamless, high-performing mobile experiences for iOS and Android."

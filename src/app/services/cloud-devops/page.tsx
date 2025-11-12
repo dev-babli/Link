@@ -1,10 +1,10 @@
 "use client";
 
-import EnhancedServicePageTemplate from "@/components/EnhancedServicePageTemplate";
+import GroviaServiceTemplate from "@/components/GroviaServiceTemplate";
 
 export default function CloudDevOpsPage() {
     return (
-        <EnhancedServicePageTemplate
+        <GroviaServiceTemplate
             serviceName="Cloud DevOps"
             heroTitle="Streamline Development with Modern DevOps Practices"
             heroDescription="Accelerate delivery with automated CI/CD pipelines, infrastructure as code, and modern DevOps practices. We help you build, deploy, and scale applications with confidence and efficiency."

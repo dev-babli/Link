@@ -1,10 +1,10 @@
 "use client";
 
-import EnhancedServicePageTemplate from "@/components/EnhancedServicePageTemplate";
+import GroviaServiceTemplate from "@/components/GroviaServiceTemplate";
 
 export default function CloudServicesPage() {
   return (
-    <EnhancedServicePageTemplate
+    <GroviaServiceTemplate
       serviceName="Cloud Services"
       heroTitle="Scale Your Infrastructure with Reliable Cloud Solutions"
       heroSubtitle="Scalable cloud infrastructure that grows with your business"

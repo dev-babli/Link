@@ -1,13 +1,11 @@
 "use client";
 
 import React from "react";
-import { Header } from "@/components/header-3";
-import { Footer } from "@/components/Footer";
+import Navigation from "@/new-src/components/sections/navigation";
+import Footer from "@/new-src/components/sections/footer";
 import { PerformanceOptimizer } from "@/components/PerformanceOptimizer";
-import { motion } from "motion/react";
-import { PositivusCard, PositivusButton, PositivusSection, PositivusGrid } from "@/components/positivus";
 import { Check, X } from "lucide-react";
-import "@/styles/positivus-theme.css";
+import HeroSectionNew from "@/components/HeroSectionNew";
 
 const pricingPlans = [
   {
@@ -99,18 +97,16 @@ const faqs = [
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background-primary">
       <PerformanceOptimizer />
-      <Header />
+      <Navigation />
 
-      {/* Hero Section - Positivus Style */}
-      <PositivusSection background="white" padding="xl">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-4xl mx-auto"
-        >
+      {/* Hero Section */}
+      <HeroSectionNew />
+      
+      {/* Pricing Content */}
+      <section className="bg-background-primary py-24">
+        <div className="text-center max-w-4xl mx-auto">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 rounded-full border border-[#8B5CF6]/20 bg-[#8B5CF6]/5 px-4 py-2 text-sm text-[#8B5CF6] mb-8">
             <span className="w-2 h-2 bg-[#8B5CF6] rounded-full"></span>
@@ -118,52 +114,43 @@ export default function PricingPage() {
           </div>
 
           {/* Main Heading */}
-          <h1 className="positivus-heading-1 text-gray-900 mb-6">
-            Simple, Transparent <span className="text-[#8B5CF6]">Pricing</span>
+          <h1 className="text-4xl md:text-5xl font-medium text-text-primary mb-6">
+            Simple, Transparent <span className="text-text-primary">Pricing</span>
           </h1>
 
           {/* Description */}
-          <p className="positivus-body-large text-gray-600 leading-relaxed mb-10 max-w-2xl mx-auto">
+          <p className="text-lg text-text-secondary leading-relaxed mb-10 max-w-2xl mx-auto">
             Choose a plan that fits your needs. All plans include our commitment to quality, transparency, and ethical practices.
           </p>
         </motion.div>
-      </PositivusSection>
+      </section>
 
-      {/* Pricing Cards - Positivus Style */}
-      <PositivusSection background="gray" padding="lg">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      {/* Pricing Cards */}
+      <section className="bg-background-secondary py-24">
+        <div className="container mx-auto px-6 lg:px-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {pricingPlans.map((plan, index) => (
-            <motion.div
-              key={plan.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative"
-            >
+            <div key={plan.name} className="relative">
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#8B5CF6] text-white text-sm font-medium rounded-full">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-accent-yellow text-text-primary text-sm font-medium rounded-full">
                   Most Popular
                 </div>
               )}
-              <PositivusCard 
-                variant={plan.popular ? "elevated" : "light"} 
-                className={`h-full ${plan.popular ? "border-2 border-[#8B5CF6]" : ""}`}
-              >
+              <div className={`h-full rounded-xl border ${plan.popular ? "border-2 border-accent-yellow shadow-lg" : "border-border-subtle"} bg-background-secondary p-8 shadow-soft transition-all hover:shadow-lg`}>
                 {/* Plan Name */}
-                <div className={`text-2xl font-bold ${plan.color} mb-2`}>
+                <div className="text-2xl font-bold text-text-primary mb-2">
                   {plan.name}
                 </div>
-                <p className="positivus-body-small text-gray-600 mb-6">
+                <p className="text-sm text-text-secondary mb-6">
                   {plan.description}
                 </p>
 
                 {/* Price */}
                 <div className="mb-8">
-                  <div className={`text-4xl font-bold ${plan.color} mb-1`}>
+                  <div className="text-4xl font-bold text-text-primary mb-1">
                     {plan.price}
                   </div>
-                  <div className="text-sm text-gray-500">
+                  <div className="text-sm text-text-secondary">
                     {plan.period}
                   </div>
                 </div>
@@ -172,16 +159,16 @@ export default function PricingPage() {
                 <div className="space-y-4 mb-8">
                   {plan.features.map((feature, idx) => (
                     <div key={idx} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-[#8B5CF6] flex-shrink-0 mt-0.5" />
-                      <span className="positivus-body-small text-gray-700">
+                      <Check className="w-5 h-5 text-accent-yellow flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-text-secondary">
                         {feature}
                       </span>
                     </div>
                   ))}
                   {plan.notIncluded.map((feature, idx) => (
                     <div key={idx} className="flex items-start gap-3 opacity-50">
-                      <X className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
-                      <span className="positivus-body-small text-gray-500 line-through">
+                      <X className="w-5 h-5 text-text-secondary flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-text-secondary line-through">
                         {feature}
                       </span>
                     </div>
@@ -189,69 +176,65 @@ export default function PricingPage() {
                 </div>
 
                 {/* CTA Button */}
-                <PositivusButton
-                  variant={plan.popular ? "primary" : "outline"}
-                  size="lg"
+                <a
                   href="/contact"
-                  className="w-full"
+                  className={`w-full block text-center rounded-full px-8 py-3.5 font-medium transition-transform hover:scale-[1.02] ${
+                    plan.popular
+                      ? "bg-accent-yellow text-text-primary"
+                      : "border border-border-subtle text-text-primary hover:bg-background-primary"
+                  }`}
                 >
                   Get Started
-                </PositivusButton>
-              </PositivusCard>
-            </motion.div>
+                </a>
+              </div>
+            </div>
           ))}
-        </div>
-      </PositivusSection>
-
-      {/* FAQ Section - Positivus Style */}
-      <PositivusSection background="white" padding="lg">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto"
-        >
-          <h2 className="positivus-heading-2 text-gray-900 mb-12 text-center">
-            Frequently Asked Questions
-          </h2>
-          <div className="space-y-6">
-            {faqs.map((faq, index) => (
-              <PositivusCard key={index} variant="light" className="p-6">
-                <h3 className="positivus-heading-4 text-gray-900 mb-3">
-                  {faq.question}
-                </h3>
-                <p className="positivus-body text-gray-600">
-                  {faq.answer}
-                </p>
-              </PositivusCard>
-            ))}
           </div>
-        </motion.div>
-      </PositivusSection>
+        </div>
+      </section>
 
-      {/* CTA Section - Positivus Style */}
-      <PositivusSection background="gray" padding="lg">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto text-center"
-        >
-          <PositivusCard variant="elevated" className="p-8 md:p-12">
-            <h2 className="positivus-heading-2 text-gray-900 mb-4">
+      {/* FAQ Section */}
+      <section className="bg-background-primary py-24">
+        <div className="container mx-auto px-6 lg:px-20">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-medium text-text-primary mb-12 text-center">
+              Frequently Asked Questions
+            </h2>
+            <div className="space-y-6">
+              {faqs.map((faq, index) => (
+                <div key={index} className="rounded-xl border border-border-subtle bg-background-secondary p-6 shadow-soft">
+                  <h3 className="text-xl font-medium text-text-primary mb-3">
+                    {faq.question}
+                  </h3>
+                  <p className="text-base text-text-secondary">
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="bg-background-secondary py-24">
+        <div className="container mx-auto px-6 lg:px-20">
+          <div className="max-w-3xl mx-auto text-center rounded-xl border border-border-subtle bg-background-secondary p-8 md:p-12 shadow-soft">
+            <h2 className="text-3xl font-medium text-text-primary mb-4">
               Need a Custom Solution?
             </h2>
-            <p className="positivus-body-large text-gray-600 mb-8">
+            <p className="text-base text-text-secondary mb-8">
               Every project is unique. Contact us for a personalized quote tailored to your specific needs.
             </p>
-            <PositivusButton variant="primary" size="lg" href="/contact">
+            <a
+              href="/contact"
+              className="inline-block rounded-full bg-accent-yellow px-8 py-3.5 font-medium text-text-primary transition-transform hover:scale-[1.02]"
+            >
               Contact Sales
-            </PositivusButton>
-          </PositivusCard>
-        </motion.div>
-      </PositivusSection>
+            </a>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>

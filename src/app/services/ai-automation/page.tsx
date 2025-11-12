@@ -1,10 +1,10 @@
 "use client";
 
-import EnhancedServicePageTemplate from "@/components/EnhancedServicePageTemplate";
+import GroviaServiceTemplate from "@/components/GroviaServiceTemplate";
 
 export default function AIAutomationPage() {
   return (
-    <EnhancedServicePageTemplate
+    <GroviaServiceTemplate
       serviceName="AI Solutions"
       heroTitle="Transform Your Business with Intelligent Automation"
       heroSubtitle="Leverage artificial intelligence to automate processes, gain insights, and create intelligent solutions."

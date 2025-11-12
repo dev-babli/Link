@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Merriweather, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import "../new-src/app/globals.css";
 import "../styles/color-system.css";
 import "../styles/typography.css";
 import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
@@ -80,7 +81,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body
-        className={`${merriweather.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased bg-white`}
+        className={`${merriweather.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased bg-background-primary`}
       >
         <ErrorReporter />
         <ErrorBoundary>

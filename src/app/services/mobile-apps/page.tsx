@@ -1,10 +1,10 @@
 "use client";
 
-import EnhancedServicePageTemplate from "@/components/EnhancedServicePageTemplate";
+import GroviaServiceTemplate from "@/components/GroviaServiceTemplate";
 
 export default function MobileAppsPage() {
   return (
-    <EnhancedServicePageTemplate
+    <GroviaServiceTemplate
       serviceName="Mobile Apps"
       heroTitle="Cross-Platform Mobile Solutions That Work Seamlessly"
       heroDescription="Create powerful mobile experiences that engage users and drive results. From iOS to Android, we deliver native and cross-platform solutions that work perfectly on all devices."

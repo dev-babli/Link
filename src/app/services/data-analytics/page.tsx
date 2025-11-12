@@ -1,10 +1,10 @@
 "use client";
 
-import EnhancedServicePageTemplate from "@/components/EnhancedServicePageTemplate";
+import GroviaServiceTemplate from "@/components/GroviaServiceTemplate";
 
 export default function DataAnalyticsPage() {
     return (
-        <EnhancedServicePageTemplate
+        <GroviaServiceTemplate
             serviceName="Data Analytics"
             heroTitle="Turn Your Data Into Actionable Insights"
             heroDescription="Transform data into insights while respecting user privacy. We provide transparent analytics with clear data usage policies, helping you make data-driven decisions that drive business success."

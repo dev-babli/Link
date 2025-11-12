@@ -1,10 +1,10 @@
 "use client";
 
-import EnhancedServicePageTemplate from "@/components/EnhancedServicePageTemplate";
+import GroviaServiceTemplate from "@/components/GroviaServiceTemplate";
 
 export default function WebAppDevelopmentPage() {
   return (
-    <EnhancedServicePageTemplate
+    <GroviaServiceTemplate
       serviceName="Web App Development"
       heroTitle="Advanced Web Applications and Platforms with Complex Functionality"
       heroDescription="Enterprise-grade web applications and platforms with complex functionality. We build scalable, secure, and performant web solutions for modern businesses."

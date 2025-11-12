@@ -1,10 +1,10 @@
 "use client";
 
-import EnhancedServicePageTemplate from "@/components/EnhancedServicePageTemplate";
+import GroviaServiceTemplate from "@/components/GroviaServiceTemplate";
 
 export default function AutomationTestingPage() {
   return (
-    <EnhancedServicePageTemplate
+    <GroviaServiceTemplate
       serviceName="Automation Testing"
       heroTitle="Ensure Quality with Comprehensive Testing Solutions"
       heroDescription="Comprehensive testing solutions to ensure quality and reliability. Automated testing that catches issues early, integrates with your CI/CD pipeline, and provides confidence in every release."

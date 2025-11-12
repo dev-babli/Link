@@ -1,10 +1,10 @@
 "use client";
 
-import EnhancedServicePageTemplate from "@/components/EnhancedServicePageTemplate";
+import GroviaServiceTemplate from "@/components/GroviaServiceTemplate";
 
 export default function CybersecurityPage() {
     return (
-        <EnhancedServicePageTemplate
+        <GroviaServiceTemplate
             serviceName="Cybersecurity"
             heroTitle="Protect Your Digital Assets with Comprehensive Security Solutions"
             heroDescription="Safeguard your business with comprehensive security solutions. From threat assessment to incident response, we keep your digital assets secure with transparent security practices and clear communication."

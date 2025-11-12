@@ -1,13 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { Header } from "@/components/header-3";
-import { Footer } from "@/components/Footer";
+import Navigation from "@/new-src/components/sections/navigation";
+import Footer from "@/new-src/components/sections/footer";
 import { PerformanceOptimizer } from "@/components/PerformanceOptimizer";
-import { motion } from "motion/react";
-import { PositivusCard, PositivusButton, PositivusSection, PositivusGrid } from "@/components/positivus";
 import Link from "next/link";
-import "@/styles/positivus-theme.css";
+import HeroSectionNew from "@/components/HeroSectionNew";
 
 const useCases = [
   {
@@ -103,84 +101,79 @@ export default function UseCasesPage() {
     : useCases.filter(caseItem => caseItem.industry === selectedIndustry);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background-primary">
       <PerformanceOptimizer />
-      <Header />
+      <Navigation />
 
-      {/* Hero Section - Positivus Style */}
-      <PositivusSection background="white" padding="xl">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-4xl mx-auto"
-        >
+      {/* Hero Section */}
+      <HeroSectionNew />
+      
+      {/* Use Cases Content */}
+      <section className="bg-background-primary py-24">
+        <div className="text-center max-w-4xl mx-auto">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#8B5CF6]/20 bg-[#8B5CF6]/5 px-4 py-2 text-sm text-[#8B5CF6] mb-8">
-            <span className="w-2 h-2 bg-[#8B5CF6] rounded-full"></span>
+          <div className="inline-flex items-center gap-2 rounded-full border border-border-subtle bg-accent-yellow/20 px-4 py-2 text-sm text-text-primary mb-8">
+            <span className="w-2 h-2 bg-accent-yellow rounded-full"></span>
             Use Cases
           </div>
 
           {/* Main Heading */}
-          <h1 className="positivus-heading-1 text-gray-900 mb-6">
-            Real-World <span className="text-[#8B5CF6]">Solutions</span>
+          <h1 className="text-4xl md:text-5xl font-medium text-text-primary mb-6">
+            Real-World <span className="text-text-primary">Solutions</span>
           </h1>
 
           {/* Description */}
-          <p className="positivus-body-large text-gray-600 leading-relaxed mb-10 max-w-2xl mx-auto">
+          <p className="text-lg text-text-secondary leading-relaxed mb-10 max-w-2xl mx-auto">
             Explore how we've helped businesses across industries transform their operations with innovative technology solutions.
           </p>
-        </motion.div>
-      </PositivusSection>
-
-      {/* Industry Filter - Positivus Style */}
-      <PositivusSection background="gray" padding="md">
-        <div className="flex flex-wrap gap-3 justify-center">
-          {industries.map((industry) => (
-            <button
-              key={industry}
-              onClick={() => setSelectedIndustry(industry)}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                selectedIndustry === industry
-                  ? "bg-[#8B5CF6] text-white shadow-md"
-                  : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
-              }`}
-            >
-              {industry}
-            </button>
-          ))}
         </div>
-      </PositivusSection>
+      </section>
 
-      {/* Use Cases Grid - Positivus Style */}
-      <PositivusSection background="white" padding="lg">
-        <PositivusGrid columns={3} gap="lg">
+      {/* Industry Filter */}
+      <section className="bg-background-secondary py-8">
+        <div className="container mx-auto px-6 lg:px-20">
+          <div className="flex flex-wrap gap-3 justify-center">
+            {industries.map((industry) => (
+              <button
+                key={industry}
+                onClick={() => setSelectedIndustry(industry)}
+                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  selectedIndustry === industry
+                    ? "bg-accent-yellow text-text-primary shadow-md"
+                    : "bg-background-secondary text-text-secondary hover:bg-background-primary border border-border-subtle"
+                }`}
+              >
+                {industry}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Use Cases Grid */}
+      <section className="bg-background-primary py-24">
+        <div className="container mx-auto px-6 lg:px-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredCases.map((useCase, index) => (
-            <motion.div
-              key={useCase.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-            >
-              <PositivusCard variant="light" hover className="h-full">
+            <div key={useCase.id}>
+              <div className="group block h-full rounded-xl border border-border-subtle bg-background-secondary p-6 shadow-soft transition-all hover:shadow-lg hover:-translate-y-1">
                 {/* Image */}
-                <div className={`w-full h-32 rounded-lg bg-gradient-to-br ${useCase.color} flex items-center justify-center text-5xl mb-4`}>
+                <div className="w-full h-32 rounded-lg bg-gradient-to-br from-accent-yellow/20 to-accent-yellow/10 flex items-center justify-center text-5xl mb-4">
                   {useCase.image}
                 </div>
 
                 {/* Industry Tag */}
-                <div className="text-xs font-medium text-[#8B5CF6] mb-2">
+                <div className="text-xs font-medium text-text-primary mb-2">
                   {useCase.industry}
                 </div>
 
                 {/* Title */}
-                <h3 className="positivus-heading-4 text-gray-900 mb-3">
+                <h3 className="text-xl font-medium text-text-primary mb-3">
                   {useCase.title}
                 </h3>
 
                 {/* Description */}
-                <p className="positivus-body-small text-gray-600 leading-relaxed mb-4">
+                <p className="text-sm text-text-secondary leading-relaxed mb-4">
                   {useCase.description}
                 </p>
 
@@ -189,7 +182,7 @@ export default function UseCasesPage() {
                   {useCase.services.map((service, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1 text-xs font-medium text-gray-700 bg-gray-100 rounded-full"
+                      className="px-3 py-1 text-xs font-medium text-text-secondary bg-background-primary rounded-full"
                     >
                       {service}
                     </span>
@@ -197,45 +190,46 @@ export default function UseCasesPage() {
                 </div>
 
                 {/* CTA */}
-                <div className="text-sm text-[#8B5CF6] font-medium flex items-center group-hover:text-[#7C3AED] transition-colors">
+                <div className="text-sm text-text-primary font-medium flex items-center group-hover:opacity-70 transition-colors">
                   Learn More
                   <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </div>
-              </PositivusCard>
-            </motion.div>
+              </div>
+            </div>
           ))}
-        </PositivusGrid>
-      </PositivusSection>
+          </div>
+        </div>
+      </section>
 
-      {/* CTA Section - Positivus Style */}
-      <PositivusSection background="gray" padding="lg">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto text-center"
-        >
-          <PositivusCard variant="elevated" className="p-8 md:p-12">
-            <h2 className="positivus-heading-2 text-gray-900 mb-4">
+      {/* CTA Section */}
+      <section className="bg-background-secondary py-24">
+        <div className="container mx-auto px-6 lg:px-20">
+          <div className="max-w-3xl mx-auto text-center rounded-xl border border-border-subtle bg-background-secondary p-8 md:p-12 shadow-soft">
+            <h2 className="text-3xl font-medium text-text-primary mb-4">
               Have a Specific Use Case?
             </h2>
-            <p className="positivus-body-large text-gray-600 mb-8">
+            <p className="text-base text-text-secondary mb-8">
               Every business is unique. Let's discuss how we can create a custom solution tailored to your specific needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <PositivusButton variant="primary" size="lg" href="/contact">
+              <a
+                href="/contact"
+                className="rounded-full bg-accent-yellow px-8 py-3.5 font-medium text-text-primary transition-transform hover:scale-[1.02]"
+              >
                 Discuss Your Project
-              </PositivusButton>
-              <PositivusButton variant="outline" size="lg" href="/services">
+              </a>
+              <a
+                href="/services"
+                className="rounded-full border border-border-subtle px-8 py-3.5 font-medium text-text-primary transition-transform hover:scale-[1.02] hover:bg-background-primary"
+              >
                 View Services
-              </PositivusButton>
+              </a>
             </div>
-          </PositivusCard>
-        </motion.div>
-      </PositivusSection>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>
