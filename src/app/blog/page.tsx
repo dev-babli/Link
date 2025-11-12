@@ -99,7 +99,7 @@ export default function BlogPage() {
           <p className="text-lg text-text-secondary leading-relaxed mb-10 max-w-2xl mx-auto">
             Stay updated with the latest trends, best practices, and insights from our team of experts.
           </p>
-        </motion.div>
+        </div>
       </section>
 
       {/* Categories Filter */}

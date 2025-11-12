@@ -122,7 +122,7 @@ export default function PricingPage() {
           <p className="text-lg text-text-secondary leading-relaxed mb-10 max-w-2xl mx-auto">
             Choose a plan that fits your needs. All plans include our commitment to quality, transparency, and ethical practices.
           </p>
-        </motion.div>
+        </div>
       </section>
 
       {/* Pricing Cards */}
