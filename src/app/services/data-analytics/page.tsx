@@ -1,115 +1,157 @@
 "use client";
 
-import GroviaServiceTemplate from "@/components/GroviaServiceTemplate";
+import PremiumServiceTemplate from "@/components/PremiumServiceTemplate";
 
 export default function DataAnalyticsPage() {
-    return (
-        <GroviaServiceTemplate
-            serviceName="Data Analytics"
-            heroTitle="Turn Your Data Into Actionable Insights"
-            heroDescription="Transform data into insights while respecting user privacy. We provide transparent analytics with clear data usage policies, helping you make data-driven decisions that drive business success."
-            heroImage="/images/service-cards/data-analytics-service-card.webp"
-            primaryCTA={{
-                text: "Start Analytics Project",
-                href: "/contact"
-            }}
-            secondaryCTA={{
-                text: "View Analytics Examples",
-                href: "/services"
-            }}
-            approachTabData={[
-                {
-                    id: 0,
-                    number: '01',
-                    label: 'Discovery',
-                    title: ['Discover your potential with ', 'data assessment'],
-                    subtitle: 'Data Assessment',
-                    description: 'We begin every analytics project with a comprehensive assessment of your data sources, quality, and business requirements.',
-                    features: ['Data Audit', 'Quality Assessment', 'Requirements Analysis', 'Privacy Review'],
-                    image: '/images/tabbedfeatures_cards/discovery.jpeg',
-                    fallback: '/images/tabbedfeatures_cards/discovery.jpeg',
-                },
-                {
-                    id: 1,
-                    number: '02',
-                    label: 'Design',
-                    title: ['Design insights with ', 'analytics architecture'],
-                    subtitle: 'Analytics Architecture Design',
-                    description: 'Our data architects design scalable analytics solutions that transform your data into actionable business insights.',
-                    features: ['Data Architecture', 'Dashboard Design', 'Reporting Framework', 'Privacy Compliance'],
-                    image: '/images/tabbedfeatures_cards/development.jpeg',
-                    fallback: '/images/tabbedfeatures_cards/development.jpeg',
-                },
-                {
-                    id: 2,
-                    number: '03',
-                    label: 'Development',
-                    title: ['Build with advanced ', 'analytics technologies'],
-                    subtitle: 'Analytics Development',
-                    description: 'We develop robust analytics solutions using modern technologies and best practices for data processing and visualization.',
-                    features: ['Data Processing', 'Model Development', 'Dashboard Creation', 'API Development'],
-                    image: '/images/tabbedfeatures_cards/testing.jpeg',
-                    fallback: '/images/tabbedfeatures_cards/testing.jpeg',
-                },
-                {
-                    id: 3,
-                    number: '04',
-                    label: 'Deployment',
-                    title: ['Deploy with continuous ', 'analytics monitoring'],
-                    subtitle: 'Analytics Deployment',
-                    description: 'Seamless deployment with ongoing monitoring and optimization to ensure your analytics deliver continuous value.',
-                    features: ['Production Deployment', 'Performance Monitoring', 'Data Quality Checks', 'Ongoing Optimization'],
-                    image: '/images/tabbedfeatures_cards/deployment.jpeg',
-                    fallback: '/images/tabbedfeatures_cards/deployment.jpeg',
-                },
-            ]}
-            challenges={[
-                { challenge: "Data scattered across multiple systems and platforms", solution: "Data integration and consolidation" },
-                { challenge: "Difficulty extracting meaningful insights from raw data", solution: "Advanced analytics and visualization" },
-                { challenge: "Lack of real-time analytics and reporting capabilities", solution: "Real-time dashboards and reporting" },
-                { challenge: "Privacy concerns and data governance requirements", solution: "Privacy-first analytics and governance" },
-                { challenge: "Need for predictive analytics and forecasting", solution: "Machine learning and predictive models" }
-            ]}
-            solutions={[
-                { title: "Real-time Dashboards", description: "Live data visualization", icon: "📊" },
-                { title: "Predictive Analytics", description: "Forecast trends", icon: "🔮" },
-                { title: "Data Integration", description: "Unified data sources", icon: "🔗" }
-            ]}
-            capabilities={[
-                { title: "Business Intelligence", description: "Interactive dashboards", icon: "📈" },
-                { title: "Data Visualization", description: "Charts and reports", icon: "📊" },
-                { title: "Predictive Modeling", description: "ML forecasting", icon: "🤖" },
-                { title: "Data Warehousing", description: "Centralized storage", icon: "🏗️" },
-                { title: "ETL Pipelines", description: "Data processing", icon: "⚙️" },
-                { title: "Privacy Compliance", description: "GDPR, CCPA ready", icon: "🔒" }
-            ]}
-            technologies={[
-                "Python", "R", "Tableau", "Power BI", "Apache Spark", "Snowflake"
-            ]}
-            whyChooseUs={[
-                {
-                    title: "Privacy First",
-                    description: "Transparent analytics with clear data usage policies and user consent",
-                    icon: "🔒"
-                },
-                {
-                    title: "Actionable Insights",
-                    description: "Focus on business outcomes with clear, actionable recommendations",
-                    icon: "💡"
-                },
-                {
-                    title: "Real-time Analytics",
-                    description: "Live dashboards and instant insights for faster decision-making",
-                    icon: "⚡"
-                }
-            ]}
-            ctaTitle="Ready to Unlock Your Data's Potential?"
-            ctaDescription="Transform your data into actionable insights that drive business growth and competitive advantage."
-            ctaButtonText="Start Analytics"
-            ctaButtonHref="/contact"
-            primaryColor="bg-emerald-500"
-            gradientFrom="from-emerald-500"
-            gradientTo="to-blue-500"
-        />
-    );
+  return (
+    <PremiumServiceTemplate
+      serviceName="Data Analytics"
+      heroTitle="Turn Your Data Into Actionable Insights"
+      heroSubtitle="Business Intelligence"
+      heroDescription="Transform data into insights while respecting user privacy. We provide transparent analytics with clear data usage policies, helping you make data-driven decisions that drive business success."
+      heroImage="/images/service-cards/data-analytics-service-card.webp"
+      primaryCTA={{ text: "Start Analytics Project", href: "/contact" }}
+      secondaryCTA={{ text: "View Analytics Examples", href: "/services" }}
+      impactMetrics={[
+        { metric: "Data Processing", value: "10x", description: "Faster data processing" },
+        { metric: "Insight Accuracy", value: "95%", description: "Predictive accuracy" },
+        { metric: "Cost Reduction", value: "30%", description: "Operational cost savings" },
+        { metric: "Decision Speed", value: "5x", description: "Faster decision making" }
+      ]}
+      features={[
+        {
+          icon: "📊",
+          title: "Data Warehousing",
+          description: "Centralized data warehouses for unified analytics."
+        },
+        {
+          icon: "📈",
+          title: "Business Intelligence",
+          description: "Interactive dashboards and reporting solutions."
+        },
+        {
+          icon: "🔮",
+          title: "Predictive Analytics",
+          description: "Machine learning models for forecasting and predictions."
+        },
+        {
+          icon: "🔄",
+          title: "Data Pipelines",
+          description: "Automated ETL pipelines for data processing."
+        },
+        {
+          icon: "👁️",
+          title: "Real-Time Analytics",
+          description: "Real-time dashboards and streaming analytics."
+        },
+        {
+          icon: "🔒",
+          title: "Data Privacy",
+          description: "Privacy-compliant analytics with data governance."
+        }
+      ]}
+      useCases={[
+        {
+          title: "Business Intelligence",
+          description: "Executive dashboards and KPI tracking",
+          examples: [
+            "Executive dashboards",
+            "KPI tracking",
+            "Performance metrics"
+          ],
+          icon: "📊"
+        },
+        {
+          title: "Customer Analytics",
+          description: "Customer behavior and segmentation",
+          examples: [
+            "Customer segmentation",
+            "Behavior analysis",
+            "Churn prediction"
+          ],
+          icon: "👥"
+        },
+        {
+          title: "Financial Analytics",
+          description: "Financial reporting and forecasting",
+          examples: [
+            "Financial reporting",
+            "Revenue forecasting",
+            "Cost analysis"
+          ],
+          icon: "💰"
+        },
+        {
+          title: "Marketing Analytics",
+          description: "Campaign performance and ROI",
+          examples: [
+            "Campaign analytics",
+            "ROI measurement",
+            "Attribution modeling"
+          ],
+          icon: "📢"
+        },
+        {
+          title: "Operations Analytics",
+          description: "Operational efficiency and optimization",
+          examples: [
+            "Process optimization",
+            "Resource utilization",
+            "Performance monitoring"
+          ],
+          icon: "⚙️"
+        },
+        {
+          title: "Product Analytics",
+          description: "Product usage and feature adoption",
+          examples: [
+            "Feature adoption",
+            "User engagement",
+            "Product metrics"
+          ],
+          icon: "📱"
+        }
+      ]}
+      capabilities={[
+        { title: "Data Warehousing", description: "Snowflake, BigQuery, Redshift data warehouses.", icon: "📊" },
+        { title: "BI Tools", description: "Tableau, Power BI, Looker dashboards.", icon: "📈" },
+        { title: "Data Pipelines", description: "ETL/ELT pipelines with Airflow, dbt.", icon: "🔄" },
+        { title: "ML Analytics", description: "Predictive models and ML pipelines.", icon: "🔮" },
+        { title: "Real-Time Analytics", description: "Streaming analytics and real-time dashboards.", icon: "⚡" },
+        { title: "Data Governance", description: "Data quality, privacy, and compliance.", icon: "🔒" }
+      ]}
+      technologies={["Snowflake", "BigQuery", "Redshift", "Tableau", "Power BI", "Looker", "Airflow", "dbt", "Python", "SQL", "Spark"]}
+      whyChooseUs={[
+        { title: "Data-Driven Insights", description: "Transform raw data into actionable business insights.", icon: "📊" },
+        { title: "Privacy Compliant", description: "Analytics with full privacy and compliance support.", icon: "🔒" },
+        { title: "Scalable Solutions", description: "Handle data at any scale with cloud-native solutions.", icon: "📈" },
+        { title: "Fast Implementation", description: "Quick setup and deployment of analytics solutions.", icon: "⚡" }
+      ]}
+      testimonials={[
+        {
+          quote: "Their analytics platform gave us insights we never had before, leading to 25% revenue growth.",
+          author: "David Park",
+          position: "VP Analytics",
+          company: "RetailCorp"
+        },
+        {
+          quote: "The real-time dashboards transformed how we make decisions, reducing decision time by 80%.",
+          author: "Sarah Johnson",
+          position: "Data Director",
+          company: "TechFlow"
+        }
+      ]}
+      faq={[
+        { question: "What data sources can you integrate?", answer: "We integrate with databases, APIs, cloud storage, and third-party platforms." },
+        { question: "How long does analytics setup take?", answer: "Typically 4-8 weeks depending on data complexity and requirements." },
+        { question: "Do you provide ongoing support?", answer: "Yes, we provide ongoing maintenance, updates, and optimization." },
+        { question: "What about data privacy?", answer: "We ensure full compliance with GDPR, CCPA, and other privacy regulations." },
+        { question: "Can you build custom dashboards?", answer: "Yes, we create custom dashboards tailored to your specific business needs." }
+      ]}
+      ctaTitle="Ready to unlock insights from your data?"
+      ctaDescription="Let's build analytics solutions that transform your data into actionable business intelligence."
+      ctaButtonText="Start Analytics Project"
+      ctaButtonHref="/contact"
+    />
+  );
 }

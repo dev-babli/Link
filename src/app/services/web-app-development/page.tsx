@@ -1,115 +1,157 @@
 "use client";
 
-import GroviaServiceTemplate from "@/components/GroviaServiceTemplate";
+import PremiumServiceTemplate from "@/components/PremiumServiceTemplate";
 
 export default function WebAppDevelopmentPage() {
   return (
-    <GroviaServiceTemplate
+    <PremiumServiceTemplate
       serviceName="Web App Development"
       heroTitle="Advanced Web Applications and Platforms with Complex Functionality"
+      heroSubtitle="Enterprise Web Applications"
       heroDescription="Enterprise-grade web applications and platforms with complex functionality. We build scalable, secure, and performant web solutions for modern businesses."
       heroImage="/images/service-cards/web-app-development-service-card.webp"
-      primaryCTA={{
-        text: "Start Web App",
-        href: "/contact"
-      }}
-      secondaryCTA={{
-        text: "View Web App Examples",
-        href: "/services"
-      }}
-      approachTabData={[
+      primaryCTA={{ text: "Start Web App", href: "/contact" }}
+      secondaryCTA={{ text: "View Web App Examples", href: "/services" }}
+      impactMetrics={[
+        { metric: "Performance", value: "95+", description: "Lighthouse scores" },
+        { metric: "Scalability", value: "10x", description: "Traffic handling" },
+        { metric: "Uptime", value: "99.9%", description: "Application availability" },
+        { metric: "User Satisfaction", value: "4.8★", description: "Average rating" }
+      ]}
+      features={[
         {
-          id: 0,
-          number: '01',
-          label: 'Discovery',
-          title: ['Discover your potential with ', 'enterprise assessment'],
-          subtitle: 'Enterprise Assessment',
-          description: 'We begin every web app project with a comprehensive assessment of your business requirements, technical constraints, and scalability needs.',
-          features: ['Business Analysis', 'Technical Assessment', 'Scalability Planning', 'Requirements Gathering'],
-          image: '/images/tabbedfeatures_cards/discovery.jpeg',
-          fallback: '/images/tabbedfeatures_cards/discovery.jpeg',
+          icon: "🏗️",
+          title: "Enterprise Architecture",
+          description: "Scalable, maintainable architectures for complex applications."
         },
         {
-          id: 1,
-          number: '02',
-          label: 'Architecture',
-          title: ['Design enterprise solutions with ', 'scalable architecture'],
-          subtitle: 'Enterprise Architecture Design',
-          description: 'Our architects design enterprise-grade web applications with scalable, secure, and maintainable architecture patterns.',
-          features: ['System Architecture', 'Database Design', 'Security Planning', 'Scalability Design'],
-          image: '/images/tabbedfeatures_cards/development.jpeg',
-          fallback: '/images/tabbedfeatures_cards/development.jpeg',
+          icon: "⚡",
+          title: "High Performance",
+          description: "Optimized for speed and performance at scale."
         },
         {
-          id: 2,
-          number: '03',
-          label: 'Development',
-          title: ['Build with ', 'enterprise development'],
-          subtitle: 'Enterprise Development',
-          description: 'We develop robust web applications using enterprise-grade technologies and best practices for performance and reliability.',
-          features: ['Full-Stack Development', 'API Development', 'Database Implementation', 'Integration'],
-          image: '/images/tabbedfeatures_cards/testing.jpeg',
-          fallback: '/images/tabbedfeatures_cards/testing.jpeg',
+          icon: "🔒",
+          title: "Security First",
+          description: "Enterprise-grade security and compliance."
         },
         {
-          id: 3,
-          number: '04',
-          label: 'Deployment',
-          title: ['Deploy with ', 'enterprise infrastructure'],
-          subtitle: 'Enterprise Deployment',
-          description: 'Seamless deployment to enterprise infrastructure with monitoring, security, and ongoing maintenance for optimal performance.',
-          features: ['Production Deployment', 'Infrastructure Setup', 'Monitoring & Alerting', 'Ongoing Support'],
-          image: '/images/tabbedfeatures_cards/deployment.jpeg',
-          fallback: '/images/tabbedfeatures_cards/deployment.jpeg',
+          icon: "📊",
+          title: "Real-Time Features",
+          description: "WebSocket, real-time updates, and live collaboration."
         },
-      ]}
-      challenges={[
-        { challenge: "Need for complex business logic and advanced functionality", solution: "Scalable architecture and microservices" },
-        { challenge: "Scalability requirements for growing user bases", solution: "Cloud-native and auto-scaling solutions" },
-        { challenge: "Integration with multiple third-party services and APIs", solution: "API-first design and integration platform" },
-        { challenge: "Real-time features and collaborative functionality", solution: "WebSocket and real-time communication" },
-        { challenge: "Enterprise security and compliance requirements", solution: "Enterprise-grade security and compliance" }
-      ]}
-      solutions={[
-        { title: "Enterprise Architecture", description: "Scalable, secure design", icon: "🏗️" },
-        { title: "API Integration", description: "Seamless third-party connections", icon: "🔌" },
-        { title: "Real-time Features", description: "Live updates and collaboration", icon: "⚡" }
-      ]}
-      capabilities={[
-        { title: "Enterprise Web Apps", description: "Complex business applications", icon: "🏢" },
-        { title: "API Development", description: "RESTful & GraphQL APIs", icon: "🔌" },
-        { title: "Real-time Features", description: "WebSockets, live updates", icon: "⚡" },
-        { title: "Database Design", description: "PostgreSQL, MongoDB", icon: "🗄️" },
-        { title: "Microservices", description: "Scalable architecture", icon: "🔧" },
-        { title: "Cloud Deployment", description: "AWS, Azure, GCP", icon: "☁️" }
-      ]}
-      technologies={[
-        "React", "Next.js", "Node.js", "PostgreSQL", "Redis", "Docker"
-      ]}
-      whyChooseUs={[
         {
-          title: "Enterprise Focus",
-          description: "Built for scale, security, and complex business requirements",
+          icon: "🔄",
+          title: "API Integration",
+          description: "Seamless integration with third-party services and APIs."
+        },
+        {
+          icon: "📱",
+          title: "Responsive Design",
+          description: "Perfect experience across all devices and screen sizes."
+        }
+      ]}
+      useCases={[
+        {
+          title: "Enterprise Platforms",
+          description: "Complex enterprise applications",
+          examples: [
+            "CRM platforms",
+            "ERP systems",
+            "Project management"
+          ],
           icon: "🏢"
         },
         {
-          title: "Advanced Architecture",
-          description: "Modern patterns and practices for maintainable, scalable code",
-          icon: "🏗️"
+          title: "SaaS Applications",
+          description: "Multi-tenant SaaS platforms",
+          examples: [
+            "Subscription platforms",
+            "Billing systems",
+            "User management"
+          ],
+          icon: "☁️"
         },
         {
-          title: "Full-Stack Expertise",
-          description: "Complete solutions from frontend to backend and infrastructure",
-          icon: "⚡"
+          title: "E-Commerce Platforms",
+          description: "Advanced e-commerce solutions",
+          examples: [
+            "Marketplace platforms",
+            "Inventory management",
+            "Order processing"
+          ],
+          icon: "🛒"
+        },
+        {
+          title: "Collaboration Tools",
+          description: "Real-time collaboration platforms",
+          examples: [
+            "Team collaboration",
+            "Document editing",
+            "Video conferencing"
+          ],
+          icon: "👥"
+        },
+        {
+          title: "Financial Platforms",
+          description: "Banking and financial applications",
+          examples: [
+            "Banking portals",
+            "Investment platforms",
+            "Payment systems"
+          ],
+          icon: "💰"
+        },
+        {
+          title: "Healthcare Systems",
+          description: "Healthcare management platforms",
+          examples: [
+            "Patient portals",
+            "EHR systems",
+            "Telehealth platforms"
+          ],
+          icon: "🏥"
         }
       ]}
-      ctaTitle="Ready to Build Your Web Application?"
-      ctaDescription="Create enterprise-grade web applications that handle complex business logic and scale with your growth."
-      ctaButtonText="Start Development"
+      capabilities={[
+        { title: "Full-Stack Development", description: "End-to-end web application development.", icon: "💻" },
+        { title: "Microservices", description: "Scalable microservices architecture.", icon: "🔧" },
+        { title: "Real-Time Features", description: "WebSocket and real-time capabilities.", icon: "⚡" },
+        { title: "API Development", description: "RESTful and GraphQL APIs.", icon: "🔌" },
+        { title: "Database Design", description: "Optimized database schemas and queries.", icon: "🗄️" },
+        { title: "DevOps Integration", description: "CI/CD and automated deployments.", icon: "🔄" }
+      ]}
+      technologies={["Next.js", "React", "Node.js", "TypeScript", "GraphQL", "PostgreSQL", "MongoDB", "Redis", "WebSocket", "Docker"]}
+      whyChooseUs={[
+        { title: "Enterprise Expertise", description: "Deep experience building complex enterprise applications.", icon: "🏢" },
+        { title: "Scalable Architecture", description: "Architectures that scale with your business growth.", icon: "📈" },
+        { title: "Security Focus", description: "Security built into every layer of the application.", icon: "🛡️" },
+        { title: "Performance Optimized", description: "Applications optimized for speed and efficiency.", icon: "⚡" }
+      ]}
+      testimonials={[
+        {
+          quote: "They built our enterprise platform in record time with exceptional quality and performance.",
+          author: "Robert Chen",
+          position: "VP Engineering",
+          company: "EnterpriseCorp"
+        },
+        {
+          quote: "The web app handles 10x our expected traffic without any performance issues.",
+          author: "Jennifer Smith",
+          position: "CTO",
+          company: "ScaleUp Inc"
+        }
+      ]}
+      faq={[
+        { question: "How long does web app development take?", answer: "Typically 12-20 weeks for enterprise applications, depending on complexity." },
+        { question: "Do you build both frontend and backend?", answer: "Yes, we provide full-stack development including frontend, backend, and database." },
+        { question: "Can you integrate with existing systems?", answer: "Absolutely. We specialize in integrating with legacy and third-party systems." },
+        { question: "What about scalability?", answer: "We design applications to scale horizontally and handle millions of users." },
+        { question: "Do you provide ongoing maintenance?", answer: "Yes, we offer maintenance, updates, and feature enhancements." }
+      ]}
+      ctaTitle="Ready to build your enterprise web app?"
+      ctaDescription="Let's create a scalable, secure web application that drives your business forward."
+      ctaButtonText="Start Web App Project"
       ctaButtonHref="/contact"
-      primaryColor="bg-cyan-500"
-      gradientFrom="from-cyan-500"
-      gradientTo="to-blue-500"
     />
   );
 }

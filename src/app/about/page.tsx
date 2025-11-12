@@ -1,12 +1,13 @@
 "use client";
 
 import React from "react";
+import { motion } from "motion/react";
 import Navigation from "@/new-src/components/sections/navigation";
 import Footer from "@/new-src/components/sections/footer";
 import { PerformanceOptimizer } from "@/components/PerformanceOptimizer";
-import { Target, Users, Lightbulb, Shield, Globe, Award } from "lucide-react";
-import HeroSectionNew from "@/components/HeroSectionNew";
-import FeaturesSection from "@/new-src/components/sections/features";
+import { Target, Users, Lightbulb, Shield, Globe, Award, TrendingUp, Clock, CheckCircle } from "lucide-react";
+import ImpactMetrics from "@/components/ImpactMetrics";
+import { CTAWithShader } from "@/components/ui/cta-with-shader";
 
 export default function AboutPage() {
   const values = [
@@ -14,45 +15,88 @@ export default function AboutPage() {
       icon: Lightbulb,
       title: "Innovation First",
       description: "We embrace cutting-edge technologies and innovative approaches to solve complex challenges.",
-      color: "bg-[#8B5CF6]/10 text-[#8B5CF6]"
     },
     {
       icon: Users,
       title: "Client Partnership",
       description: "We build long-term relationships based on trust, transparency, and mutual success.",
-      color: "bg-[#3B82F6]/10 text-[#3B82F6]"
     },
     {
       icon: Target,
       title: "Excellence Driven",
       description: "We deliver exceptional quality in every project, exceeding expectations consistently.",
-      color: "bg-[#06B6D4]/10 text-[#06B6D4]"
     },
     {
       icon: Shield,
       title: "Security Focused",
       description: "We prioritize data security and privacy in every solution we build.",
-      color: "bg-[#8B5CF6]/10 text-[#8B5CF6]"
     },
     {
       icon: Globe,
       title: "Global Perspective",
       description: "We bring international best practices and diverse perspectives to every engagement.",
-      color: "bg-[#3B82F6]/10 text-[#3B82F6]"
     },
     {
       icon: Award,
       title: "Continuous Learning",
       description: "We invest in our team's growth and stay ahead of technology trends.",
-      color: "bg-[#06B6D4]/10 text-[#06B6D4]"
     },
   ];
 
   const stats = [
-    { value: "100+", label: "Projects Delivered" },
-    { value: "98%", label: "Client Satisfaction" },
-    { value: "25+", label: "Team Members" },
-    { value: "5+", label: "Years Experience" },
+    {
+      metric: "Projects Delivered",
+      value: "500+",
+      description: "Successful projects across industries"
+    },
+    {
+      metric: "Client Satisfaction",
+      value: "98%",
+      description: "Client satisfaction rate"
+    },
+    {
+      metric: "Team Members",
+      value: "100+",
+      description: "Expert developers and designers"
+    },
+    {
+      metric: "Years of Experience",
+      value: "10+",
+      description: "Delivering excellence since 2014"
+    }
+  ];
+
+  const whyWorkWithUs = [
+    {
+      icon: "🎯",
+      title: "Proven Track Record",
+      description: "500+ successful projects delivered across diverse industries and use cases."
+    },
+    {
+      icon: "🚀",
+      title: "Rapid Delivery",
+      description: "Agile methodologies and efficient processes for faster time-to-market."
+    },
+    {
+      icon: "💡",
+      title: "Innovation Focus",
+      description: "Cutting-edge technologies and modern approaches to solve complex problems."
+    },
+    {
+      icon: "🤝",
+      title: "Partnership Approach",
+      description: "We work as an extension of your team, not just a vendor."
+    },
+    {
+      icon: "🔒",
+      title: "Security & Compliance",
+      description: "Enterprise-grade security and compliance in every solution."
+    },
+    {
+      icon: "📈",
+      title: "Scalable Solutions",
+      description: "Architectures that grow with your business and scale effortlessly."
+    }
   ];
 
   return (
@@ -61,59 +105,146 @@ export default function AboutPage() {
       <Navigation />
 
       {/* Hero Section */}
-      <HeroSectionNew />
-
-      {/* Mission Statement */}
-      <section className="bg-background-secondary py-24">
+      <section className="pt-32 pb-20 bg-background-primary">
         <div className="container mx-auto px-6 lg:px-20">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-medium text-text-primary mb-6">
-              Our Mission
-            </h2>
-            <p className="text-lg text-text-secondary leading-relaxed">
-              To empower organizations with intelligent technology solutions that transform operations, enhance customer experiences, and create sustainable competitive advantages in the digital age.
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto text-center space-y-6"
+          >
+            <div className="inline-flex items-center gap-2 rounded-full border border-border-subtle bg-accent-yellow/20 px-4 py-2 text-sm text-text-primary mb-4">
+              <span className="w-2 h-2 bg-accent-yellow rounded-full"></span>
+              About Link Innovations
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium text-text-primary leading-tight">
+              Building Software That Transforms Businesses
+            </h1>
+            <p className="text-lg text-text-secondary leading-relaxed max-w-2xl mx-auto">
+              We're a team of passionate developers, designers, and strategists dedicated to creating software solutions that drive real business value. With over 10 years of experience, we've helped hundreds of companies transform their digital presence.
             </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Impact Metrics */}
+      <ImpactMetrics
+        metrics={stats}
+        title="Our Impact"
+        description="Numbers that reflect our commitment to excellence"
+      />
+
+      {/* Our Story */}
+      <section className="bg-background-primary py-24">
+        <div className="container mx-auto px-6 lg:px-20">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl font-medium text-text-primary mb-4">
+                Our Story
+              </h2>
+              <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+                From a small team to a trusted partner for businesses worldwide
+              </p>
+            </motion.div>
+
+            <div className="space-y-6 text-base text-text-secondary leading-relaxed">
+              <p>
+                Founded in 2014, Link Innovations started with a simple mission: to help businesses leverage technology to achieve their goals. What began as a small team of passionate developers has grown into a full-service software development company serving clients across industries.
+              </p>
+              <p>
+                Over the years, we've evolved from a web development agency to a comprehensive technology partner. We've built everything from simple websites to complex enterprise platforms, always maintaining our commitment to quality, innovation, and client success.
+              </p>
+              <p>
+                Today, we're proud to work with startups, mid-size companies, and enterprises, helping them navigate the digital landscape and build solutions that make a real impact. Our team of 100+ experts brings together diverse skills in development, design, DevOps, and strategy to deliver exceptional results.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Values */}
-      <FeaturesSection />
-
-      {/* Statistics */}
+      {/* Our Values */}
       <section className="bg-background-secondary py-24">
         <div className="container mx-auto px-6 lg:px-20">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-5xl md:text-6xl font-bold text-text-primary mb-2">
-                  {stat.value}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-medium text-text-primary mb-4">
+              Our Values
+            </h2>
+            <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+              The principles that guide everything we do
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {values.map((value, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="rounded-xl border border-border-subtle bg-background-secondary p-8 shadow-soft transition-all hover:shadow-lg hover:-translate-y-1"
+              >
+                <div className="w-12 h-12 rounded-xl bg-accent-yellow/20 flex items-center justify-center mb-4">
+                  <value.icon className="w-6 h-6 text-text-primary" />
                 </div>
-                <div className="text-base text-text-secondary">{stat.label}</div>
-              </div>
+                <h3 className="text-xl font-medium text-text-primary mb-3">
+                  {value.title}
+                </h3>
+                <p className="text-base text-text-secondary leading-relaxed">
+                  {value.description}
+                </p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Our Story */}
+      {/* Why Work With Us */}
       <section className="bg-background-primary py-24">
         <div className="container mx-auto px-6 lg:px-20">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-medium text-text-primary mb-6">
-              Our Story
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-medium text-text-primary mb-4">
+              Why Work With Us
             </h2>
-            <div className="space-y-4 text-base text-text-secondary leading-relaxed">
-              <p>
-                Founded in 2020, Link Innovations emerged from a simple belief: that technology should serve as a catalyst for meaningful business transformation, not just a tool for automation.
-              </p>
-              <p>
-                What started as a small team of passionate technologists has grown into a comprehensive technology consulting firm serving clients across multiple industries. Our growth is a testament to our commitment to delivering exceptional results and building lasting partnerships.
-              </p>
-              <p>
-                Today, we combine deep technical expertise with strategic business insight to help organizations navigate the complexities of digital transformation. From startups to enterprises, we tailor our approach to meet each client's unique challenges and objectives.
-              </p>
-            </div>
+            <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+              What sets us apart in the software development industry
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {whyWorkWithUs.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="rounded-xl border border-border-subtle bg-background-secondary p-8 shadow-soft transition-all hover:shadow-lg hover:-translate-y-1"
+              >
+                <div className="text-5xl mb-4">{item.icon}</div>
+                <h3 className="text-xl font-medium text-text-primary mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-base text-text-secondary leading-relaxed">
+                  {item.description}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -121,28 +252,27 @@ export default function AboutPage() {
       {/* CTA Section */}
       <section className="bg-background-secondary py-24">
         <div className="container mx-auto px-6 lg:px-20">
-          <div className="max-w-3xl mx-auto text-center rounded-xl border border-border-subtle bg-background-secondary p-8 md:p-12 shadow-soft">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto text-center"
+          >
             <h2 className="text-3xl font-medium text-text-primary mb-4">
               Ready to Work Together?
             </h2>
-            <p className="text-base text-text-secondary mb-8">
-              Let's discuss how we can help transform your business with innovative technology solutions.
+            <p className="text-lg text-text-secondary mb-10 max-w-2xl mx-auto">
+              Let's discuss how we can help transform your business with innovative software solutions.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/contact"
-                className="rounded-full bg-accent-yellow px-8 py-3.5 font-medium text-text-primary transition-transform hover:scale-[1.02]"
-              >
-                Get in Touch
-              </a>
-              <a
-                href="/services"
-                className="rounded-full border border-border-subtle px-8 py-3.5 font-medium text-text-primary transition-transform hover:scale-[1.02] hover:bg-background-primary"
-              >
-                Our Services
-              </a>
-            </div>
-          </div>
+            <motion.a
+              href="/contact"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-accent-yellow text-text-primary hover:opacity-90 transition-all shadow-soft font-medium"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Get in Touch
+            </motion.a>
+          </motion.div>
         </div>
       </section>
 

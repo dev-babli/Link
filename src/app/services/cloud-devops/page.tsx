@@ -1,115 +1,157 @@
 "use client";
 
-import GroviaServiceTemplate from "@/components/GroviaServiceTemplate";
+import PremiumServiceTemplate from "@/components/PremiumServiceTemplate";
 
 export default function CloudDevOpsPage() {
-    return (
-        <GroviaServiceTemplate
-            serviceName="Cloud DevOps"
-            heroTitle="Streamline Development with Modern DevOps Practices"
-            heroDescription="Accelerate delivery with automated CI/CD pipelines, infrastructure as code, and modern DevOps practices. We help you build, deploy, and scale applications with confidence and efficiency."
-            heroImage="/images/service-cards/cloud-devops-service-card.webp"
-            primaryCTA={{
-                text: "Start DevOps Journey",
-                href: "/contact"
-            }}
-            secondaryCTA={{
-                text: "View Case Studies",
-                href: "/services"
-            }}
-            approachTabData={[
-                {
-                    id: 0,
-                    number: '01',
-                    label: 'Assessment',
-                    title: ['Discover your potential with ', 'DevOps assessment'],
-                    subtitle: 'DevOps Assessment',
-                    description: 'We begin every DevOps project with a comprehensive assessment of your current development and deployment processes.',
-                    features: ['Process Analysis', 'Tool Evaluation', 'Infrastructure Review', 'Automation Opportunities'],
-                    image: '/images/tabbedfeatures_cards/discovery.jpeg',
-                    fallback: '/images/tabbedfeatures_cards/discovery.jpeg',
-                },
-                {
-                    id: 1,
-                    number: '02',
-                    label: 'Design',
-                    title: ['Design efficient workflows with ', 'DevOps architecture'],
-                    subtitle: 'DevOps Architecture Design',
-                    description: 'Our DevOps architects design efficient CI/CD pipelines and infrastructure automation solutions tailored to your needs.',
-                    features: ['CI/CD Pipeline Design', 'Infrastructure as Code', 'Monitoring Strategy', 'Security Integration'],
-                    image: '/images/tabbedfeatures_cards/development.jpeg',
-                    fallback: '/images/tabbedfeatures_cards/development.jpeg',
-                },
-                {
-                    id: 2,
-                    number: '03',
-                    label: 'Implementation',
-                    title: ['Implement with ', 'DevOps automation'],
-                    subtitle: 'DevOps Implementation',
-                    description: 'We implement comprehensive DevOps solutions using industry-leading tools and automation practices for maximum efficiency.',
-                    features: ['Pipeline Setup', 'Infrastructure Automation', 'Monitoring Implementation', 'Security Hardening'],
-                    image: '/images/tabbedfeatures_cards/testing.jpeg',
-                    fallback: '/images/tabbedfeatures_cards/testing.jpeg',
-                },
-                {
-                    id: 3,
-                    number: '04',
-                    label: 'Optimization',
-                    title: ['Optimize with continuous ', 'DevOps improvement'],
-                    subtitle: 'DevOps Optimization',
-                    description: 'Ongoing optimization and monitoring to ensure your DevOps processes deliver maximum efficiency and reliability.',
-                    features: ['Performance Monitoring', 'Process Optimization', 'Continuous Improvement', 'Team Training'],
-                    image: '/images/tabbedfeatures_cards/deployment.jpeg',
-                    fallback: '/images/tabbedfeatures_cards/deployment.jpeg',
-                },
-            ]}
-            challenges={[
-                { challenge: "Manual deployment processes causing delays and errors", solution: "Automated CI/CD pipelines" },
-                { challenge: "Inconsistent environments between development and production", solution: "Infrastructure as Code" },
-                { challenge: "Lack of monitoring and alerting for production issues", solution: "Comprehensive monitoring and alerting" },
-                { challenge: "Security vulnerabilities in deployment pipelines", solution: "DevSecOps security practices" },
-                { challenge: "Difficulty scaling infrastructure with business growth", solution: "Auto-scaling and cloud-native solutions" }
-            ]}
-            solutions={[
-                { title: "CI/CD Pipelines", description: "Automated deployments", icon: "🔄" },
-                { title: "Infrastructure as Code", description: "Consistent environments", icon: "🏗️" },
-                { title: "Monitoring & Alerting", description: "Proactive issue detection", icon: "📊" }
-            ]}
-            capabilities={[
-                { title: "CI/CD Setup", description: "GitHub Actions, GitLab CI", icon: "🔄" },
-                { title: "Container Orchestration", description: "Kubernetes, Docker", icon: "🐳" },
-                { title: "Infrastructure as Code", description: "Terraform, CloudFormation", icon: "🏗️" },
-                { title: "Cloud Platforms", description: "AWS, Azure, GCP", icon: "☁️" },
-                { title: "Monitoring", description: "Prometheus, Grafana", icon: "📈" },
-                { title: "Security", description: "DevSecOps practices", icon: "🔒" }
-            ]}
-            technologies={[
-                "Kubernetes", "Docker", "Terraform", "AWS", "Azure", "GitHub Actions"
-            ]}
-            whyChooseUs={[
-                {
-                    title: "DevOps Expertise",
-                    description: "Deep experience with modern DevOps tools and best practices",
-                    icon: "🔄"
-                },
-                {
-                    title: "Cloud-Native Focus",
-                    description: "Optimized for scalability, reliability, and cost-effectiveness",
-                    icon: "☁️"
-                },
-                {
-                    title: "Security First",
-                    description: "DevSecOps approach with security built into every pipeline",
-                    icon: "🔒"
-                }
-            ]}
-            ctaTitle="Ready to Modernize Your DevOps?"
-            ctaDescription="Let's transform your development workflow with modern DevOps practices that accelerate delivery and improve reliability."
-            ctaButtonText="Get Started"
-            ctaButtonHref="/contact"
-            primaryColor="bg-orange-500"
-            gradientFrom="from-orange-500"
-            gradientTo="to-red-500"
-        />
-    );
+  return (
+    <PremiumServiceTemplate
+      serviceName="Cloud DevOps"
+      heroTitle="Streamline Development with Modern DevOps Practices"
+      heroSubtitle="DevOps & Cloud Infrastructure"
+      heroDescription="Accelerate delivery with automated CI/CD pipelines, infrastructure as code, and modern DevOps practices. We help you build, deploy, and scale applications with confidence and efficiency."
+      heroImage="/images/service-cards/cloud-devops-service-card.webp"
+      primaryCTA={{ text: "Start DevOps Journey", href: "/contact" }}
+      secondaryCTA={{ text: "View Case Studies", href: "/services" }}
+      impactMetrics={[
+        { metric: "Deployment Speed", value: "10x", description: "Faster with automation" },
+        { metric: "Uptime", value: "99.9%", description: "Application availability" },
+        { metric: "Cost Reduction", value: "40%", description: "Infrastructure costs" },
+        { metric: "Release Frequency", value: "Daily", description: "Automated deployments" }
+      ]}
+      features={[
+        {
+          icon: "🔄",
+          title: "CI/CD Pipelines",
+          description: "Automated build, test, and deployment pipelines for continuous delivery."
+        },
+        {
+          icon: "☁️",
+          title: "Cloud Infrastructure",
+          description: "Scalable cloud architectures on AWS, Azure, and GCP."
+        },
+        {
+          icon: "📦",
+          title: "Container Orchestration",
+          description: "Kubernetes and Docker for containerized deployments."
+        },
+        {
+          icon: "📊",
+          title: "Monitoring & Observability",
+          description: "Comprehensive monitoring, logging, and alerting solutions."
+        },
+        {
+          icon: "🔒",
+          title: "Security & Compliance",
+          description: "Infrastructure security and compliance automation."
+        },
+        {
+          icon: "⚡",
+          title: "Infrastructure as Code",
+          description: "Terraform, CloudFormation, and automated provisioning."
+        }
+      ]}
+      useCases={[
+        {
+          title: "SaaS Platforms",
+          description: "Scalable infrastructure for SaaS applications",
+          examples: [
+            "Multi-tenant architectures",
+            "Auto-scaling solutions",
+            "High availability setups"
+          ],
+          icon: "💼"
+        },
+        {
+          title: "E-Commerce",
+          description: "High-traffic e-commerce infrastructure",
+          examples: [
+            "Peak traffic handling",
+            "CDN optimization",
+            "Database scaling"
+          ],
+          icon: "🛒"
+        },
+        {
+          title: "Enterprise Applications",
+          description: "Mission-critical enterprise systems",
+          examples: [
+            "Legacy modernization",
+            "Hybrid cloud solutions",
+            "Disaster recovery"
+          ],
+          icon: "🏢"
+        },
+        {
+          title: "Startups",
+          description: "Cost-effective cloud solutions for startups",
+          examples: [
+            "MVP infrastructure",
+            "Cost optimization",
+            "Rapid scaling"
+          ],
+          icon: "🚀"
+        },
+        {
+          title: "FinTech",
+          description: "Secure, compliant financial infrastructure",
+          examples: [
+            "Security hardening",
+            "Compliance automation",
+            "High-performance systems"
+          ],
+          icon: "💰"
+        },
+        {
+          title: "Healthcare",
+          description: "HIPAA-compliant healthcare infrastructure",
+          examples: [
+            "Compliance automation",
+            "Secure data handling",
+            "High availability"
+          ],
+          icon: "🏥"
+        }
+      ]}
+      capabilities={[
+        { title: "CI/CD Automation", description: "Jenkins, GitHub Actions, GitLab CI, and custom pipelines.", icon: "🔄" },
+        { title: "Cloud Platforms", description: "AWS, Azure, GCP expertise and multi-cloud strategies.", icon: "☁️" },
+        { title: "Containerization", description: "Docker, Kubernetes, and container orchestration.", icon: "📦" },
+        { title: "Infrastructure as Code", description: "Terraform, CloudFormation, and Ansible automation.", icon: "⚡" },
+        { title: "Monitoring", description: "Prometheus, Grafana, Datadog, and custom dashboards.", icon: "📊" },
+        { title: "Security", description: "Security scanning, compliance automation, and hardening.", icon: "🔒" }
+      ]}
+      technologies={["AWS", "Azure", "GCP", "Kubernetes", "Docker", "Terraform", "Jenkins", "GitHub Actions", "Ansible", "Prometheus", "Grafana"]}
+      whyChooseUs={[
+        { title: "Automation First", description: "Everything automated for speed and reliability.", icon: "⚡" },
+        { title: "Cloud Expertise", description: "Deep experience across AWS, Azure, and GCP.", icon: "☁️" },
+        { title: "Cost Optimization", description: "Right-size infrastructure and reduce costs significantly.", icon: "💰" },
+        { title: "Security Focus", description: "Security built into every layer of infrastructure.", icon: "🛡️" }
+      ]}
+      testimonials={[
+        {
+          quote: "They transformed our deployment process from weeks to hours with automated CI/CD pipelines.",
+          author: "David Kim",
+          position: "DevOps Lead",
+          company: "TechCorp"
+        },
+        {
+          quote: "Their cloud architecture reduced our infrastructure costs by 40% while improving performance.",
+          author: "Lisa Wang",
+          position: "CTO",
+          company: "ScaleUp Inc"
+        }
+      ]}
+      faq={[
+        { question: "Which cloud platforms do you support?", answer: "We work with AWS, Azure, and GCP, and can help you choose the best platform for your needs." },
+        { question: "How do you ensure security?", answer: "Security is built into every layer with automated scanning, compliance checks, and best practices." },
+        { question: "Can you help migrate to the cloud?", answer: "Yes, we specialize in cloud migrations with minimal downtime and zero data loss." },
+        { question: "Do you provide 24/7 monitoring?", answer: "Yes, we can set up comprehensive monitoring and alerting for your infrastructure." },
+        { question: "How quickly can you set up CI/CD?", answer: "Typically 1-2 weeks to set up complete CI/CD pipelines depending on complexity." }
+      ]}
+      ctaTitle="Ready to streamline your DevOps?"
+      ctaDescription="Let's automate your development and deployment processes for faster, more reliable releases."
+      ctaButtonText="Start DevOps Transformation"
+      ctaButtonHref="/contact"
+    />
+  );
 }

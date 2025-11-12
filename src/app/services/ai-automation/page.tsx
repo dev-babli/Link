@@ -1,14 +1,14 @@
 "use client";
 
-import GroviaServiceTemplate from "@/components/GroviaServiceTemplate";
+import PremiumServiceTemplate from "@/components/PremiumServiceTemplate";
 
 export default function AIAutomationPage() {
   return (
-    <GroviaServiceTemplate
+    <PremiumServiceTemplate
       serviceName="AI Solutions"
       heroTitle="Transform Your Business with Intelligent Automation"
-      heroSubtitle="Leverage artificial intelligence to automate processes, gain insights, and create intelligent solutions."
-      heroDescription="At Link Innovation, we design and develop AI solutions that combine cutting-edge technology with ethical practices. Our expert team crafts intelligent automation that enhances productivity, drives insights, and delivers measurable business value while respecting user privacy."
+      heroSubtitle="AI Solutions"
+      heroDescription="Leverage artificial intelligence to automate processes, gain insights, and create intelligent solutions. At Link Innovation, we design and develop AI solutions that combine cutting-edge technology with ethical practices."
       heroImage="/images/service-cards/ai-automation-service-card.webp"
       primaryCTA={{
         text: "Talk to an AI Expert",
@@ -18,7 +18,6 @@ export default function AIAutomationPage() {
         text: "Explore AI Solutions",
         href: "/services"
       }}
-      trustedByLogos={["OpenAI", "TensorFlow", "PyTorch", "LangChain", "Hugging Face", "AWS SageMaker"]}
       impactMetrics={[
         {
           metric: "Process Automation",
@@ -41,80 +40,100 @@ export default function AIAutomationPage() {
           description: "In operational expenses"
         }
       ]}
-      approachTabData={[
+      features={[
         {
-          id: 0,
-          number: '01',
-          label: 'Assessment',
-          title: ['Discover your potential with ', 'AI readiness assessment'],
-          subtitle: 'AI Readiness Assessment',
-          description: 'We begin every AI project with a comprehensive assessment of your data, infrastructure, and business processes to determine AI readiness.',
-          features: ['Data Quality Analysis', 'Infrastructure Assessment', 'Process Mapping', 'ROI Evaluation'],
-          image: '/images/tabbedfeatures_cards/discovery.jpeg',
-          fallback: '/images/tabbedfeatures_cards/discovery.jpeg',
+          icon: "🔍",
+          title: "Enterprise Search",
+          description: "Intelligent search across all your enterprise data sources with role-based access controls."
         },
         {
-          id: 1,
-          number: '02',
-          label: 'Design',
-          title: ['Design intelligent solutions with ', 'ethical AI principles'],
-          subtitle: 'AI Solution Design',
-          description: 'Our AI team designs custom solutions that align with your business goals while maintaining ethical AI practices and transparency.',
-          features: ['Solution Architecture', 'Model Selection', 'Ethics Framework', 'Privacy Design'],
-          image: '/images/tabbedfeatures_cards/development.jpeg',
-          fallback: '/images/tabbedfeatures_cards/development.jpeg',
+          icon: "⚡",
+          title: "Process Automation",
+          description: "Automate complex workflows and multi-step processes across your organization."
         },
         {
-          id: 2,
-          number: '03',
-          label: 'Development',
-          title: ['Build intelligent systems with ', 'advanced AI technologies'],
-          subtitle: 'AI Development',
-          description: 'Our development team uses cutting-edge AI technologies and frameworks to build robust, scalable, and maintainable AI solutions.',
-          features: ['Model Training', 'API Development', 'Integration', 'Performance Optimization'],
-          image: '/images/tabbedfeatures_cards/testing.jpeg',
-          fallback: '/images/tabbedfeatures_cards/testing.jpeg',
+          icon: "🤖",
+          title: "AI Agents",
+          description: "Pre-built AI agents for search, generation, and automation across departments."
         },
         {
-          id: 3,
-          number: '04',
-          label: 'Deployment',
-          title: ['Deploy with confidence using ', 'AI monitoring and governance'],
-          subtitle: 'AI Production Deployment',
-          description: 'Seamless deployment processes with comprehensive monitoring, governance, and continuous learning to keep your AI systems running optimally.',
-          features: ['Production Deployment', 'Model Monitoring', 'Governance Framework', 'Continuous Learning'],
-          image: '/images/tabbedfeatures_cards/deployment.jpeg',
-          fallback: '/images/tabbedfeatures_cards/deployment.jpeg',
-        },
-      ]}
-      challengesTitle="Solving the Challenges of AI Implementation"
-      challenges={[
-        {
-          challenge: "Manual processes consuming valuable time and resources",
-          solution: "Intelligent automation that handles repetitive tasks efficiently."
+          icon: "🔧",
+          title: "AI Agent Builder",
+          description: "Build enterprise AI agents with no-code to pro-code tools for any employee."
         },
         {
-          challenge: "Difficulty extracting insights from massive data volumes",
-          solution: "Advanced analytics and machine learning for actionable insights."
+          icon: "🎯",
+          title: "Intelligent Orchestration",
+          description: "Orchestrate complex, multi-agent workflows with seamless coordination."
         },
         {
-          challenge: "Repetitive tasks reducing team productivity",
-          solution: "AI-powered workflow automation and process optimization."
-        },
-        {
-          challenge: "Inconsistent decision-making across operations",
-          solution: "Data-driven AI systems for consistent, accurate decisions."
-        },
-        {
-          challenge: "High operational costs with limited scalability",
-          solution: "Scalable AI solutions that reduce costs and improve efficiency."
-        },
-        {
-          challenge: "Privacy concerns with AI and data usage",
-          solution: "Ethical AI with transparent data usage and privacy protection."
+          icon: "🛡️",
+          title: "Admin Controls",
+          description: "Govern enterprise AI with unified oversight and comprehensive analytics."
         }
       ]}
-      capabilitiesTitle="End-to-End AI Solutions Capabilities"
+      useCases={[
+        {
+          title: "Healthcare",
+          description: "Medical diagnosis assistance and patient care optimization",
+          examples: [
+            "Medical diagnosis assistance",
+            "Patient care optimization",
+            "Healthcare data analysis"
+          ],
+          icon: "🏥"
+        },
+        {
+          title: "Finance",
+          description: "Fraud detection and algorithmic trading systems",
+          examples: [
+            "Fraud detection systems",
+            "Algorithmic trading",
+            "Risk assessment automation"
+          ],
+          icon: "💼"
+        },
+        {
+          title: "Manufacturing",
+          description: "Predictive maintenance and quality control automation",
+          examples: [
+            "Predictive maintenance",
+            "Quality control automation",
+            "Supply chain optimization"
+          ],
+          icon: "🏭"
+        },
+        {
+          title: "Retail",
+          description: "Personalized recommendations and inventory optimization",
+          examples: [
+            "Personalized recommendations",
+            "Inventory optimization",
+            "Customer behavior analysis"
+          ],
+          icon: "🛒"
+        },
+        {
+          title: "Customer Service",
+          description: "Intelligent chatbots and automated support systems",
+          examples: [
+            "Intelligent chatbots",
+            "Automated support systems",
+            "Customer query resolution"
+          ],
+          icon: "💬"
+        },
+        {
+          title: "Marketing",
+          description: "Predictive analytics and automated campaign optimization",
+          examples: [
+            "Predictive analytics",
+            "Campaign optimization",
+            "Customer segmentation"
+          ],
+          icon: "📊"
+        }
+      ]}
       capabilities={[
         {
           icon: "🤖",
@@ -147,36 +166,7 @@ export default function AIAutomationPage() {
           description: "Transparent, privacy-first AI solutions."
         }
       ]}
-      industriesTitle="Transforming Industries Through AI Innovation"
-      industries={[
-        {
-          industry: "Healthcare",
-          example: "Medical diagnosis assistance and patient care optimization"
-        },
-        {
-          industry: "Finance",
-          example: "Fraud detection and algorithmic trading systems"
-        },
-        {
-          industry: "Manufacturing",
-          example: "Predictive maintenance and quality control automation"
-        },
-        {
-          industry: "Retail",
-          example: "Personalized recommendations and inventory optimization"
-        },
-        {
-          industry: "Customer Service",
-          example: "Intelligent chatbots and automated support systems"
-        },
-        {
-          industry: "Marketing",
-          example: "Predictive analytics and automated campaign optimization"
-        }
-      ]}
-      techStackTitle="Our AI Technology Stack"
       technologies={["TensorFlow", "PyTorch", "OpenAI", "LangChain", "Hugging Face", "AWS SageMaker", "Google Cloud AI", "Azure AI", "Anthropic"]}
-      whyChooseUsTitle="Why Choose Link Innovation for AI Solutions"
       whyChooseUs={[
         {
           icon: "🧠",
@@ -199,7 +189,6 @@ export default function AIAutomationPage() {
           description: "Bank-grade security and compliance for mission-critical AI."
         }
       ]}
-      testimonialsTitle="What Our Clients Say"
       testimonials={[
         {
           quote: "Our AI implementation exceeded expectations — Link Innovation delivered intelligent automation that transformed our operations.",
@@ -214,7 +203,6 @@ export default function AIAutomationPage() {
           company: "DataFlow Inc"
         }
       ]}
-      faqTitle="Frequently Asked Questions"
       faq={[
         {
           question: "Do you build both machine learning and generative AI solutions?",
@@ -241,9 +229,6 @@ export default function AIAutomationPage() {
       ctaDescription="Let's create intelligent automation that revolutionizes your business operations and drives measurable results."
       ctaButtonText="Schedule a Free AI Assessment"
       ctaButtonHref="/contact"
-      primaryColor="bg-purple-500"
-      gradientFrom="from-purple-500"
-      gradientTo="to-pink-500"
     />
   );
 }
