@@ -1,50 +1,78 @@
-import { Header } from '@/components/header-3';
+import Navigation from "../new-src/components/sections/navigation";
+import ProcessSection from "../new-src/components/sections/process";
+import FeaturesSection from "../new-src/components/sections/features";
+import SuccessStories from "../new-src/components/sections/success-stories";
+import Footer from "../new-src/components/sections/footer";
+// Main homepage components
 import HeroSectionNew from '@/components/HeroSectionNew';
-import ProcessCards from '@/homepage-versions/shared/components/ProcessCards';
-import OurAIServices from '@/components/MStackCard';
-import CenterModeProductivitySlider from '@/components/ui/center-mode-productivity-slider';
-import AITransformationCirrusInteractive from '@/components/MVerticalCard';
 import { Process } from '@/components/ui/cards-stack-demo';
+import ShaderShowcase from '@/components/ui/hero';
 import RuixenFeatureSection from '@/components/ui/ruixen-feature-section';
-import StackFeatureSection from '@/components/ui/stack-feature-section';
-import { WhyChooseUsBento } from '@/components/ui/why-choose-us-bento';
-import GalleryHoverCarousel from '@/components/ui/gallery-hover-carousel';
-import OverlappingCardsCarousel from '@/components/ui/overlapping-cards-carousel';
-import RuixenBentoCards from '@/components/ui/ruixen-bento-cards';
-import ProjectsSection from '@/orbai_clone/components/sections/projects';
-import { CardHoverRevealSection } from '@/components/ui/card-hover-reveal-section';
+import { FlowAnimationSection } from '@/components/flow-animation-section';
+import { PhilosophyPromiseSection } from '@/components/ui/philosophy-promise-section';
 import TestimonialsColumns from '@/components/ui/testimonials-columns-1';
-import FaqSection from '@/orbai_clone/components/sections/faq';
 import { TrustedBySparkles } from '@/components/ui/trusted-by-sparkles';
 import { CTAWithShader } from '@/components/ui/cta-with-shader';
-import Footer from '@/orbai_clone/components/sections/footer';
+import OurAIServices from '@/components/MStackCard';
+import OverlappingCardsCarousel from '@/components/ui/overlapping-cards-carousel';
+import JourneyMap from '@/components/promise-section';
 
 export default function HomePage() {
-  return (
-    <main className="min-h-screen bg-background">
-      <Header />
-      <div className="pt-0 [&>*]:mb-0 [&>*]:pb-0 [&>*:not(:first-child)]:mt-12 [&>*:not(:last-child)]:mb-12 md:[&>*:not(:first-child)]:mt-16 md:[&>*:not(:last-child)]:mb-16">
-        <HeroSectionNew />
-        <ProcessCards />
-        <OurAIServices />
-        <CenterModeProductivitySlider />
-        <AITransformationCirrusInteractive />
-        <Process />
-        <RuixenFeatureSection />
-        <StackFeatureSection />
-        <WhyChooseUsBento />
-        <GalleryHoverCarousel heading="Simple & Scalable" />
-        <OverlappingCardsCarousel />
-        <RuixenBentoCards />
-        <ProjectsSection />
-        <CardHoverRevealSection />
-        <TestimonialsColumns />
-        <FaqSection />
-        <TrustedBySparkles />
-        <CTAWithShader />
-        <Footer />
-      </div>
-    </main>
-  );
+    return (
+        <main className="min-h-screen bg-background-primary">
+            <Navigation />
+            
+            {/* ============================================
+                IDEAL STRUCTURE (8-10 sections max)
+            ============================================ */}
+            
+            {/* 1️⃣ Hero */}
+            <HeroSectionNew />
+            
+            {/* 2️⃣ Why Choose Us */}
+            <FeaturesSection />
+            
+            {/* 3️⃣ Overlapping Cards Carousel */}
+            <OverlappingCardsCarousel />
+            
+            {/* 4️⃣ Services Cards */}
+            <SuccessStories />
+            
+            {/* 5️⃣ Our Process (6-Step Journey) */}
+            <Process />
+            
+            {/* 5️⃣5️⃣ Build Your Journey */}
+            <JourneyMap />
+            
+            {/* 6️⃣ CTA (Transformed from Hero) - MIDDLE */}
+            <ShaderShowcase />
+            
+            {/* 7️⃣ The Link Innovations Way */}
+            <ProcessSection />
+            
+            {/* 8️⃣ Technologies Showcase */}
+            <RuixenFeatureSection />
+            
+            {/* 9️⃣ Flow Animation Component */}
+            <FlowAnimationSection />
+            
+            {/* 🔟 Our Promise & What We Believe - MStack Cards */}
+            <OurAIServices />
+            
+            {/* 1️⃣1️⃣ Philosophy & Promise & Beliefs (Merged) */}
+            <PhilosophyPromiseSection />
+            
+            {/* 1️⃣2️⃣ Social Proof */}
+            <div className="bg-background-primary">
+                <TestimonialsColumns />
+                <TrustedBySparkles />
+            </div>
+            
+            {/* 1️⃣3️⃣ Final CTA */}
+            <CTAWithShader />
+            
+            {/* 1️⃣4️⃣ Footer */}
+            <Footer />
+        </main>
+    );
 }
-

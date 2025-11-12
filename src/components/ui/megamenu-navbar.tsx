@@ -35,15 +35,7 @@ const services = [
   { name: "Automation Testing", href: "/services/automation-testing", description: "QA and automated testing" },
 ]
 
-// Industries data
-const industries = [
-  { name: "Healthcare", href: "/industries/healthcare", description: "Healthcare technology solutions" },
-  { name: "Banking & Finance", href: "/industries/banking", description: "Financial services and fintech" },
-  { name: "Retail & E-commerce", href: "/industries/retail", description: "E-commerce platforms and retail" },
-  { name: "Manufacturing", href: "/industries/manufacturing", description: "Industrial automation solutions" },
-  { name: "Education", href: "/industries/education", description: "EdTech and learning platforms" },
-  { name: "Technology", href: "/industries/technology", description: "Tech innovation and software" },
-]
+// Industries data - removed
 
 // Portfolio/Case Studies data
 const portfolioItems = [
@@ -229,17 +221,7 @@ export default function MegamenuNavbar() {
                     {/* Menu content */}
                     <div className="relative w-full bg-[#1a1a1a]/95 backdrop-blur-md border-t border-white/5">
                       <div className="w-full max-w-7xl mx-auto px-8 lg:px-12 xl:px-16 py-12">
-                        <div className="grid grid-cols-4 gap-8 lg:gap-12">
-                          <MegamenuColumn title="MODULES">
-                            {industries.map((industry) => (
-                              <MegamenuLink
-                                key={industry.name}
-                                href={industry.href}
-                                title={industry.name}
-                              />
-                            ))}
-                          </MegamenuColumn>
-
+                        <div className="grid grid-cols-3 gap-8 lg:gap-12">
                           <MegamenuColumn title="FEATURES">
                             {platformFeatures.map((feature) => (
                               <MegamenuFeatureLink key={feature} text={feature} />
@@ -489,26 +471,6 @@ export default function MegamenuNavbar() {
                               className="block text-sm text-white/70 hover:text-white transition-colors"
                             >
                               {service.name}
-                            </Link>
-                          </SheetClose>
-                        ))}
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-
-                  <AccordionItem value="platform" className="border-b border-white/5">
-                    <AccordionTrigger className="text-base font-normal text-white hover:no-underline py-4">
-                      Platform
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <div className="pl-4 space-y-3 py-2">
-                        {industries.map((industry) => (
-                          <SheetClose key={industry.name} asChild>
-                            <Link
-                              href={industry.href}
-                              className="block text-sm text-white/70 hover:text-white transition-colors"
-                            >
-                              {industry.name}
                             </Link>
                           </SheetClose>
                         ))}

@@ -6,56 +6,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { useStaggeredFadeIn } from "@/hooks/useSimpleFadeIn";
 
-const industries = [
-  {
-    id: "healthcare",
-    name: "Healthcare & Life Sciences",
-    description: "HIPAA-compliant solutions for modern healthcare",
-    image: "/images/industry_cards/Healthcar and Lifesciences.webp",
-    href: "/industries/healthcare",
-    stats: "40+ Projects",
-  },
-  {
-    id: "manufacturing",
-    name: "Manufacturing & Automotive",
-    description: "Smart manufacturing and Industry 4.0 solutions",
-    image: "/images/industry_cards/Manufacturing and Automotive.webp",
-    href: "/industries/manufacturing",
-    stats: "35+ Projects",
-  },
-  {
-    id: "banking",
-    name: "Banking & Finance",
-    description: "Secure fintech and banking platforms",
-    image: "/images/industry_cards/Banking and Finance.webp",
-    href: "/industries/banking",
-    stats: "50+ Projects",
-  },
-  {
-    id: "retail",
-    name: "Retail & E-commerce",
-    description: "Scalable online marketplaces and retail solutions",
-    image: "/images/industry_cards/Retail and Ecommerce.webp",
-    href: "/industries/retail",
-    stats: "60+ Projects",
-  },
-  {
-    id: "education",
-    name: "Education & E-learning",
-    description: "Interactive learning platforms and EdTech",
-    image: "/images/industry_cards/Education and Elearning.webp",
-    href: "/industries/education",
-    stats: "30+ Projects",
-  },
-  {
-    id: "technology",
-    name: "Technology & Software",
-    description: "Enterprise software and SaaS platforms",
-    image: "/images/industry_cards/Technology and Software.webp",
-    href: "/industries/technology",
-    stats: "70+ Projects",
-  },
-];
+const industries = [];
 
 export function McKinseyIndustries() {
   const { ref, visibleItems } = useStaggeredFadeIn(industries.length, 100);

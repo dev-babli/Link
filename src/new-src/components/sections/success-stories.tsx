@@ -74,9 +74,6 @@ const SuccessStories = () => {
           <h2 className="text-4xl font-medium tracking-[-0.015em] text-text-primary sm:text-[56px] sm:leading-[1.15]">
             Our Services
           </h2>
-          <p className="mt-4 text-lg text-text-secondary md:text-xl">
-            Link Innovations provides comprehensive IT and technology solutions to help your business thrive. Explore our range of services designed to meet your digital needs.
-          </p>
         </div>
         <div className="mx-auto mt-16 grid max-w-none grid-cols-1 gap-8 sm:mt-20 md:grid-cols-2">
           {services.map((service) => (

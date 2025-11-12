@@ -11,6 +11,36 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+// Brand colors mapping for technology icons
+const getIconColor = (IconComponent: React.ComponentType<any> | null): string => {
+  if (!IconComponent) return '#000000';
+  
+  // Map icon components to their brand colors
+  if (IconComponent === SiReact) return '#61DAFB';
+  if (IconComponent === SiNextdotjs) return '#000000';
+  if (IconComponent === SiTypescript) return '#3178C6';
+  if (IconComponent === SiTailwindcss) return '#06B6D4';
+  if (IconComponent === SiNodedotjs) return '#339933';
+  if (IconComponent === SiPython) return '#3776AB';
+  if (IconComponent === SiPostgresql) return '#4169E1';
+  if (IconComponent === SiMongodb) return '#47A248';
+  if (IconComponent === SiDocker) return '#2496ED';
+  if (IconComponent === SiKubernetes) return '#326CE5';
+  if (IconComponent === SiGit) return '#F05032';
+  if (IconComponent === SiGithub) return '#181717';
+  if (IconComponent === SiJenkins) return '#D24939';
+  if (IconComponent === FaAws) return '#FF9900';
+  
+  // Default colors for FontAwesome icons (these don't have specific brand colors)
+  if (IconComponent === FaCode) return '#3B82F6';
+  if (IconComponent === FaShieldAlt) return '#10B981';
+  if (IconComponent === FaCloud) return '#06B6D4';
+  if (IconComponent === FaRocket) return '#8B5CF6';
+  if (IconComponent === FaCog) return '#6B7280';
+  
+  return '#000000';
+};
+
 export const Highlight = ({
   children,
   className,
@@ -300,7 +330,7 @@ export default function RuixenFeatureSection() {
                             boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.4), 0 2px 8px rgba(0,0,0,0.05)'
                           }}
                         >
-                          <IconComponent className="w-5 h-5" style={{ color: '#000000' }} />
+                          <IconComponent className="w-5 h-5" style={{ color: getIconColor(IconComponent) }} />
                         </div>
                         <div className="min-w-0 flex-1">
                           <p className="text-sm font-medium truncate font-body" style={{ color: '#000000' }}>{item.name}</p>
@@ -548,7 +578,7 @@ export const TechnologyStack = ({
                     >
                       {IconComponent && (
                         <div className="flex-shrink-0">
-                          <IconComponent className="w-4 h-4" style={{ color: '#000000' }} />
+                          <IconComponent className="w-4 h-4" style={{ color: getIconColor(IconComponent) }} />
                         </div>
                       )}
                       <span className="text-xs font-body" style={{ color: '#000000' }}>

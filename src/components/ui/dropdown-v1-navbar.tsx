@@ -184,14 +184,7 @@ export default function DropdownV1Navbar() {
         },
         column3: {
           title: "USE CASES",
-          items: [
-            { label: "Healthcare", href: "/industries/healthcare", icon: Heart },
-            { label: "Finance", href: "/industries/banking", icon: Building },
-            { label: "Retail", href: "/industries/retail", icon: ShoppingCart },
-            { label: "Manufacturing", href: "/industries/manufacturing", icon: Package },
-            { label: "Education", href: "/industries/education", icon: GraduationCap },
-            { label: "Technology", href: "/industries/technology", icon: Code },
-          ],
+          items: [],
         },
         column4: {
           title: "RESOURCES",
@@ -280,14 +273,7 @@ export default function DropdownV1Navbar() {
       { label: "Data Analytics", href: "/services/data-analytics", icon: BarChart3 },
       { label: "Cybersecurity", href: "/services/cybersecurity", icon: Shield },
     ],
-    useCases: [
-      { label: "Healthcare", href: "/industries/healthcare", icon: Heart },
-      { label: "Finance & Banking", href: "/industries/banking", icon: Building },
-      { label: "Retail & E-commerce", href: "/industries/retail", icon: ShoppingCart },
-      { label: "Manufacturing", href: "/industries/manufacturing", icon: Package },
-      { label: "Education", href: "/industries/education", icon: GraduationCap },
-      { label: "Technology", href: "/industries/technology", icon: Code },
-    ],
+    useCases: [],
     resources: [
       { label: "Case Studies", href: "/services", icon: FileText },
       { label: "Blog & Articles", href: "/contact", icon: Newspaper },

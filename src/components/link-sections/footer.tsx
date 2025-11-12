@@ -19,15 +19,7 @@ const footerLinks: Record<string, FooterLink[]> = {
         { name: "Data Analytics", href: "/services/data-analytics" },
         { name: "Managed Services", href: "/services" },
     ],
-    industries: [
-        { name: "Healthcare", href: "/industries/healthcare" },
-        { name: "Banking & Finance", href: "/industries/banking" },
-        { name: "Retail & E-commerce", href: "/industries/retail" },
-        { name: "Manufacturing", href: "/industries/manufacturing" },
-        { name: "Education", href: "/industries/education" },
-        { name: "Energy", href: "/industries/energy" },
-        { name: "Technology", href: "/industries/technology" },
-    ],
+    industries: [],
     company: [
         { name: "About Us", href: "/about" },
         { name: "Portfolio", href: "/portfolio" },

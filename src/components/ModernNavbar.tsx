@@ -28,14 +28,7 @@ const navigationItems = [
         label: "Industries",
         bgColor: "#2d1b69",
         textColor: "#ffffff",
-        links: [
-            { label: "Healthcare", href: "/industries/healthcare", ariaLabel: "Healthcare solutions", description: "Medical technology solutions", image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop" },
-            { label: "Banking", href: "/industries/banking", ariaLabel: "Banking solutions", description: "Financial technology and banking", image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop" },
-            { label: "Retail", href: "/industries/retail", ariaLabel: "Retail solutions", description: "E-commerce and retail platforms", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop" },
-            { label: "Education", href: "/industries/education", ariaLabel: "Educational technology", description: "EdTech and learning platforms", image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop" },
-            { label: "Manufacturing", href: "/industries/manufacturing", ariaLabel: "Manufacturing solutions", description: "Industrial automation", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop" },
-            { label: "Technology", href: "/industries/technology", ariaLabel: "Technology solutions", description: "Tech industry solutions", image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=300&fit=crop" },
-        ],
+        links: [],
     },
     {
         label: "Blogs",

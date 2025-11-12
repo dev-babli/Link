@@ -8,13 +8,14 @@ import HeroSectionNew from '@/components/HeroSectionNew';
 import { Process } from '@/components/ui/cards-stack-demo';
 import ShaderShowcase from '@/components/ui/hero';
 import RuixenFeatureSection from '@/components/ui/ruixen-feature-section';
-import { FlowAnimationSection } from '@/components/ui/flow-animation-section';
+import { FlowAnimationSection } from '@/components/flow-animation-section';
 import { PhilosophyPromiseSection } from '@/components/ui/philosophy-promise-section';
 import TestimonialsColumns from '@/components/ui/testimonials-columns-1';
 import { TrustedBySparkles } from '@/components/ui/trusted-by-sparkles';
 import { CTAWithShader } from '@/components/ui/cta-with-shader';
 import OurAIServices from '@/components/MStackCard';
 import OverlappingCardsCarousel from '@/components/ui/overlapping-cards-carousel';
+import JourneyMap from '@/components/promise-section';
 
 export default function GroviaHomePage() {
     return (
@@ -31,14 +32,14 @@ export default function GroviaHomePage() {
             {/* 2️⃣ Why Choose Us */}
             <FeaturesSection />
             
-            {/* 3️⃣ Overlapping Cards Carousel */}
-            <OverlappingCardsCarousel />
-            
             {/* 4️⃣ Services Cards */}
             <SuccessStories />
             
             {/* 5️⃣ Our Process (6-Step Journey) */}
             <Process />
+            
+            {/* 5️⃣5️⃣ Build Your Journey */}
+            <JourneyMap />
             
             {/* 6️⃣ CTA (Transformed from Hero) - MIDDLE */}
             <ShaderShowcase />

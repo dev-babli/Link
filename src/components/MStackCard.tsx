@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Sparkles } from "@/components/ui/sparkles";
+import { DitheringShader } from "@/components/ui/dithering-shader";
 import {
   Eye,
   Clock,
@@ -133,35 +134,57 @@ const OurAIServices: React.FC = () => {
                   }}
                   whileHover={{ scale: 1.01, transition: { duration: 0.3 } }}
                   className="group relative w-full max-w-7xl mx-auto rounded-2xl flex flex-col lg:flex-row overflow-hidden 
-                    backdrop-blur-2xl
-                    bg-gradient-to-br from-white/[0.08] via-white/[0.05] to-white/[0.03]
-                    border border-white/20
-                    shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_8px_32px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.15)]
+                    shadow-2xl
                     transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]
-                    hover:border-white/30
-                    hover:bg-gradient-to-br hover:from-white/[0.12] hover:via-white/[0.08] hover:to-white/[0.05]
-                    hover:shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_16px_48px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.2)]"
+                    hover:shadow-[0_24px_64px_rgba(0,0,0,0.4)]"
                 >
-                  {/* Premium Background Gradient */}
-                  <div className="absolute inset-0 z-0 bg-gradient-to-br from-black/40 via-black/35 to-black/40" />
+                  {/* Shader Background - Same as final shader component */}
+                  {/* Gradient Background Base - Beige */}
+                  <div className="absolute inset-0 z-0 bg-[#F5F5DC]" />
+
+                  {/* DitheringShader Background with Wave Pattern */}
+                  <div className="absolute inset-0 z-[1]">
+                    <DitheringShader
+                      shape="wave"
+                      type="8x8"
+                      colorBack="#F5F5DC"
+                      colorFront="#00c4b8"
+                      pxSize={4}
+                      speed={0.4}
+                      className="w-full h-full"
+                      style={{ width: "100%", height: "100%", opacity: 0.7 }}
+                    />
+                  </div>
+
+                  {/* Semi-transparent Dark Overlay */}
+                  <div className="absolute inset-0 z-[2] bg-gradient-to-br from-black/50 via-black/45 to-black/50" />
+
+                  {/* Subtle Vertical Beams Effect */}
+                  <div className="absolute inset-0 z-[3] opacity-20">
+                    <div className="absolute left-[10%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/15 to-transparent animate-pulse" style={{ animationDelay: '0ms' }} />
+                    <div className="absolute left-[30%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent animate-pulse" style={{ animationDelay: '300ms' }} />
+                    <div className="absolute left-[50%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/15 to-transparent animate-pulse" style={{ animationDelay: '700ms' }} />
+                    <div className="absolute left-[70%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent animate-pulse" style={{ animationDelay: '500ms' }} />
+                    <div className="absolute left-[90%] top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/15 to-transparent animate-pulse" style={{ animationDelay: '1000ms' }} />
+                  </div>
 
                   {/* Top Edge Highlight */}
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent z-[4]" />
 
                   {/* Left: Content */}
-                  <div className="relative z-[3] w-full lg:w-[45%] p-8 lg:p-12 flex flex-col justify-center space-y-6">
+                  <div className="relative z-[5] w-full lg:w-[45%] p-8 lg:p-12 flex flex-col justify-center space-y-6">
                     {/* Header icon and title */}
                     <div className="space-y-4">
                       <motion.div
                         whileHover={{ scale: 1.05 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                         className="relative inline-flex items-center justify-center w-14 h-14 rounded-xl 
-                          backdrop-blur-xl
-                          bg-white/[0.12] border border-white/25
-                          shadow-[0_4px_16px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.3)]
+                          backdrop-blur-md
+                          bg-black/40 border border-white/30
+                          shadow-[0_4px_16px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.2)]
                           transition-all duration-300
-                          group-hover:bg-white/[0.16]
-                          group-hover:border-white/35"
+                          group-hover:bg-black/50
+                          group-hover:border-white/40"
                       >
                         <Icon className="w-6 h-6 !text-white relative z-10" strokeWidth={2} />
                       </motion.div>
@@ -181,8 +204,8 @@ const OurAIServices: React.FC = () => {
                           transition={{ duration: 0.5, delay: idx * 0.15 + i * 0.1 }}
                           className="flex items-start gap-3"
                         >
-                          <div className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-white/80 mt-2.5 shadow-[0_0_6px_rgba(255,255,255,0.5)]" />
-                          <p className="text-base !text-white leading-[1.6]">
+                          <div className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-white/90 mt-2.5 shadow-[0_0_8px_rgba(255,255,255,0.6)]" />
+                          <p className="text-base !text-white leading-[1.6] font-medium">
                             {item}
                           </p>
                         </motion.div>
@@ -191,30 +214,27 @@ const OurAIServices: React.FC = () => {
                   </div>
 
                   {/* Divider */}
-                  <div className="hidden lg:block absolute left-[45%] top-0 bottom-0 w-px bg-white/20" />
+                  <div className="hidden lg:block absolute left-[45%] top-0 bottom-0 w-px bg-white/20 z-[4]" />
 
                   {/* Right: Media */}
-                  <div className="relative z-[3] w-full lg:w-[55%] flex justify-center items-center p-8 lg:p-12 xl:p-16">
+                  <div className="relative z-[5] w-full lg:w-[55%] flex justify-center items-center p-8 lg:p-12 xl:p-16">
                     <motion.div
                       whileHover={{ scale: 1.03 }}
                       transition={{ duration: 0.4 }}
                       className="relative w-full max-w-2xl aspect-square lg:aspect-video rounded-3xl overflow-hidden 
-                        backdrop-blur-xl
-                        bg-white/[0.05]
-                        border border-white/20
-                        shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_16px_48px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.15)]
+                        backdrop-blur-md
+                        bg-black/30
+                        border border-white/30
+                        shadow-[0_16px_48px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.2)]
                         transition-all duration-500
-                        group-hover:border-white/30
-                        group-hover:shadow-[0_0_0_1px_rgba(255,255,255,0.15),0_24px_64px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.2)]"
+                        group-hover:border-white/40
+                        group-hover:shadow-[0_24px_64px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.3)]"
                     >
                       {/* Top Edge Highlight */}
-                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent z-10 rounded-t-3xl" />
+                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent z-10 rounded-t-3xl" />
 
                       {/* Subtle overlay on media */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/5 via-transparent to-transparent pointer-events-none z-10 rounded-3xl" />
-
-                      {/* Shine effect on media */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent pointer-events-none z-10 rounded-3xl opacity-50" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none z-10 rounded-3xl" />
 
                       <Image
                         src={service.media}

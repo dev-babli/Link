@@ -93,38 +93,7 @@ const platformSolutions = [
     },
 ];
 
-const platformIntegrations = [
-    {
-        title: "Healthcare",
-        href: "/industries/healthcare",
-        description: "Digital health solutions that improve patient care",
-        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=300&fit=crop"
-    },
-    {
-        title: "Banking & Finance",
-        href: "/industries/banking",
-        description: "Secure fintech platforms & payment solutions",
-        image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop"
-    },
-    {
-        title: "Retail & E-commerce",
-        href: "/industries/retail",
-        description: "Seamless shopping experiences that convert",
-        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop"
-    },
-    {
-        title: "Manufacturing",
-        href: "/industries/manufacturing",
-        description: "Smart factory & supply chain optimization",
-        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop"
-    },
-    {
-        title: "Education",
-        href: "/industries/education",
-        description: "E-learning platforms that engage students",
-        image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop"
-    },
-];
+const platformIntegrations = [];
 
 const caseStudies = [
     {

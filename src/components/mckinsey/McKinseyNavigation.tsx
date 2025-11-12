@@ -60,14 +60,7 @@ export function McKinseyNavigation() {
     { name: "Data Analytics", href: "/services/data-analytics", description: "Data-driven insights" },
   ];
 
-  const industries = [
-    { name: "Healthcare", href: "/industries/healthcare", description: "Healthcare technology" },
-    { name: "Manufacturing", href: "/industries/manufacturing", description: "Industrial solutions" },
-    { name: "Banking", href: "/industries/banking", description: "Financial services" },
-    { name: "Retail", href: "/industries/retail", description: "E-commerce platforms" },
-    { name: "Education", href: "/industries/education", description: "EdTech solutions" },
-    { name: "Technology", href: "/industries/technology", description: "Tech innovation" },
-  ];
+  const industries = [];
 
   const handleDropdownToggle = (dropdown: string) => {
     setActiveDropdown(activeDropdown === dropdown ? null : dropdown);

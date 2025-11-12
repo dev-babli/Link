@@ -24,15 +24,7 @@ const services = [
   { name: "Cloud Services", href: "/services/cloud-services" },
 ]
 
-// Industries data
-const industries = [
-  { name: "Healthcare", href: "/industries/healthcare" },
-  { name: "Banking & Finance", href: "/industries/banking" },
-  { name: "Retail & E-commerce", href: "/industries/retail" },
-  { name: "Manufacturing", href: "/industries/manufacturing" },
-  { name: "Education", href: "/industries/education" },
-  { name: "Technology", href: "/industries/technology" },
-]
+// Industries data - removed
 
 // Portfolio/Case Studies data
 const portfolioItems = [
@@ -268,17 +260,7 @@ export default function MegaMenuNavbar() {
                     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm -z-10" />
                     <div className="relative w-full bg-[#1a1a1a]/95 backdrop-blur-md border-t border-white/5">
                       <div className="w-full max-w-7xl mx-auto px-8 lg:px-12 xl:px-16 py-12">
-                        <div className="grid grid-cols-4 gap-8 lg:gap-12">
-                          <MegamenuColumn title="MODULES">
-                            {industries.map((industry) => (
-                              <MegamenuLink
-                                key={industry.name}
-                                href={industry.href}
-                                title={industry.name}
-                              />
-                            ))}
-                          </MegamenuColumn>
-
+                        <div className="grid grid-cols-3 gap-8 lg:gap-12">
                           <MegamenuColumn title="FEATURES">
                             {platformFeatures.map((feature) => (
                               <MegamenuFeatureLink key={feature} text={feature} />
@@ -574,26 +556,6 @@ export default function MegaMenuNavbar() {
                               className="block text-sm text-white/80 hover:text-white transition-colors"
                             >
                               {service.name}
-                            </Link>
-                          </SheetClose>
-                        ))}
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-
-                  <AccordionItem value="platform" className="border-b border-white/5">
-                    <AccordionTrigger className="text-base font-normal hover:no-underline text-white py-4">
-                      Platform
-                    </AccordionTrigger>
-                    <AccordionContent>
-                      <div className="pl-4 space-y-3 py-2">
-                        {industries.map((industry) => (
-                          <SheetClose key={industry.name} asChild>
-                            <Link
-                              href={industry.href}
-                              className="block text-sm text-white/80 hover:text-white transition-colors"
-                            >
-                              {industry.name}
                             </Link>
                           </SheetClose>
                         ))}

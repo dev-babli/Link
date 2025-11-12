@@ -16,7 +16,7 @@ const accordionItems = [
     description:
       "We develop HIPAA-compliant healthcare solutions including telemedicine platforms, patient management systems, and AI-powered diagnostic tools. Our secure infrastructure ensures patient data protection while enabling seamless digital health experiences.",
     buttonText: "Healthcare Solutions",
-    buttonLink: "/industries/healthcare",
+    buttonLink: "/services",
     imageSrc: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/1709bbb6-f316-4d92-9d04-5fe8ad61ac79-cortex-io/assets/images/next-923774-home_acc_01.png?",
   },
   {

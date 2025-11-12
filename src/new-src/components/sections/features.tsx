@@ -99,9 +99,6 @@ const FeaturesSection = () => {
           <h2 className="text-[3rem] font-medium leading-[1.1] tracking-[-0.02em] text-[#1a1a1a] md:text-[56px] md:leading-[1.15] md:tracking-[-0.015em]">
             Why Choose Us
           </h2>
-          <p className="text-large-paragraph mt-4 text-[#4a4a4a]">
-            Link Innovations delivers exceptional digital solutions with expertise, innovation, and a commitment to your success. Discover what sets us apart.
-          </p>
         </div>
 
         <Tabs defaultValue="client-focused" onValueChange={setActiveTab} className={`w-full transition-all duration-1000 ease-in-out delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>

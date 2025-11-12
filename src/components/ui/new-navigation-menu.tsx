@@ -25,7 +25,6 @@ import { cn } from "@/lib/utils"
 // Navigation items with dropdown information
 const navItems = [
   { name: "Services", href: "#services", hasDropdown: true },
-  { name: "Industries", href: "#industries", hasDropdown: true },
   { name: "Portfolio", href: "#portfolio", hasDropdown: false },
   { name: "About", href: "#about", hasDropdown: false },
   { name: "Insights", href: "#insights", hasDropdown: false },
@@ -42,15 +41,7 @@ const services = [
   { name: "Data Analytics", href: "/services/data-analytics", description: "Business intelligence" },
 ]
 
-// Industries dropdown content
-const industries = [
-  { name: "Healthcare", href: "/industries/healthcare", description: "Healthcare technology" },
-  { name: "Banking & Finance", href: "/industries/banking", description: "Financial services" },
-  { name: "Retail & E-commerce", href: "/industries/retail", description: "E-commerce platforms" },
-  { name: "Manufacturing", href: "/industries/manufacturing", description: "Industrial solutions" },
-  { name: "Education", href: "/industries/education", description: "EdTech solutions" },
-  { name: "Technology", href: "/industries/technology", description: "Tech innovation" },
-]
+// Industries dropdown content - removed
 
 // Reusable dropdown link component
 const DropdownLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
@@ -143,54 +134,6 @@ export default function NewNavigationMenu() {
                               </div>
                             </div>
                           </div>
-                        ) : item.name === "Industries" ? (
-                          <div className="p-8 w-[800px]">
-                            <div className="grid grid-cols-3 gap-8">
-                              <div>
-                                <h3 className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-4">
-                                  Key Industries
-                                </h3>
-                                <ul className="space-y-2">
-                                  {industries.slice(0, 3).map((industry) => (
-                                    <DropdownLink key={industry.name} href={industry.href}>
-                                      <div>
-                                        <div className="font-medium">{industry.name}</div>
-                                        <div className="text-xs text-muted-foreground">{industry.description}</div>
-                                      </div>
-                                    </DropdownLink>
-                                  ))}
-                                </ul>
-                              </div>
-                              <div>
-                                <h3 className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-4">
-                                  More Industries
-                                </h3>
-                                <ul className="space-y-2">
-                                  {industries.slice(3, 6).map((industry) => (
-                                    <DropdownLink key={industry.name} href={industry.href}>
-                                      <div>
-                                        <div className="font-medium">{industry.name}</div>
-                                        <div className="text-xs text-muted-foreground">{industry.description}</div>
-                                      </div>
-                                    </DropdownLink>
-                                  ))}
-                                </ul>
-                              </div>
-                              <div>
-                                <h3 className="text-xs font-semibold tracking-widest text-muted-foreground uppercase mb-4">
-                                  Quick Links
-                                </h3>
-                                <ul className="space-y-2">
-                                  <DropdownLink href="/industries">
-                                    <div className="font-medium">All Industries →</div>
-                                  </DropdownLink>
-                                  <DropdownLink href="/contact">
-                                    <div className="font-medium">Contact Us →</div>
-                                  </DropdownLink>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
                         ) : (
                           <div className="p-4 w-64">
                             <p className="text-sm text-muted-foreground">
@@ -262,19 +205,6 @@ export default function NewNavigationMenu() {
                                       className="block text-sm hover:text-primary transition-colors"
                                     >
                                       {service.name}
-                                    </Link>
-                                  </SheetClose>
-                                ))}
-                              </>
-                            ) : item.name === "Industries" ? (
-                              <>
-                                {industries.map((industry) => (
-                                  <SheetClose key={industry.name} asChild>
-                                    <Link
-                                      href={industry.href}
-                                      className="block text-sm hover:text-primary transition-colors"
-                                    >
-                                      {industry.name}
                                     </Link>
                                   </SheetClose>
                                 ))}

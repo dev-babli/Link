@@ -91,43 +91,6 @@ export function McKinseyFooter() {
             </ul>
           </div>
 
-          {/* Industries */}
-          <div>
-            <h3 className="font-merriweather font-bold text-white mb-4 text-lg">Industries</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link href="/industries/healthcare" className="text-mckinsey-light-gray hover:text-white transition-colors text-sm">
-                  Healthcare
-                </Link>
-              </li>
-              <li>
-                <Link href="/industries/manufacturing" className="text-mckinsey-light-gray hover:text-white transition-colors text-sm">
-                  Manufacturing
-                </Link>
-              </li>
-              <li>
-                <Link href="/industries/banking" className="text-mckinsey-light-gray hover:text-white transition-colors text-sm">
-                  Banking
-                </Link>
-              </li>
-              <li>
-                <Link href="/industries/retail" className="text-mckinsey-light-gray hover:text-white transition-colors text-sm">
-                  Retail
-                </Link>
-              </li>
-              <li>
-                <Link href="/industries/education" className="text-mckinsey-light-gray hover:text-white transition-colors text-sm">
-                  Education
-                </Link>
-              </li>
-              <li>
-                <Link href="/industries/technology" className="text-mckinsey-light-gray hover:text-white transition-colors text-sm">
-                  Technology
-                </Link>
-              </li>
-            </ul>
-          </div>
-
           {/* Company */}
           <div>
             <h3 className="font-merriweather font-bold text-white mb-4 text-lg">Company</h3>

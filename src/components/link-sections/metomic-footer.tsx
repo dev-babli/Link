@@ -19,16 +19,7 @@ const servicesLinks = [
     { href: "/services", label: "Managed Services" },
 ];
 
-const industriesLinks = [
-    { href: "/industries/healthcare", label: "Healthcare" },
-    { href: "/industries/banking", label: "Banking & Finance" },
-    { href: "/industries/retail", label: "Retail & E-commerce" },
-    { href: "/industries/manufacturing", label: "Manufacturing" },
-    { href: "/industries/education", label: "Education" },
-    { href: "/industries/energy", label: "Energy" },
-    { href: "/industries/technology", label: "Technology" },
-    { href: "/industries/agriculture", label: "Agriculture" },
-];
+const industriesLinks = [];
 
 const resourcesLinks = [
     { href: "/about", label: "About" },

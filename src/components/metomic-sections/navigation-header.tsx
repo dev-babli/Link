@@ -44,16 +44,9 @@ const platformSolutions = [
   { name: "Data Analytics", href: "/services/data-analytics" },
 ];
 
-const platformIntegrations = [
-  { name: "Healthcare", href: "/industries/healthcare" },
-  { name: "Banking & Finance", href: "/industries/banking" },
-  { name: "Retail & E-commerce", href: "/industries/retail" },
-  { name: "Manufacturing", href: "/industries/manufacturing" },
-  { name: "Education", href: "/industries/education" },
-];
+const platformIntegrations = [];
 
 const platformAITools = [
-  { name: "Technology", href: "/industries/technology" },
   { name: "Agriculture", href: "/industries/agriculture" },
   { name: "Energy", href: "/industries/energy" },
   { name: "AI Solutions", href: "/services/ai-automation" },
