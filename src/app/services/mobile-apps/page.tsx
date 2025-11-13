@@ -1,15 +1,15 @@
 "use client";
 
-import PremiumServiceTemplate from "@/components/PremiumServiceTemplate";
+import MainlineServiceTemplate from "@/components/MainlineServiceTemplate";
 
 export default function MobileAppsPage() {
   return (
-    <PremiumServiceTemplate
+    <MainlineServiceTemplate
       serviceName="Mobile Apps"
       heroTitle="Cross-Platform Mobile Solutions That Work Seamlessly"
       heroSubtitle="Mobile Development"
       heroDescription="Create powerful mobile experiences that engage users and drive results. From iOS to Android, we deliver native and cross-platform solutions that work perfectly on all devices."
-      heroImage="/images/service-cards/mobile-app-development-service-card.webp"
+      heroImage="/mainline_service_template/hero.webp"
       primaryCTA={{ text: "Start Your App", href: "/contact" }}
       secondaryCTA={{ text: "View Portfolio", href: "/services" }}
       impactMetrics={[

@@ -22,7 +22,7 @@ interface HeroSectionProps {
   subtitle?: string;
 }
 
-export function HeroSection({ 
+export function HeroSection({
   serviceName = "Link Innovations",
   mainTitle = "Supercharge your productivity with AI-driven automation",
   subtitle = "Integrate, orchestrate, and scale your business — all in one secure platform."
@@ -176,38 +176,38 @@ export function HeroSection({
       </div>
 
       {/* Floating elements with ORB AI colors */}
-      <div 
-        className="floating-element" 
-        style={{ 
-          top: "25%", 
-          left: "15%", 
+      <div
+        className="floating-element"
+        style={{
+          top: "25%",
+          left: "15%",
           animationDelay: "5s",
           background: `radial-gradient(circle, rgba(139, 92, 246, 0.25), transparent)`
         }}
       ></div>
-      <div 
-        className="floating-element" 
-        style={{ 
-          top: "60%", 
-          left: "85%", 
+      <div
+        className="floating-element"
+        style={{
+          top: "60%",
+          left: "85%",
           animationDelay: "5.5s",
           background: `radial-gradient(circle, rgba(59, 130, 246, 0.25), transparent)`
         }}
       ></div>
-      <div 
-        className="floating-element" 
-        style={{ 
-          top: "40%", 
-          left: "10%", 
+      <div
+        className="floating-element"
+        style={{
+          top: "40%",
+          left: "10%",
           animationDelay: "6s",
           background: `radial-gradient(circle, rgba(139, 92, 246, 0.25), transparent)`
         }}
       ></div>
-      <div 
-        className="floating-element" 
-        style={{ 
-          top: "75%", 
-          left: "90%", 
+      <div
+        className="floating-element"
+        style={{
+          top: "75%",
+          left: "90%",
           animationDelay: "6.5s",
           background: `radial-gradient(circle, rgba(168, 85, 247, 0.25), transparent)`
         }}

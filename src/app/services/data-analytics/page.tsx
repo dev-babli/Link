@@ -1,15 +1,15 @@
 "use client";
 
-import PremiumServiceTemplate from "@/components/PremiumServiceTemplate";
+import MainlineServiceTemplate from "@/components/MainlineServiceTemplate";
 
 export default function DataAnalyticsPage() {
   return (
-    <PremiumServiceTemplate
+    <MainlineServiceTemplate
       serviceName="Data Analytics"
       heroTitle="Turn Your Data Into Actionable Insights"
       heroSubtitle="Business Intelligence"
       heroDescription="Transform data into insights while respecting user privacy. We provide transparent analytics with clear data usage policies, helping you make data-driven decisions that drive business success."
-      heroImage="/images/service-cards/data-analytics-service-card.webp"
+      heroImage="/mainline_service_template/hero.webp"
       primaryCTA={{ text: "Start Analytics Project", href: "/contact" }}
       secondaryCTA={{ text: "View Analytics Examples", href: "/services" }}
       impactMetrics={[

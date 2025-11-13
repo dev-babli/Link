@@ -1,15 +1,15 @@
 "use client";
 
-import PremiumServiceTemplate from "@/components/PremiumServiceTemplate";
+import MainlineServiceTemplate from "@/components/MainlineServiceTemplate";
 
 export default function AutomationTestingPage() {
   return (
-    <PremiumServiceTemplate
+    <MainlineServiceTemplate
       serviceName="Automation Testing"
       heroTitle="Ensure Quality with Comprehensive Testing Solutions"
       heroSubtitle="Quality Assurance"
       heroDescription="Comprehensive testing solutions to ensure quality and reliability. Automated testing that catches issues early, integrates with your CI/CD pipeline, and provides confidence in every release."
-      heroImage="/images/service-cards/automation-testing-service-card.webp"
+      heroImage="/mainline_service_template/hero.webp"
       primaryCTA={{ text: "Start Testing Project", href: "/contact" }}
       secondaryCTA={{ text: "View Testing Examples", href: "/services" }}
       impactMetrics={[

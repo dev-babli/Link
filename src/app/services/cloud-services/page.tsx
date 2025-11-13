@@ -1,15 +1,15 @@
 "use client";
 
-import PremiumServiceTemplate from "@/components/PremiumServiceTemplate";
+import MainlineServiceTemplate from "@/components/MainlineServiceTemplate";
 
 export default function CloudServicesPage() {
   return (
-    <PremiumServiceTemplate
+    <MainlineServiceTemplate
       serviceName="Cloud Services"
       heroTitle="Scale Your Infrastructure with Reliable Cloud Solutions"
       heroSubtitle="Cloud Infrastructure"
       heroDescription="We provide reliable, secure, and cost-effective cloud solutions with 24/7 monitoring and support. Scale your infrastructure as your business grows."
-      heroImage="/images/service-cards/cloud-services-service-card.webp"
+      heroImage="/mainline_service_template/hero.webp"
       primaryCTA={{ text: "Cloud Migration", href: "/contact" }}
       secondaryCTA={{ text: "Cloud Strategy", href: "/services" }}
       impactMetrics={[

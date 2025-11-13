@@ -1,15 +1,15 @@
 "use client";
 
-import PremiumServiceTemplate from "@/components/PremiumServiceTemplate";
+import MainlineServiceTemplate from "@/components/MainlineServiceTemplate";
 
 export default function AIAutomationPage() {
   return (
-    <PremiumServiceTemplate
+    <MainlineServiceTemplate
       serviceName="AI Solutions"
       heroTitle="Transform Your Business with Intelligent Automation"
       heroSubtitle="AI Solutions"
       heroDescription="Leverage artificial intelligence to automate processes, gain insights, and create intelligent solutions. At Link Innovation, we design and develop AI solutions that combine cutting-edge technology with ethical practices."
-      heroImage="/images/service-cards/ai-automation-service-card.webp"
+      heroImage="/mainline_service_template/hero.webp"
       primaryCTA={{
         text: "Talk to an AI Expert",
         href: "/contact"

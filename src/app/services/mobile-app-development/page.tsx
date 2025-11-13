@@ -1,15 +1,15 @@
 "use client";
 
-import PremiumServiceTemplate from "@/components/PremiumServiceTemplate";
+import MainlineServiceTemplate from "@/components/MainlineServiceTemplate";
 
 export default function MobileAppDevelopmentPage() {
   return (
-    <PremiumServiceTemplate
+    <MainlineServiceTemplate
       serviceName="Mobile App Development"
       heroTitle="Build Powerful, Scalable Mobile Apps that Users Love"
       heroSubtitle="Native & Cross-Platform Mobile Apps"
       heroDescription="At Link Innovation, we design and develop mobile applications that combine stunning interfaces with rock-solid performance. Our expert team crafts native and cross-platform apps that enhance engagement, drive conversions, and deliver measurable business value."
-      heroImage="/images/service-cards/mobile-app-development-service-card.webp"
+      heroImage="/mainline_service_template/hero.webp"
       primaryCTA={{ text: "Talk to a Mobile Expert", href: "/contact" }}
       secondaryCTA={{ text: "Explore Mobile Solutions", href: "/services" }}
       impactMetrics={[

@@ -1,15 +1,15 @@
 "use client";
 
-import PremiumServiceTemplate from "@/components/PremiumServiceTemplate";
+import MainlineServiceTemplate from "@/components/MainlineServiceTemplate";
 
 export default function CloudDevOpsPage() {
   return (
-    <PremiumServiceTemplate
+    <MainlineServiceTemplate
       serviceName="Cloud DevOps"
       heroTitle="Streamline Development with Modern DevOps Practices"
       heroSubtitle="DevOps & Cloud Infrastructure"
       heroDescription="Accelerate delivery with automated CI/CD pipelines, infrastructure as code, and modern DevOps practices. We help you build, deploy, and scale applications with confidence and efficiency."
-      heroImage="/images/service-cards/cloud-devops-service-card.webp"
+      heroImage="/mainline_service_template/hero.webp"
       primaryCTA={{ text: "Start DevOps Journey", href: "/contact" }}
       secondaryCTA={{ text: "View Case Studies", href: "/services" }}
       impactMetrics={[

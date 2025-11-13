@@ -1,15 +1,15 @@
 "use client";
 
-import PremiumServiceTemplate from "@/components/PremiumServiceTemplate";
+import MainlineServiceTemplate from "@/components/MainlineServiceTemplate";
 
 export default function WebAppDevelopmentPage() {
   return (
-    <PremiumServiceTemplate
+    <MainlineServiceTemplate
       serviceName="Web App Development"
       heroTitle="Advanced Web Applications and Platforms with Complex Functionality"
       heroSubtitle="Enterprise Web Applications"
       heroDescription="Enterprise-grade web applications and platforms with complex functionality. We build scalable, secure, and performant web solutions for modern businesses."
-      heroImage="/images/service-cards/web-app-development-service-card.webp"
+      heroImage="/mainline_service_template/hero.webp"
       primaryCTA={{ text: "Start Web App", href: "/contact" }}
       secondaryCTA={{ text: "View Web App Examples", href: "/services" }}
       impactMetrics={[

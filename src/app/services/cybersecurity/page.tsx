@@ -1,15 +1,15 @@
 "use client";
 
-import PremiumServiceTemplate from "@/components/PremiumServiceTemplate";
+import MainlineServiceTemplate from "@/components/MainlineServiceTemplate";
 
 export default function CybersecurityPage() {
   return (
-    <PremiumServiceTemplate
+    <MainlineServiceTemplate
       serviceName="Cybersecurity"
       heroTitle="Protect Your Digital Assets with Comprehensive Security Solutions"
       heroSubtitle="Security & Compliance"
       heroDescription="Safeguard your business with comprehensive security solutions. From threat assessment to incident response, we keep your digital assets secure with transparent security practices and clear communication."
-      heroImage="/images/service-cards/cybersecurity-service-card.webp"
+      heroImage="/mainline_service_template/hero.webp"
       primaryCTA={{ text: "Security Assessment", href: "/contact" }}
       secondaryCTA={{ text: "Security Resources", href: "/services" }}
       impactMetrics={[
